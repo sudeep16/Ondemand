@@ -82,6 +82,22 @@
                 android:text="Female"/>
         </RadioGroup>
         </LinearLayout>
+        <EditText
+            android:padding="10dp"
+            android:layout_marginTop="10dp"
+            android:id="@+id/Password"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/etround"
+            android:hint="Password"/>
+        <EditText
+            android:padding="10dp"
+            android:layout_marginTop="10dp"
+            android:id="@+id/Confirm_password"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/etround"
+            android:hint="Confirm Password"/>
         <Button
             android:id="@+id/btnRegister"
             android:layout_width="280dp"
