@@ -6,14 +6,14 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#9CB2BC"
-    android:padding="10dp">
+    android:background="@drawable/sky"
+   >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_marginTop="-40dp"
+        android:background="#26FFFFFF"
         android:gravity="center">
         <TextView
             android:layout_width="wrap_content"
@@ -21,62 +21,71 @@
             android:text="Sign up"
             android:layout_gravity="center"
             android:textSize="30sp"
-            android:textColor="#000000"
-            android:fontFamily="sans-serif-medium"
+            android:textColor="#ffffff"
+            android:fontFamily="sans-serif-thin"
             />
         <EditText
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="25dp"
             android:id="@+id/FirstName"
             android:gravity="center"
             android:layout_width="280dp"
             android:layout_height="wrap_content"
-            android:padding="10dp"
+            android:padding="8dp"
             android:inputType="text"
             android:background="@drawable/etround"
-            android:hint="First Name"/>
+            android:hint="First Name"
+            android:textColor="#000000"
+            android:textColorHint="#D9FFFFFF"/>
         <EditText
         android:layout_marginTop="10dp"
-        android:id="@+id/SecondName"
+        android:id="@+id/LastName"
         android:layout_width="280dp"
-            android:gravity="center"
+        android:gravity="center"
         android:layout_height="wrap_content"
-        android:padding="10dp"
+        android:padding="8dp"
         android:inputType="text"
+            android:textColor="#000000"
         android:background="@drawable/etround"
-        android:hint="Second Name"/>
+        android:hint="Last Name"
+            android:textColorHint="#D9FFFFFF"/>
         <EditText
             android:layout_marginTop="10dp"
-            android:padding="10dp"
+            android:padding="8dp"
             android:id="@+id/Address"
             android:layout_width="280dp"
             android:gravity="center"
+            android:textColor="#000000"
             android:layout_height="wrap_content"
             android:background="@drawable/etround"
             android:inputType="text"
-            android:hint="Address"/>
+            android:hint="Address"
+            android:textColorHint="#D9FFFFFF"/>
         <EditText
-            android:padding="10dp"
+            android:padding="8dp"
             android:layout_marginTop="10dp"
             android:id="@+id/Username"
             android:inputType="text"
             android:gravity="center"
+            android:textColor="#000000"
             android:layout_width="280dp"
             android:layout_height="wrap_content"
             android:background="@drawable/etround"
-            android:hint="Username"/>
+            android:hint="Username"
+            android:textColorHint="#D9FFFFFF"/>
         <EditText
-            android:padding="10dp"
+            android:padding="8dp"
             android:layout_marginTop="10dp"
             android:id="@+id/Age"
             android:inputType="number"
             android:gravity="center"
             android:layout_width="280dp"
+            android:textColor="#000000"
             android:layout_height="wrap_content"
             android:background="@drawable/etround"
+            android:textColorHint="#D9FFFFFF"
             android:hint="Age"/>
 
         <LinearLayout
-            android:layout_marginTop="10dp"
             android:orientation="horizontal"
             android:gravity="center"
             android:layout_width="match_parent"
@@ -88,10 +97,10 @@
             android:textSize="20sp"
             android:padding="10dp"
             android:fontFamily="sans-serif-medium"
-            android:textColor="#000000"
+            android:textColor="#ffffff"
             android:layout_gravity="center"/>
         <RadioGroup
-            android:padding="10dp"
+            android:padding="8dp"
             android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
@@ -109,24 +118,28 @@
         </RadioGroup>
         </LinearLayout>
         <EditText
-            android:padding="10dp"
-            android:layout_marginTop="10dp"
+            android:padding="8dp"
+            android:textColorHint="#D9FFFFFF"
             android:id="@+id/Password"
             android:layout_width="280dp"
             android:gravity="center"
+            android:textColor="#000000"
             android:inputType="textPassword"
             android:layout_height="wrap_content"
             android:background="@drawable/etround"
+
             android:hint="Password"/>
         <EditText
-            android:padding="10dp"
+            android:padding="8dp"
             android:layout_marginTop="10dp"
-            android:id="@+id/Confirm_password"
+            android:id="@+id/ConfirmPassword"
             android:layout_width="280dp"
             android:gravity="center"
+            android:textColor="#000000"
             android:inputType="textPassword"
             android:layout_height="wrap_content"
             android:background="@drawable/etround"
+            android:textColorHint="#D9FFFFFF"
             android:hint="Confirm Password"/>
         <Button
             android:id="@+id/btnRegister"
@@ -137,6 +150,7 @@
             android:text="Sign Up"
             android:textStyle="bold"
             android:textSize="25sp"
+            android:fontFamily="sans-serif-thin"
             android:background="@drawable/btnround"
             android:textAllCaps="false"/>
 
@@ -147,6 +161,7 @@
             android:textColor="#ffffff"
             android:layout_marginTop="10dp"
             android:text="Login"
+            android:fontFamily="sans-serif-thin"
             android:textStyle="bold"
             android:textSize="25sp"
             android:background="@drawable/btnround"
