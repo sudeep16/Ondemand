@@ -1,4 +1,4 @@
-package com.agile.ondemand.acitivty;
+package com.agile.ondemand.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,7 +19,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private EditText firstName, lastName, address, username, email, phone, gender, password, confirmPassword;
     private RadioButton male, female;
-    private Button btnsignup;
+    private Button btnsignup, btnlogin;
     private RadioGroup radioGroup;
 
     @Override
@@ -38,8 +38,18 @@ public class RegisterActivity extends AppCompatActivity {
         password = findViewById(R.id.etPassword);
         confirmPassword = findViewById(R.id.etConfirmPassword);
         btnsignup = findViewById(R.id.btnRegister);
+        btnsignup = findViewById(R.id.btnRegister);
+        btnlogin = findViewById(R.id.btnLoginA);
 
         radioGroup = findViewById(R.id.radioGroup);
+
+        btnlogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
 
         btnsignup.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,4 +1,4 @@
-package com.agile.ondemand.acitivty;
+package com.agile.ondemand.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
