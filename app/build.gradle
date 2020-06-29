@@ -10,6 +10,16 @@ android {
         versionCode 1
         versionName "1.0"
 
+        testApplicationId "com.agile.ondemand.test"
+        testInstrumentationRunner "com.agile.ondemand.test.Instrumentation"
+
+
+        sourceSets {
+            androidTest {
+                assets.srcDirs = ['src/androidTest/assets']
+            }
+        }
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
