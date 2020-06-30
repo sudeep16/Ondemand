@@ -17,27 +17,27 @@ import com.agile.ondemand.strictmode.StrictModeClass;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private EditText firstName, lastName, address, username, email, phone, gender, password, confirmPassword;
+    private EditText etFirstName, etLastName, etAddress, etUsername, etEmail, etPhone, gender, etPassword, etConfirmPassword;
     private RadioButton male, female;
     private Button btnsignup, btnlogin;
     private RadioGroup radioGroup;
+    private String firstName, lastName, address, username, email, phone, password, cPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        firstName = findViewById(R.id.etFirstName);
-        lastName = findViewById(R.id.etLastName);
-        address = findViewById(R.id.etAddress);
-        username = findViewById(R.id.etUsername);
-        email = findViewById(R.id.etEmail);
-        phone = findViewById(R.id.etPhone);
+        etFirstName = findViewById(R.id.etFirstName);
+        etLastName = findViewById(R.id.etLastName);
+        etAddress = findViewById(R.id.etAddress);
+        etUsername = findViewById(R.id.etUsername);
+        etEmail = findViewById(R.id.etEmail);
+        etPhone = findViewById(R.id.etPhone);
         male = findViewById(R.id.rbMale);
         female = findViewById(R.id.rbFemale);
-        password = findViewById(R.id.etPassword);
-        confirmPassword = findViewById(R.id.etConfirmPassword);
-        btnsignup = findViewById(R.id.btnRegister);
+        etPassword = findViewById(R.id.etPassword);
+        etConfirmPassword = findViewById(R.id.etConfirmPassword);
         btnsignup = findViewById(R.id.btnRegister);
         btnlogin = findViewById(R.id.btnLoginA);
 
@@ -60,28 +60,26 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void signUp() {
-        String firstname = firstName.getText().toString().trim();
-        String lastname = lastName.getText().toString().trim();
-        String Address = address.getText().toString().trim();
-        String Username = username.getText().toString().trim();
-        String Email = email.getText().toString().trim();
-        String Phone = phone.getText().toString().trim();
+        firstName = etFirstName.getText().toString().trim();
+        lastName = etLastName.getText().toString().trim();
+        address = etAddress.getText().toString().trim();
+        username = etUsername.getText().toString().trim();
+        email = etEmail.getText().toString().trim();
+        phone = etPhone.getText().toString().trim();
+        password = etPassword.getText().toString().trim();
+        cPassword = etConfirmPassword.getText().toString().trim();
 
         int selectGender = radioGroup.getCheckedRadioButtonId();
         RadioButton radioButton = findViewById(selectGender);
         String gender = radioButton.getText().toString().trim();
 
-        String passwordd = password.getText().toString().trim();
-        String Cpassword = confirmPassword.getText().toString().trim();
-
-        SignUpBLL signUpBLL =new SignUpBLL();
+        SignUpBLL signUpBLL = new SignUpBLL();
         StrictModeClass.StrictMode();
 
-        if (signUpBLL.signupUser(firstname, lastname, Address, Username, Email, Phone, gender, passwordd)){
+        if (signUpBLL.signupUser(firstName, lastName, address, username, email, phone, gender, password)) {
 
-        }else {
+        } else {
             Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
         }
-
     }
 }
