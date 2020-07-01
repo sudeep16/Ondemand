@@ -58,5 +58,6 @@ dependencies {
     androidTestCompile 'com.android.support:support-annotations:26.1.0'
     androidTestCompile 'info.cukes:cucumber-android:1.2.5@jar'
     androidTestCompile 'info.cukes:cucumber-picocontainer:1.2.4'
+    implementation 'com.synnapps:carouselview:0.1.4'
 
 }
