@@ -2,7 +2,7 @@ package com.agile.ondemand;
 
 import org.junit.Test;
 
-public class testSort {
+public class testDashboard {
 
 
     @Test
