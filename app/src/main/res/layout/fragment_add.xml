@@ -154,6 +154,7 @@
                     android:id="@+id/etPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:inputType="number"
                     android:layout_toRightOf="@id/priceperhour"
                     android:hint="price"
                     android:textSize="15sp" />
