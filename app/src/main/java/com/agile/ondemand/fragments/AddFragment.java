@@ -149,7 +149,7 @@ public class AddFragment extends Fragment {
                     return;
                 }else
                 {
-                    Toast.makeText(getContext(), "failed", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "not posted", Toast.LENGTH_SHORT).show();
                 }
             }
 
