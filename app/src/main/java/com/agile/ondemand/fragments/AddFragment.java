@@ -144,7 +144,7 @@ public class AddFragment extends Fragment {
         voidCall.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-                if (!response.isSuccessful()){
+                if (response.isSuccessful()){
                     Toast.makeText(getContext(), "posted", Toast.LENGTH_SHORT).show();
                     return;
                 }else
