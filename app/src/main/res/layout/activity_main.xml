@@ -9,13 +9,23 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize" />
+        android:layout_height="?attr/actionBarSize" >
+        <Button
+            android:layout_marginLeft="320dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#ffffff"
+            android:textSize="10dp"
+            android:text="Search"/>
+
+    </androidx.appcompat.widget.Toolbar>
+
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchView"
         app:queryHint="Search Here"
         app:searchIcon="@drawable/search_24"
-        android:layout_width="match_parent"
+        android:layout_width="320dp"
         android:layout_height="wrap_content" />
 
     <FrameLayout

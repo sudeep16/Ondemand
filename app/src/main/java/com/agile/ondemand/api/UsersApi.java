@@ -28,14 +28,15 @@ public interface UsersApi {
      * Service ads
      */
     @FormUrlEncoded
-    @POST("users/serviceAds")
-    Call<Void> serviceAds(@Header("Authorization") String token,
-                          @Field("category") String category,
-                          @Field("description") String description,
-                          @Field("openingTime") String openingTime,
-                          @Field("closingTime") String closingTime,
-                          @Field("daysFrom") String daysFrom,
-                          @Field("daysTo") String daysTo,
-                          @Field("price") String price);
+    @POST("/serviceAds")
+    Call<Void> serviceAds(
+            @Header("Authorization") String token,
+            @Field("category") String category,
+            @Field("description") String description,
+            @Field("openingTime") String openingTime,
+            @Field("closingTime") String closingTime,
+            @Field("daysFrom") String daysFrom,
+            @Field("daysTo") String daysTo,
+            @Field("price") String price);
 
 }

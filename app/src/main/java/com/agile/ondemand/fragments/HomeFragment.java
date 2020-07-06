@@ -1,5 +1,6 @@
 package com.agile.ondemand.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import com.agile.ondemand.R;
@@ -18,19 +20,23 @@ import com.synnapps.carouselview.ImageListener;
 
 public class HomeFragment extends Fragment {
 
+    private CardView cvPlumber;
+
     private int[] images = new int[]{
-            R.drawable.a, R.drawable.b,
+            R.drawable.plumber1, R.drawable.painter1,
             R.drawable.c, R.drawable.d
     };
-
-    private String[] imageTitle = new String[]{
-            "x", "y", "z", "g"
-    };
+//
+//    private String[] imageTitle = new String[]{
+//            "x", "y", "z", "g"
+//    };
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_home, container, false);
+
+        cvPlumber = root.findViewById(R.id.cardPlumber);
 
         CarouselView carouselView = root.findViewById(R.id.carousel);
         carouselView.setPageCount(images.length);
@@ -47,6 +53,14 @@ public class HomeFragment extends Fragment {
 //                Toast.makeText(getActivity(), imageTitle[position] , Toast.LENGTH_SHORT).show();
 //            }
 //        });
+
+        cvPlumber.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new PlumberFragment();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).commit();
+            }
+        });
 
         return root;
     }
