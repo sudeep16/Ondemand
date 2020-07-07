@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -44,7 +45,9 @@ public class RegisterActivity extends AppCompatActivity {
         btnsignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                signUp();
+                if (validate()) {
+                    signUp();
+                }
             }
         });
     }
@@ -64,14 +67,50 @@ public class RegisterActivity extends AppCompatActivity {
         String passwordd = password.getText().toString().trim();
         String Cpassword = confirmPassword.getText().toString().trim();
 
-        SignUpBLL signUpBLL =new SignUpBLL();
+        SignUpBLL signUpBLL = new SignUpBLL();
         StrictModeClass.StrictMode();
 
-        if (signUpBLL.signupUser(firstname, lastname, Address, Username, Email, Phone, gender, passwordd)){
+        if (signUpBLL.signupUser(firstname, lastname, Address, Username, Email, Phone, gender, passwordd)) {
 
-        }else {
+        } else {
             Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
         }
+    }
 
+    private boolean validate() {
+        boolean status = true;
+
+        if (TextUtils.isEmpty(firstName.getText().toString().trim())) {
+            firstName.setError("Type your First Name");
+            return false;
+        } else if (TextUtils.isEmpty(lastName.getText().toString().trim())) {
+            lastName.setError("Type your Last Name");
+            return false;
+        } else if (TextUtils.isEmpty(address.getText().toString().trim())) {
+            address.setError("Type your Address");
+            return false;
+        } else if (TextUtils.isEmpty(username.getText().toString().trim())) {
+            username.setError("Type your Address");
+            return false;
+        } else if (username.getText().toString().trim().length() < 6) {
+            username.setError("Minimum 6 character");
+            status = false;
+        } else if (TextUtils.isEmpty(email.getText().toString().trim())) {
+            email.setError("Type your Email Address");
+            return false;
+        } else if (TextUtils.isEmpty(phone.getText().toString().trim())) {
+            phone.setError("Phone number required");
+            return false;
+        } else if (TextUtils.isEmpty(password.getText().toString().trim())) {
+            password.setError("please type your password");
+            return false;
+        }else if (TextUtils.isEmpty(confirmPassword.getText().toString().trim())) {
+            confirmPassword.setError("please type your password");
+            return false;
+        }else if(!password.equals(confirmPassword)){
+            confirmPassword.setError("password didn't matched");
+        }
+
+        return status;
     }
 }
