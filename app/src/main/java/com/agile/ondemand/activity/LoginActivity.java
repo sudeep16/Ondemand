@@ -71,7 +71,6 @@ public class LoginActivity extends AppCompatActivity {
 
         } else {
             etPassword.setError("Incorrect password");
-            // Toast.makeText(this, "Either username or password is incorrect", Toast.LENGTH_SHORT).show();
             etPassword.requestFocus();
         }
     }
