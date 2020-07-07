@@ -109,6 +109,7 @@ public class RegisterActivity extends AppCompatActivity {
             return false;
         }else if(!password.equals(confirmPassword)){
             confirmPassword.setError("password didn't matched");
+            return false;
         }
         return status;
     }
