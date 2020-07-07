@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -54,7 +55,9 @@ public class RegisterActivity extends AppCompatActivity {
         btnsignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                signUp();
+                if (validate()) {
+                    signUp();
+                }
             }
         });
     }
@@ -81,5 +84,41 @@ public class RegisterActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private boolean validate() {
+        boolean status = true;
+
+        if (TextUtils.isEmpty(etFirstName.getText().toString().trim())) {
+            etFirstName.setError("Type your First Name");
+            return false;
+        } else if (TextUtils.isEmpty(etLastName.getText().toString().trim())) {
+            etLastName.setError("Type your Last Name");
+            return false;
+        } else if (TextUtils.isEmpty(etAddress.getText().toString().trim())) {
+            etAddress.setError("Type your Address");
+            return false;
+        } else if (TextUtils.isEmpty(etUsername.getText().toString().trim())) {
+            etUsername.setError("Type your Username");
+            return false;
+        } else if (etUsername.getText().toString().trim().length() < 6) {
+            etUsername.setError("Minimum 6 character");
+            status = false;
+        } else if (TextUtils.isEmpty(etEmail.getText().toString().trim())) {
+            etEmail.setError("Type your Email Address");
+            return false;
+        } else if (TextUtils.isEmpty(etPhone.getText().toString().trim())) {
+            etPassword.setError("Phone number required");
+            return false;
+        } else if (TextUtils.isEmpty(etPassword.getText().toString().trim())) {
+            etPassword.setError("please type your password");
+            return false;
+        } else if (TextUtils.isEmpty(etConfirmPassword.getText().toString().trim())) {
+            etConfirmPassword.setError("please type your password");
+            return false;
+        } else if (!etPassword.equals(etConfirmPassword)) {
+            etConfirmPassword.setError("password didn't matched");
+        }
+        return status;
     }
 }
