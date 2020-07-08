@@ -11,14 +11,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.agile.ondemand.R;
 import com.agile.ondemand.adapter.CategoryAdapter;
 import com.agile.ondemand.api.UsersApi;
-import com.agile.ondemand.bll.PlumberBLL;
 import com.agile.ondemand.model.ServiceAds;
-import com.agile.ondemand.strictmode.StrictModeClass;
 import com.agile.ondemand.url.Url;
 
 import java.util.List;
@@ -39,18 +38,14 @@ public class PlumberFragment extends Fragment {
 
         rvPlumber = root.findViewById(R.id.rvPlumber);
 
-        PlumberBLL plumberBLL=new PlumberBLL();
-        StrictModeClass.StrictMode();
-
         UsersApi usersApi = Url.getInstance().create(UsersApi.class);
         Call<List<ServiceAds>> listCall = usersApi.getCategory(Url.token);
-//        Call<ServiceAds> serviceAdsCall = usersApi.getCategory(Url.token);
 
         listCall.enqueue(new Callback<List<ServiceAds>>() {
             @Override
             public void onResponse(Call<List<ServiceAds>> call, Response<List<ServiceAds>> response) {
                 if (!response.isSuccessful()) {
-                    Toast.makeText(getActivity(), ""+ response.code(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "" + response.code(), Toast.LENGTH_SHORT).show();
                     return;
                 }
                 List<ServiceAds> serviceAds = response.body();
