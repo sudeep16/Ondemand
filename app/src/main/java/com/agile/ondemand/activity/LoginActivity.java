@@ -19,7 +19,7 @@ import com.agile.ondemand.strictmode.StrictModeClass;
 public class LoginActivity extends AppCompatActivity {
 
     private EditText etUsername, etPassword;
-    private Button login;
+    private Button login, btnRegister;
     private CheckBox checkbox;
 
     @Override
@@ -30,6 +30,7 @@ public class LoginActivity extends AppCompatActivity {
         etUsername = findViewById(R.id.etLoginUsername);
         etPassword = findViewById(R.id.etLoginPassword);
 
+        btnRegister = findViewById(R.id.btnRegister);
         login = findViewById(R.id.btnLogin);
         checkbox = findViewById(R.id.checkBox);
 
@@ -45,6 +46,15 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
                 login();
+            }
+        });
+
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
     }

@@ -69,6 +69,17 @@
             android:textAllCaps="false"
             android:textSize="20sp" />
 
+        <Button
+            android:id="@+id/btnRegister"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/btnround"
+            android:fontFamily="sans-serif-light"
+            android:text="Register"
+            android:textAllCaps="false"
+            android:textSize="20sp" />
+
     </LinearLayout>
 
 
