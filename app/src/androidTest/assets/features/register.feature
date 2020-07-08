@@ -1,27 +1,20 @@
 Feature: registering into the system
 
-  Scenario: register with valid data
-    Given A user is at a "Register" screen
-    When I input a firstname, rajesh
-    And I input a lastname, hamal
-    And I input an address, ktm
-    And I input a username, rajesh123
-    And I input an email, hamal123@gmail.com
-    And I input a phone, 9860161111
-    And I input a gender, male
-    And I input a password, hamal
-    And I press signup button
-    Then I should receive message register success
+  @register-feature
+  Scenario Outline: register with valid data
+    Given I am at register screen
+    When I input a firstName <firstName>
+    And I input a lastName <lastName>
+    And I input an address <address>
+    And I input a username <username>
+    And I input an email <email>
+    And I input a phone <phone>
+    And I input a gender <gender>
+    And I input a password <password>
+    And I input a confirm password <confirmPassword>
+    And I click signup button
+    Then I should receive message success
 
-  Scenario: register with invalid data
-    Given A user is at a "Register" screen
-    When I input a firstname, rajesh
-    And I input a lastname, hamal
-    And I input an address, ktm
-    And I input a username,
-    And I input an email, hamal123@gmail.com
-    And I input a phone, 9860161111
-    And I input a gender, male
-    And I input a password, hamal
-    And I press signup button
-    Then I should receive message that the field is empty
+    Examples:
+      | firstName | lastName | address | username | email         | phone  | gender | password | confirmPassword |
+      | Bddtest   | test     | ktm     | bddd1234 | bdd@gamil.com | 892387 | Male   | password | password        |
