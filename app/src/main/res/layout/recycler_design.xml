@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:padding="10dp">
 
     <androidx.cardview.widget.CardView
@@ -35,24 +35,24 @@
                     android:id="@+id/textView3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Category : "
                     android:padding="3dp"
+                    android:text="Category : "
                     android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/tvCategories"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="categories"
                     android:padding="3dp"
+                    android:text="categories"
                     android:textSize="20sp" />
             </LinearLayout>
 
             <TextView
                 android:id="@+id/textView5"
-                android:padding="3dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:padding="3dp"
                 android:text="Availability TIme :"
                 android:textSize="20sp" />
 
@@ -65,23 +65,23 @@
                     android:id="@+id/tvFromTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="time1"
                     android:padding="3dp"
+                    android:text="time1"
                     android:textSize="20sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=" To : "
                     android:padding="3dp"
+                    android:text=" To : "
                     android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/tvToTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="time2"
                     android:padding="3dp"
+                    android:text="time2"
                     android:textSize="20sp" />
 
             </LinearLayout>
@@ -89,37 +89,37 @@
 
             <TextView
                 android:id="@+id/textView8"
-                android:padding="3dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:padding="3dp"
                 android:text="Available Days :"
                 android:textSize="20sp" />
 
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/tvDayFrom"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="dayfrom"
                     android:padding="3dp"
+                    android:text="dayfrom"
                     android:textSize="20sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=" To : "
                     android:padding="3dp"
+                    android:text=" To : "
                     android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/tvDayTo"
-                    android:padding="3dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:padding="3dp"
                     android:text="dayto"
                     android:textSize="20sp" />
             </LinearLayout>
@@ -130,9 +130,9 @@
 
                 <TextView
                     android:id="@+id/textView11"
-                    android:padding="3dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:padding="3dp"
                     android:text="Price Per Hour : $"
                     android:textSize="20sp" />
 
@@ -140,9 +140,36 @@
                     android:id="@+id/tvPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="price"
                     android:padding="3dp"
+                    android:text="price"
                     android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <Button
+                    android:layout_width="170dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/btnround"
+                    android:text="Hire"
+                    android:textAllCaps="false"
+                    android:textSize="20sp" />
+
+                <Button
+                    android:layout_width="170dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/btnround"
+                    android:text="Add to Favourite"
+                    android:textAllCaps="false"
+                    android:textSize="20sp" />
+
             </LinearLayout>
 
 

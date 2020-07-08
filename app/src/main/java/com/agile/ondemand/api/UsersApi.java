@@ -1,13 +1,18 @@
 package com.agile.ondemand.api;
 
+import com.agile.ondemand.model.ServiceAds;
 import com.agile.ondemand.model.User;
 import com.agile.ondemand.serverresponse.SignUpResponse;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
-import retrofit2.http.Header;import retrofit2.http.POST;
+import retrofit2.http.GET;
+import retrofit2.http.Header;
+import retrofit2.http.POST;
 
 
 public interface UsersApi {
@@ -38,5 +43,11 @@ public interface UsersApi {
             @Field("daysFrom") String daysFrom,
             @Field("daysTo") String daysTo,
             @Field("price") String price);
+
+    /**
+     * Category
+     */
+    @GET("serviceAds/Plumber")
+    Call<List<ServiceAds>> getCategory(@Header("Authorization") String token);
 
 }
