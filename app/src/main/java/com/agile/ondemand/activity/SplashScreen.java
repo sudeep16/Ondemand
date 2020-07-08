@@ -59,7 +59,7 @@ public class SplashScreen extends AppCompatActivity {
         LoginBLL loginBLL = new LoginBLL();
         StrictModeClass.StrictMode();
         if (loginBLL.checkUser(usernameLogin, passwordLogin)) {
-            Toast.makeText(this, "Login", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Welcome Back", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, "Token expired", Toast.LENGTH_SHORT).show();
         }

@@ -52,9 +52,12 @@ public class RegisterActivity extends AppCompatActivity {
         StrictModeClass.StrictMode();
 
         if (signUpBLL.signupUser(firstName, lastName, address, username, email, phone, gender, password)) {
+            Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+            startActivity(intent);
+            Toast.makeText(this, "Sign Up Success", Toast.LENGTH_SHORT).show();
 
         } else {
-            Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Sign Up Failed ", Toast.LENGTH_SHORT).show();
         }
     }
 
