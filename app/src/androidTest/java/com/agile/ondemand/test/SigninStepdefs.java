@@ -67,6 +67,7 @@ public class SigninStepdefs {
 
     @Then("^I receive a field required message$")
     public void iReceiveAFieldRequiredMessage() {
+
         onView(withText("")).check(matches(hasErrorText("Input Password")));
     }
 
