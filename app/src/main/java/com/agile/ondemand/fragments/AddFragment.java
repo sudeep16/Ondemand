@@ -19,6 +19,8 @@ import androidx.fragment.app.Fragment;
 
 import com.agile.ondemand.R;
 import com.agile.ondemand.api.UsersApi;
+import com.agile.ondemand.bll.CategoryBLL;
+import com.agile.ondemand.strictmode.StrictModeClass;
 import com.agile.ondemand.url.Url;
 
 import java.text.DateFormat;
@@ -31,9 +33,10 @@ import retrofit2.Response;
 public class AddFragment extends Fragment {
 
     private Spinner spinner;
-    private EditText description, etdayFrom, etdayTo, price;
+    private EditText etDescription, etdayFrom, etdayTo, etPrice;
     private TextView tvOpeningTime, tvClosingTime;
     private Button btnPost;
+    private String category, description, daysFrom, daysTo, price, openingTime, closingTime;
 
     int t1Hour, t1Minute, t2Hour, t2Minute;
 
@@ -49,11 +52,10 @@ public class AddFragment extends Fragment {
 
         tvOpeningTime = root.findViewById(R.id.time1);
         tvClosingTime = root.findViewById(R.id.time2);
-
-        description = root.findViewById(R.id.etDescription);
+        etDescription = root.findViewById(R.id.etDescription);
         etdayFrom = root.findViewById(R.id.etDaysFrom);
         etdayTo = root.findViewById(R.id.etDaysTo);
-        price = root.findViewById(R.id.etPrice);
+        etPrice = root.findViewById(R.id.etPrice);
         btnPost = root.findViewById(R.id.btnPost);
 
         tvOpeningTime.setOnClickListener(new View.OnClickListener() {
@@ -127,36 +129,22 @@ public class AddFragment extends Fragment {
     }
 
     private void serviceAds() {
-        UsersApi usersApi = Url.getInstance().create(UsersApi.class);
-        String category = spinner.getSelectedItem().toString();
+//        UsersApi usersApi = Url.getInstance().create(UsersApi.class);
+        CategoryBLL categoryBLL = new CategoryBLL();
+        StrictModeClass.StrictMode();
+        category = spinner.getSelectedItem().toString();
+        description = etDescription.getText().toString();
+        openingTime = tvOpeningTime.getText().toString();
+        closingTime = tvClosingTime.getText().toString();
+        daysFrom = etdayFrom.getText().toString();
+        daysTo = etdayTo.getText().toString();
+        price = etPrice.getText().toString();
 
-        Call<Void> voidCall = usersApi.serviceAds(
-                Url.token,
-                category,
-                description.getText().toString(),
-                tvOpeningTime.getText().toString(),
-                tvClosingTime.getText().toString(),
-                etdayFrom.getText().toString(),
-                etdayTo.getText().toString(),
-                price.getText().toString()
-        );
-
-        voidCall.enqueue(new Callback<Void>() {
-            @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
-                if (response.isSuccessful()){
-                    Toast.makeText(getContext(), "posted", Toast.LENGTH_SHORT).show();
-                    return;
-                }else
-                {
-                    Toast.makeText(getContext(), "not posted", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Void> call, Throwable t) {
-
-            }
-        });
+        if (categoryBLL.addCategory(Url.token, category, description, openingTime, closingTime,
+                daysFrom, daysTo, price)) {
+            Toast.makeText(getContext(), "Success", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getContext(), "Failed", Toast.LENGTH_SHORT).show();
+        }
     }
 }
