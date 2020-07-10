@@ -40,8 +40,6 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         holder.dayFrom.setText(serviceAds.getDaysFrom());
         holder.dayTo.setText(serviceAds.getDaysTo());
         holder.price.setText(serviceAds.getPrice());
-
-
     }
 
     @Override
