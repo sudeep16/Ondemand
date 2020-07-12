@@ -38,8 +38,6 @@ public class AddFragment extends Fragment {
     private Button btnPost;
     private String category, description, daysFrom, daysTo, price, openingTime, closingTime;
 
-    int t1Hour, t1Minute, t2Hour, t2Minute;
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -78,6 +76,8 @@ public class AddFragment extends Fragment {
                 serviceAds();
             }
         });
+
+
 
         return root;
     }
