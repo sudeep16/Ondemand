@@ -14,7 +14,7 @@ public class CategoryBLL {
     private boolean isSuccess = true;
 
     public boolean addCategory(String token, String category, String description, String openingTime,
-                               String closingTime, String daysFrom, String daysTo, String price){
+                               String closingTime, String daysFrom, String daysTo, String price) {
         UsersApi usersApi = Url.getInstance().create(UsersApi.class);
         Call<Void> voidCall = usersApi.serviceAds(token,
                 category, description, openingTime, closingTime, daysFrom, daysTo, price);
@@ -22,7 +22,7 @@ public class CategoryBLL {
         voidCall.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-                if (response.isSuccessful()){
+                if (response.isSuccessful()) {
                     isSuccess = true;
                 } else {
                     isSuccess = false;
