@@ -62,23 +62,18 @@ public class AddFragment extends Fragment {
                 loadTime();
             }
         });
-
         tvClosingTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 loadTime1();
             }
         });
-
         btnPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 serviceAds();
             }
         });
-
-
-
         return root;
     }
 
@@ -129,7 +124,6 @@ public class AddFragment extends Fragment {
     }
 
     private void serviceAds() {
-//        UsersApi usersApi = Url.getInstance().create(UsersApi.class);
         CategoryBLL categoryBLL = new CategoryBLL();
         StrictModeClass.StrictMode();
         category = spinner.getSelectedItem().toString();

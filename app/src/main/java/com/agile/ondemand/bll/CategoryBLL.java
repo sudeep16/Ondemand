@@ -11,12 +11,11 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class CategoryBLL {
-    private boolean isSuccess = false;
+    private boolean isSuccess = true;
 
     public boolean addCategory(String token, String category, String description, String openingTime,
                                String closingTime, String daysFrom, String daysTo, String price){
         UsersApi usersApi = Url.getInstance().create(UsersApi.class);
-
         Call<Void> voidCall = usersApi.serviceAds(token,
                 category, description, openingTime, closingTime, daysFrom, daysTo, price);
 
