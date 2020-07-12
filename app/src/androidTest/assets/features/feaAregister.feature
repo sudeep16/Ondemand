@@ -15,8 +15,8 @@ Feature: registering into the system
     Then I should receive field required message
 
     Examples:
-       | lastName | address | username | email         | phone  | gender | password | confirmPassword |
-       | test     | ktm     | bddd1234 | bdd@gamil.com | 892387 | Male   | P@ssw0rd | P@ssw0rd        |
+      | lastName | address | username | email         | phone  | gender | password | confirmPassword |
+      | test     | ktm     | bddd1234 | bdd@gamil.com | 892387 | Male   | P@ssw0rd | P@ssw0rd        |
 
   @register-feature
   Scenario Outline: register with invalid email
@@ -69,7 +69,7 @@ Feature: registering into the system
     And I input a password <password>
     And I input a confirm password <confirmPassword>
     And I click signup button
-    Then I should receive message success
+    Then I should redirect to login
 
     Examples:
       | firstName | lastName | address | username | email         | phone  | gender | password | confirmPassword |
