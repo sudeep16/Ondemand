@@ -15,7 +15,6 @@ public class CategoryBLL {
 
     public boolean addCategory(String token, String category, String description, String openingTime,
                                String closingTime, String daysFrom, String daysTo, String price){
-//        ServiceAds serviceAds = new ServiceAds(category, description, openingTime, closingTime, daysFrom, daysTo, price);
         UsersApi usersApi = Url.getInstance().create(UsersApi.class);
 
         Call<Void> voidCall = usersApi.serviceAds(token,
