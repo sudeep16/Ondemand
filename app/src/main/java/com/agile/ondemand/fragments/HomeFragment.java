@@ -24,7 +24,7 @@ public class HomeFragment extends Fragment {
 
     private int[] images = new int[]{
             R.drawable.plumber1, R.drawable.painter1,
-            R.drawable.c, R.drawable.d
+            R.drawable.babysitter1, R.drawable.gardner1
     };
 //
 //    private String[] imageTitle = new String[]{
