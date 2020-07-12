@@ -69,7 +69,7 @@ Feature: registering into the system
     And I input a password <password>
     And I input a confirm password <confirmPassword>
     And I click signup button
-    Then I should receive message success
+    Then I should redirect to login
 
     Examples:
       | firstName | lastName | address | username | email         | phone  | gender | password | confirmPassword |

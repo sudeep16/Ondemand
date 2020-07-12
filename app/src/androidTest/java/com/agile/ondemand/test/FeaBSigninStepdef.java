@@ -67,13 +67,11 @@ public class FeaBSigninStepdef {
 
     @cucumber.api.java.en.Then("^I am redirected to dashboard$")
     public void iAmRedirectedToTheDashboard() {
-//        onView(withId(R.id.tv_income)).check(matches(withText(R.string.income)));
+        onView(withId(R.id.carousel)).check(matches(isDisplayed()));
     }
 
     @Then("^I receive a field required message$")
     public void iReceiveAFieldRequiredMessage() {
         onView(withText("")).check(matches(hasErrorText("Input Password")));
     }
-
-
 }
