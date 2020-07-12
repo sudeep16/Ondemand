@@ -19,7 +19,11 @@ import static androidx.test.espresso.Espresso.closeSoftKeyboard;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.typeText;
+import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.matcher.ViewMatchers.hasErrorText;
+import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static junit.framework.TestCase.assertNotNull;
 
 @CucumberOptions(features = "features")
@@ -100,6 +104,21 @@ public class SignupStepdefs {
     @Then("^I should receive message success$")
     public void iShouldSeeEmailExistsMessage() {
 //        onView(withText("success")).check(ViewAssertions.matches(isDisplayed()));
+    }
+
+    @Then("^I should receive field required message$")
+    public void iShouldSeeFieldRequiredMessage() {
+        onView(withText("")).check(matches(hasErrorText("Required")));
+    }
+
+    @Then("^I should receive invalid email message$")
+    public void iShouldSeeInvalidEmailMessage() {
+        onView(hasErrorText("Please enter valid email")).check(matches(isDisplayed()));
+    }
+
+    @Then("^I should receive invalid password message$")
+    public void iShouldSeeInvalidPasswordMessage() {
+        onView(hasErrorText("Password is too weak")).check(matches(isDisplayed()));
     }
 }
 
