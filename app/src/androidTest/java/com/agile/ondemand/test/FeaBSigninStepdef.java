@@ -25,7 +25,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static junit.framework.TestCase.assertNotNull;
 
-public class SigninStepdefs {
+public class FeaBSigninStepdef {
 
     @Rule
     public ActivityTestRule<LoginActivity> signInTestRule = new ActivityTestRule<>(LoginActivity.class);

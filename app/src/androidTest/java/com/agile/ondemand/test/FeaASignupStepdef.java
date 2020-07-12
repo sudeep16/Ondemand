@@ -27,7 +27,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static junit.framework.TestCase.assertNotNull;
 
 @CucumberOptions(features = "features")
-public class SignupStepdefs {
+public class FeaASignupStepdef {
 
     @Rule
     private ActivityTestRule<RegisterActivity> signUpTestRule = new ActivityTestRule<>(RegisterActivity.class);
@@ -121,4 +121,3 @@ public class SignupStepdefs {
         onView(hasErrorText("Password is too weak")).check(matches(isDisplayed()));
     }
 }
-
