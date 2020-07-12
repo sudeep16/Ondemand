@@ -15,17 +15,18 @@ public class LoginBLL {
 
     boolean isSuccess = false;
 
-    public boolean checkUser(String username, String password){
+    public boolean checkUser(String username, String password) {
         UsersApi usersApi = Url.getInstance().create(UsersApi.class);
         Call<SignUpResponse> userCall = usersApi.checkUser(username, password);
 
-        try{
+        try {
             Response<SignUpResponse> loginResponse = userCall.execute();
-            if (loginResponse.isSuccessful() && loginResponse.body().getStatus().equals("Login successful")){
+            if (loginResponse.isSuccessful() && loginResponse.body().getStatus().equals("Login successful")) {
+                Url.token += loginResponse.body().getToken();
                 isSuccess = true;
 
             }
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return isSuccess;
