@@ -54,20 +54,24 @@ public class SigninStepdefs {
         closeSoftKeyboard();
     }
 
-//    @cucumber.api.java.en.And("^I enter password (\\S+)$")
-//    public void iEnterPasswordPassword(String password) {
-//        onView(withId(R.id.etLoginPassword)).perform(typeText((password)));
-//        closeSoftKeyboard();
-//    }
+    @cucumber.api.java.en.And("^I enter password (\\S+)$")
+    public void iEnterPasswordPassword(String password) {
+        onView(withId(R.id.etLoginPassword)).perform(typeText((password)));
+        closeSoftKeyboard();
+    }
 
     @cucumber.api.java.en.And("^I click on the login button$")
     public void iClickOnTheLoginButton() {
         onView(withId(R.id.btnLogin)).perform(click());
     }
 
+    @cucumber.api.java.en.Then("^I am redirected to dashboard$")
+    public void iAmRedirectedToTheDashboard() {
+//        onView(withId(R.id.tv_income)).check(matches(withText(R.string.income)));
+    }
+
     @Then("^I receive a field required message$")
     public void iReceiveAFieldRequiredMessage() {
-
         onView(withText("")).check(matches(hasErrorText("Input Password")));
     }
 
