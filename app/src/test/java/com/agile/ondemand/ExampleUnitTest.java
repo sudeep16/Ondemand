@@ -1,7 +1,14 @@
 package com.agile.ondemand;
 
+import com.agile.ondemand.model.User;
+
+import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import static java.util.Arrays.asList;
 import static org.junit.Assert.*;
 
 /**
@@ -10,8 +17,25 @@ import static org.junit.Assert.*;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 public class ExampleUnitTest {
-    @Test
-    public void addition_isCorrect() {
-        assertEquals(4, 2 + 2);
+    private User user;
+
+    private List<User> userList;
+
+
+    @Before
+    public void setup() {
+        userList = new ArrayList<>();
+    //    user = new User(userList);
     }
+
+//    @Test
+//    public void testFindAll() {
+//        User user1 = new User("","","","","","","","");
+//        userList.addAll(asList(user1));
+//        assertThat(User.findAll())
+//                .containsExactly(user1);
+//    }
+
+
+
 }
