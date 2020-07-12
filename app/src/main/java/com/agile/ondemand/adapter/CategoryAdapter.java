@@ -35,6 +35,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     public void onBindViewHolder(@NonNull CategoryViewHolder holder, int position) {
         final ServiceAds serviceAds = serviceAdsList.get(position);
         holder.category.setText(serviceAds.getCategory());
+        holder.description.setText(serviceAds.getDescription());
         holder.timeFrom.setText(serviceAds.getOpeningTime());
         holder.timeTo.setText(serviceAds.getClosingTime());
         holder.dayFrom.setText(serviceAds.getDaysFrom());
@@ -49,11 +50,12 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
 
     public class CategoryViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView category, timeFrom, timeTo, dayFrom, dayTo, price;
+        private TextView category, description, timeFrom, timeTo, dayFrom, dayTo, price;
 
         public CategoryViewHolder(@NonNull View itemView) {
             super(itemView);
             category = itemView.findViewById(R.id.tvCategories);
+            description = itemView.findViewById(R.id.tvDescription);
             timeFrom = itemView.findViewById(R.id.tvFromTime);
             timeTo = itemView.findViewById(R.id.tvToTime);
             dayFrom = itemView.findViewById(R.id.tvDayFrom);
