@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment;
 
 import com.agile.ondemand.R;
 import com.agile.ondemand.activity.LoginActivity;
+import com.agile.ondemand.url.Url;
 
 public class ProfileFragment extends Fragment {
 
@@ -39,12 +40,12 @@ public class ProfileFragment extends Fragment {
 
     private void logOut() {
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("User", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.clear();
-        editor.apply();
-
+        sharedPreferences.edit().clear().commit();
         Intent intent = new Intent(getContext(), LoginActivity.class);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
+        System.exit(0);
     }
 
 }

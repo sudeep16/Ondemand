@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.agile.ondemand.R;
+import com.agile.ondemand.model.ServiceAdShow;
 import com.agile.ondemand.model.ServiceAds;
 
 import java.util.List;
@@ -17,9 +18,9 @@ import java.util.List;
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder> {
 
     Context context;
-    List<ServiceAds> serviceAdsList;
+    List<ServiceAdShow> serviceAdsList;
 
-    public CategoryAdapter(Context context, List<ServiceAds> serviceAdsList) {
+    public CategoryAdapter(Context context, List<ServiceAdShow> serviceAdsList) {
         this.context = context;
         this.serviceAdsList = serviceAdsList;
     }
@@ -33,14 +34,17 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
 
     @Override
     public void onBindViewHolder(@NonNull CategoryViewHolder holder, int position) {
-        final ServiceAds serviceAds = serviceAdsList.get(position);
-        holder.category.setText(serviceAds.getCategory());
-        holder.description.setText(serviceAds.getDescription());
-        holder.timeFrom.setText(serviceAds.getOpeningTime());
-        holder.timeTo.setText(serviceAds.getClosingTime());
-        holder.dayFrom.setText(serviceAds.getDaysFrom());
-        holder.dayTo.setText(serviceAds.getDaysTo());
-        holder.price.setText(serviceAds.getPrice());
+        final ServiceAdShow serviceAdShow = serviceAdsList.get(position);
+        holder.category.setText(serviceAdShow.getCategory());
+        holder.description.setText(serviceAdShow.getDescription());
+        holder.timeFrom.setText(serviceAdShow.getOpeningTime());
+        holder.timeTo.setText(serviceAdShow.getClosingTime());
+        holder.dayFrom.setText(serviceAdShow.getDaysFrom());
+        holder.dayTo.setText(serviceAdShow.getDaysTo());
+        holder.price.setText(serviceAdShow.getPrice());
+        holder.tvUsername.setText(serviceAdShow.getUsername());
+        holder.tvAddress.setText(serviceAdShow.getAddress());
+        holder.tvPhone.setText(serviceAdShow.getPhone());
     }
 
     @Override
@@ -50,7 +54,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
 
     public class CategoryViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView category, description, timeFrom, timeTo, dayFrom, dayTo, price;
+        private TextView category, description, timeFrom, timeTo, dayFrom, dayTo, price, tvUsername, tvAddress, tvPhone;
 
         public CategoryViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -61,6 +65,9 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
             dayFrom = itemView.findViewById(R.id.tvDayFrom);
             dayTo = itemView.findViewById(R.id.tvDayTo);
             price = itemView.findViewById(R.id.tvPrice);
+            tvUsername = itemView.findViewById(R.id.tvUsername);
+            tvAddress = itemView.findViewById(R.id.tvAddress);
+            tvPhone = itemView.findViewById(R.id.tvPhone);
         }
     }
 }
