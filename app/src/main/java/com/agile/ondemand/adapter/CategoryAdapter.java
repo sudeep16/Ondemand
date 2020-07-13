@@ -18,9 +18,9 @@ import java.util.List;
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder> {
 
     Context context;
-    List<ServiceAdShow> serviceAdsList;
+    List<ServiceAds> serviceAdsList;
 
-    public CategoryAdapter(Context context, List<ServiceAdShow> serviceAdsList) {
+    public CategoryAdapter(Context context, List<ServiceAds> serviceAdsList) {
         this.context = context;
         this.serviceAdsList = serviceAdsList;
     }
@@ -34,17 +34,17 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
 
     @Override
     public void onBindViewHolder(@NonNull CategoryViewHolder holder, int position) {
-        final ServiceAdShow serviceAdShow = serviceAdsList.get(position);
-        holder.category.setText(serviceAdShow.getCategory());
-        holder.description.setText(serviceAdShow.getDescription());
-        holder.timeFrom.setText(serviceAdShow.getOpeningTime());
-        holder.timeTo.setText(serviceAdShow.getClosingTime());
-        holder.dayFrom.setText(serviceAdShow.getDaysFrom());
-        holder.dayTo.setText(serviceAdShow.getDaysTo());
-        holder.price.setText(serviceAdShow.getPrice());
-        holder.tvUsername.setText(serviceAdShow.getUsername());
-        holder.tvAddress.setText(serviceAdShow.getAddress());
-        holder.tvPhone.setText(serviceAdShow.getPhone());
+        final ServiceAds serviceAds = serviceAdsList.get(position);
+        holder.category.setText(serviceAds.getCategory());
+        holder.description.setText(serviceAds.getDescription());
+        holder.timeFrom.setText(serviceAds.getOpeningTime());
+        holder.timeTo.setText(serviceAds.getClosingTime());
+        holder.dayFrom.setText(serviceAds.getDaysFrom());
+        holder.dayTo.setText(serviceAds.getDaysTo());
+        holder.price.setText(serviceAds.getPrice());
+        holder.tvUsername.setText(serviceAds.getAdOwner().getUsername());
+        holder.tvAddress.setText(serviceAds.getAdOwner().getAddress());
+        holder.tvPhone.setText(serviceAds.getAdOwner().getPhone());
     }
 
     @Override

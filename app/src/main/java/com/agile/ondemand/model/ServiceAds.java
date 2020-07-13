@@ -9,8 +9,9 @@ public class ServiceAds {
     private String daysFrom;
     private String daysTo;
     private String price;
+    private Owner adOwner;
 
-    public ServiceAds(String category, String description, String openingTime, String closingTime, String daysFrom, String daysTo, String price) {
+    public ServiceAds(String category, String description, String openingTime, String closingTime, String daysFrom, String daysTo, String price, Owner adOwner) {
         this.category = category;
         this.description = description;
         this.openingTime = openingTime;
@@ -18,6 +19,7 @@ public class ServiceAds {
         this.daysFrom = daysFrom;
         this.daysTo = daysTo;
         this.price = price;
+        this.adOwner = adOwner;
     }
 
     public String getCategory() {
@@ -74,5 +76,13 @@ public class ServiceAds {
 
     public void setPrice(String price) {
         this.price = price;
+    }
+
+    public Owner getAdOwner() {
+        return adOwner;
+    }
+
+    public void setAdOwner(Owner adOwner) {
+        this.adOwner = adOwner;
     }
 }
