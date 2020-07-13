@@ -1,6 +1,10 @@
 package com.agile.ondemand;
 
+import com.agile.ondemand.bll.Validation;
+
 import org.junit.Test;
+
+import static org.junit.Assert.assertTrue;
 
 public class testValidations {
 
@@ -16,11 +20,13 @@ public class testValidations {
 
     }
 
-//
+
 //        @Test
 //        public void emailValidator_CorrectEmailSimple_ReturnsTrue() {
-//            assertTrue(EmailValidator.isValidEmail("name@email.com"));
+//            assertTrue(Validation.validateEmail("name@email.com"));
 //        }
+
+
 //
 //        @Test
 //        public void emailValidator_CorrectEmailSubDomain_ReturnsTrue() {

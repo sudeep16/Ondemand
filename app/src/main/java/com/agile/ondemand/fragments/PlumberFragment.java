@@ -16,7 +16,9 @@ import android.widget.Toast;
 import com.agile.ondemand.R;
 import com.agile.ondemand.adapter.CategoryAdapter;
 import com.agile.ondemand.api.UsersApi;
+import com.agile.ondemand.bll.PlumberBLL;
 import com.agile.ondemand.model.ServiceAds;
+import com.agile.ondemand.strictmode.StrictModeClass;
 import com.agile.ondemand.url.Url;
 
 import java.util.List;
@@ -36,6 +38,9 @@ public class PlumberFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_plumber, container, false);
 
         rvPlumber = root.findViewById(R.id.rvPlumber);
+
+        PlumberBLL plumberBLL=new PlumberBLL();
+        StrictModeClass.StrictMode();
 
         UsersApi usersApi = Url.getInstance().create(UsersApi.class);
         Call<List<ServiceAds>> listCall = usersApi.getCategory(Url.token);
