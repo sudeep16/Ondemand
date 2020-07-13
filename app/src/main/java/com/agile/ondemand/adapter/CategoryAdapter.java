@@ -64,7 +64,10 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         holder.btnHire.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                v.getContext().startActivity(new Intent(context, HireActivity.class));
+                Intent intent = new Intent(context, HireActivity.class);
+                intent.putExtra("username",serviceAds.getAdOwner().getUsername());
+                context.startActivity(intent);
+//                v.getContext().startActivity(new Intent(context, HireActivity.class));
             }
         });
     }
