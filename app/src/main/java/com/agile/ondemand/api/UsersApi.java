@@ -58,6 +58,18 @@ public interface UsersApi {
                            @Field("comment") String comment,
                            @Path("username") String username);
 
+    /**
+     *Hire Post
+     */
+    @FormUrlEncoded
+    @POST("hiredList/{username}")
+    Call<Void> Hire(@Header("Authorization") String token,
+                    @Field("paymentMethod") String paymentMethod,
+                    @Field("day") String day,
+                    @Field("time") String time,
+                    @Field("location") String location,
+                    @Path("username") String username);
+
 //    @GET("serviceAds/{category}")
 //    Call<List<ServiceAdShow>> getAllServiceAds (@Header("Authorization") String token,
 //                                                @Path("category") String category);

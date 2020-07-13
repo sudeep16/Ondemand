@@ -13,10 +13,17 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.agile.ondemand.R;
+import com.agile.ondemand.api.UsersApi;
+import com.agile.ondemand.url.Url;
 
 import java.util.Calendar;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class HireActivity extends AppCompatActivity {
 
@@ -42,7 +49,7 @@ public class HireActivity extends AppCompatActivity {
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner1.setAdapter(arrayAdapter);
 
-        ArrayAdapter<CharSequence> arrayDays = ArrayAdapter.createFromResource(this,R.array.days, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> arrayDays = ArrayAdapter.createFromResource(this, R.array.days, android.R.layout.simple_spinner_item);
         arrayDays.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerDays.setAdapter(arrayDays);
 
@@ -59,6 +66,7 @@ public class HireActivity extends AppCompatActivity {
         btnConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Hire();
                 DisplayNotification();
             }
         });
@@ -87,6 +95,7 @@ public class HireActivity extends AppCompatActivity {
                 }, hour, minute, false);
         timePickerDialog.show();
     }
+
     private void DisplayNotification() {
         Notification notification = new NotificationCompat.Builder(this, CreateChannel.CHANNEL_1)
                 .setSmallIcon(R.drawable.person_24)
@@ -97,5 +106,33 @@ public class HireActivity extends AppCompatActivity {
         notificationManagerCompat.notify(counter, notification);
         counter++;
 
+    }
+
+    private void Hire() {
+        String paymentM = spinner1.getSelectedItem().toString().trim();
+        String daysM = spinnerDays.getSelectedItem().toString().trim();
+        String timeM = tvHireTime.getText().toString().trim();
+        String locations = etLocation.getText().toString().trim();
+
+        String username = getIntent().getExtras().getString("username");
+
+        UsersApi usersApi = Url.getInstance().create(UsersApi.class);
+        Call<Void> hirePost = usersApi.Hire(Url.token, paymentM, daysM, timeM, locations, username);
+
+        hirePost.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (!response.isSuccessful()) {
+                    Toast.makeText(HireActivity.this, "Code " + response.body(),
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }
+            }
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Toast.makeText(HireActivity.this, "Error " + t.getLocalizedMessage(),
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
