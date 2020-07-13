@@ -1,7 +1,10 @@
 package com.agile.ondemand.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
+import android.app.Notification;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +19,9 @@ import com.agile.ondemand.R;
 import java.util.Calendar;
 
 public class HireActivity extends AppCompatActivity {
+
+    private NotificationManagerCompat notificationManagerCompat;
+    int counter = 1;
 
     private Spinner spinner1, spinnerDays;
     private TextView etLocation, tvHireTime;
@@ -40,10 +46,20 @@ public class HireActivity extends AppCompatActivity {
         arrayDays.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerDays.setAdapter(arrayDays);
 
+        notificationManagerCompat = NotificationManagerCompat.from(this);
+        CreateChannel channel = new CreateChannel(this);
+        channel.createChannel();
+
         tvHireTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 loadTime();
+            }
+        });
+        btnConfirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DisplayNotification();
             }
         });
 
@@ -70,5 +86,16 @@ public class HireActivity extends AppCompatActivity {
                     }
                 }, hour, minute, false);
         timePickerDialog.show();
+    }
+    private void DisplayNotification() {
+        Notification notification = new NotificationCompat.Builder(this, CreateChannel.CHANNEL_1)
+                .setSmallIcon(R.drawable.person_24)
+                .setContentTitle("Notification")
+                .setContentText("Booking has been placed")
+                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                .build();
+        notificationManagerCompat.notify(counter, notification);
+        counter++;
+
     }
 }
