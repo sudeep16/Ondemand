@@ -13,6 +13,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 
 public interface UsersApi {
@@ -51,10 +52,11 @@ public interface UsersApi {
     Call<List<ServiceAds>> getCategory(@Header("Authorization") String token);
 
     @FormUrlEncoded
-    @POST("feedbacks")
+    @POST("feedbacks/{username}")
     Call<Void> addFeedback(@Header("Authorization") String token,
                            @Field("rating") String rating,
-                           @Field("comment") String comment);
+                           @Field("comment") String comment,
+                           @Path("username") String username);
 
 //    @GET("serviceAds/{category}")
 //    Call<List<ServiceAdShow>> getAllServiceAds (@Header("Authorization") String token,

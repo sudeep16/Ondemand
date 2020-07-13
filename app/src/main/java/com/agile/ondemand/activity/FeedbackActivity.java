@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.agile.ondemand.R;
+import com.agile.ondemand.adapter.CategoryAdapter;
 import com.agile.ondemand.api.UsersApi;
 import com.agile.ondemand.url.Url;
 
@@ -67,9 +68,11 @@ public class FeedbackActivity extends AppCompatActivity {
     private void feedback() {
         String comment = etFeedback.getText().toString();
         String rating = Float.toString(ratingValue);
+        String username = getIntent().getExtras().getString("username");
+        Toast.makeText(FeedbackActivity.this, ""+username, Toast.LENGTH_SHORT).show();
 
         UsersApi usersApi = Url.getInstance().create(UsersApi.class);
-        Call<Void> feedbackCall = usersApi.addFeedback(Url.token, rating, comment);
+        Call<Void> feedbackCall = usersApi.addFeedback(Url.token, rating, comment, username);
 
         feedbackCall.enqueue(new Callback<Void>() {
             @Override

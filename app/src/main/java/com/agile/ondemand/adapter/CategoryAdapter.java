@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -35,7 +36,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CategoryViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final CategoryViewHolder holder, int position) {
         final ServiceAds serviceAds = serviceAdsList.get(position);
         holder.category.setText(serviceAds.getCategory());
         holder.description.setText(serviceAds.getDescription());
@@ -52,6 +53,9 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         holder.feedbackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String username = holder.tvUsername.getText().toString();
+                Intent intent = new Intent(context, FeedbackActivity.class);
+                intent.putExtra("username",username);
                 v.getContext().startActivity(new Intent(context, FeedbackActivity.class));
             }
         });
@@ -79,7 +83,6 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
             tvUsername = itemView.findViewById(R.id.tvUsername);
             tvAddress = itemView.findViewById(R.id.tvAddress);
             tvPhone = itemView.findViewById(R.id.tvPhone);
-
             feedbackButton = itemView.findViewById(R.id.feedbackBtn);
         }
     }
