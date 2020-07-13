@@ -1,5 +1,6 @@
 package com.agile.ondemand.api;
 
+import com.agile.ondemand.model.ServiceAdShow;
 import com.agile.ondemand.model.ServiceAds;
 import com.agile.ondemand.model.User;
 import com.agile.ondemand.serverresponse.SignUpResponse;
@@ -13,6 +14,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 
 public interface UsersApi {
@@ -48,6 +50,9 @@ public interface UsersApi {
      * Category
      */
     @GET("serviceAds/Plumber")
-    Call<List<ServiceAds>> getCategory(@Header("Authorization") String token);
+    Call<List<ServiceAdShow>> getCategory(@Header("Authorization") String token);
 
+    @GET("serviceAds/{category}")
+    Call<List<ServiceAdShow>> getServiceAdsByCategory(@Header("Authorization") String token,
+                                                      @Path("category") String category);
 }

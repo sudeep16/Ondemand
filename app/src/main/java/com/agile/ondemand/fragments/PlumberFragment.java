@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.agile.ondemand.R;
 import com.agile.ondemand.adapter.CategoryAdapter;
 import com.agile.ondemand.api.UsersApi;
+import com.agile.ondemand.model.ServiceAdShow;
 import com.agile.ondemand.model.ServiceAds;
 import com.agile.ondemand.url.Url;
 
@@ -39,23 +40,23 @@ public class PlumberFragment extends Fragment {
         rvPlumber = root.findViewById(R.id.rvPlumber);
 
         UsersApi usersApi = Url.getInstance().create(UsersApi.class);
-        Call<List<ServiceAds>> listCall = usersApi.getCategory(Url.token);
+        Call<List<ServiceAdShow>> listCall = usersApi.getCategory(Url.token);
 
-        listCall.enqueue(new Callback<List<ServiceAds>>() {
+        listCall.enqueue(new Callback<List<ServiceAdShow>>() {
             @Override
-            public void onResponse(Call<List<ServiceAds>> call, Response<List<ServiceAds>> response) {
+            public void onResponse(Call<List<ServiceAdShow>> call, Response<List<ServiceAdShow>> response) {
                 if (!response.isSuccessful()) {
                     Toast.makeText(getActivity(), "" + response.code(), Toast.LENGTH_SHORT).show();
                     return;
                 }
-                List<ServiceAds> serviceAds = response.body();
+                List<ServiceAdShow> serviceAds = response.body();
                 CategoryAdapter categoryAdapter = new CategoryAdapter(getActivity(), serviceAds);
                 rvPlumber.setAdapter(categoryAdapter);
                 rvPlumber.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
             }
 
             @Override
-            public void onFailure(Call<List<ServiceAds>> call, Throwable t) {
+            public void onFailure(Call<List<ServiceAdShow>> call, Throwable t) {
                 Toast.makeText(getActivity(), "Error" + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
