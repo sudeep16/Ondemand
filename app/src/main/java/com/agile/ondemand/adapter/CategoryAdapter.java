@@ -1,15 +1,18 @@
 package com.agile.ondemand.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.agile.ondemand.R;
+import com.agile.ondemand.activity.FeedbackActivity;
 import com.agile.ondemand.model.ServiceAds;
 
 import java.util.List;
@@ -44,6 +47,14 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         holder.tvUsername.setText(serviceAds.getAdOwner().getUsername());
         holder.tvAddress.setText(serviceAds.getAdOwner().getAddress());
         holder.tvPhone.setText(serviceAds.getAdOwner().getPhone());
+
+
+        holder.feedbackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                v.getContext().startActivity(new Intent(context, FeedbackActivity.class));
+            }
+        });
     }
 
     @Override
@@ -54,6 +65,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     public class CategoryViewHolder extends RecyclerView.ViewHolder {
 
         private TextView category, description, timeFrom, timeTo, dayFrom, dayTo, price, tvUsername, tvAddress, tvPhone;
+        private Button feedbackButton;
 
         public CategoryViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -67,6 +79,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
             tvUsername = itemView.findViewById(R.id.tvUsername);
             tvAddress = itemView.findViewById(R.id.tvAddress);
             tvPhone = itemView.findViewById(R.id.tvPhone);
+
+            feedbackButton = itemView.findViewById(R.id.feedbackBtn);
         }
     }
 }
