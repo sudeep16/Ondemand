@@ -69,7 +69,7 @@ public class FeedbackActivity extends AppCompatActivity {
         String comment = etFeedback.getText().toString();
         String rating = Float.toString(ratingValue);
         String username = getIntent().getExtras().getString("username");
-        Toast.makeText(FeedbackActivity.this, ""+username, Toast.LENGTH_SHORT).show();
+        Toast.makeText(FeedbackActivity.this, "" + username, Toast.LENGTH_SHORT).show();
 
         UsersApi usersApi = Url.getInstance().create(UsersApi.class);
         Call<Void> feedbackCall = usersApi.addFeedback(Url.token, rating, comment, username);

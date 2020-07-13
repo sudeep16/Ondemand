@@ -54,10 +54,10 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         holder.feedbackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String username = holder.tvUsername.getText().toString();
                 Intent intent = new Intent(context, FeedbackActivity.class);
-                intent.putExtra("username",username);
-                v.getContext().startActivity(new Intent(context, FeedbackActivity.class));
+                intent.putExtra("username",serviceAds.getAdOwner().getUsername());
+                context.startActivity(intent);
+//                v.getContext().startActivity(new Intent(context, FeedbackActivity.class));
             }
         });
 
