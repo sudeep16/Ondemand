@@ -72,7 +72,7 @@ public class FeedbackActivity extends AppCompatActivity {
         String comment = etFeedback.getText().toString();
         String rating = Float.toString(ratingValue);
         String username = getIntent().getExtras().getString("username");
-        Toast.makeText(FeedbackActivity.this, ""+username, Toast.LENGTH_SHORT).show();
+        Toast.makeText(FeedbackActivity.this, "" + username, Toast.LENGTH_SHORT).show();
 
         FeedbackBLL feedbackBLL=new FeedbackBLL();
         StrictModeClass.StrictMode();
