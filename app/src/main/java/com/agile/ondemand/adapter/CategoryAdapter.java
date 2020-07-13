@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.agile.ondemand.R;
 import com.agile.ondemand.activity.FeedbackActivity;
+import com.agile.ondemand.activity.HireActivity;
 import com.agile.ondemand.model.ServiceAds;
 
 import java.util.List;
@@ -55,6 +56,13 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
                 v.getContext().startActivity(new Intent(context, FeedbackActivity.class));
             }
         });
+
+        holder.btnHire.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                v.getContext().startActivity(new Intent(context, HireActivity.class));
+            }
+        });
     }
 
     @Override
@@ -65,7 +73,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     public class CategoryViewHolder extends RecyclerView.ViewHolder {
 
         private TextView category, description, timeFrom, timeTo, dayFrom, dayTo, price, tvUsername, tvAddress, tvPhone;
-        private Button feedbackButton;
+        private Button feedbackButton, btnHire;
 
         public CategoryViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -81,6 +89,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
             tvPhone = itemView.findViewById(R.id.tvPhone);
 
             feedbackButton = itemView.findViewById(R.id.feedbackBtn);
+            btnHire = itemView.findViewById(R.id.btnHire);
         }
     }
 }
