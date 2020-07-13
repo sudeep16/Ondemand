@@ -29,7 +29,7 @@
         app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
 
     <EditText
-        android:id="@+id/feedbackComment"
+        android:id="@+id/etFeedback"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="50dp"
@@ -46,7 +46,7 @@
         app:layout_constraintTop_toBottomOf="@+id/value" />
 
     <Button
-        android:id="@+id/submitFeeds"
+        android:id="@+id/btnFeedback"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -57,7 +57,7 @@
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/feedbackComment" />
+        app:layout_constraintTop_toBottomOf="@+id/etFeedback" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

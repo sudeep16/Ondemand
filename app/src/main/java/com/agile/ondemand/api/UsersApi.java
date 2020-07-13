@@ -50,6 +50,12 @@ public interface UsersApi {
     @GET("serviceAds/Plumber")
     Call<List<ServiceAds>> getCategory(@Header("Authorization") String token);
 
+    @FormUrlEncoded
+    @POST("feedbacks")
+    Call<Void> addFeedback(@Header("Authorization") String token,
+                           @Field("rating") String rating,
+                           @Field("comment") String comment);
+
 //    @GET("serviceAds/{category}")
 //    Call<List<ServiceAdShow>> getAllServiceAds (@Header("Authorization") String token,
 //                                                @Path("category") String category);
