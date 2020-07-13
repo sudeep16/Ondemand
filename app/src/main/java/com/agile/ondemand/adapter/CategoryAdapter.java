@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.agile.ondemand.R;
-import com.agile.ondemand.model.ServiceAdShow;
 import com.agile.ondemand.model.ServiceAds;
 
 import java.util.List;
