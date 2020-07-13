@@ -50,9 +50,9 @@ public interface UsersApi {
      * Category
      */
     @GET("serviceAds/Plumber")
-    Call<List<ServiceAdShow>> getCategory(@Header("Authorization") String token);
+    Call<List<ServiceAds>> getCategory(@Header("Authorization") String token);
 
     @GET("serviceAds/{category}")
-    Call<List<ServiceAdShow>> getServiceAdsByCategory(@Header("Authorization") String token,
-                                                      @Path("category") String category);
+    Call<List<ServiceAdShow>> getAllServiceAds (@Header("Authorization") String token,
+                                                @Path("category") String category);
 }
