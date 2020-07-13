@@ -239,15 +239,16 @@
                 android:orientation="horizontal">
 
                 <Button
+                    android:id="@+id/btnHire"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:background="@drawable/btnround"
                     android:fontFamily="@font/timmana"
-                    android:layout_weight="1"
                     android:gravity="center"
                     android:text="Hire"
                     android:textAllCaps="false"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp" />
 
                 <Button
                     android:layout_width="wrap_content"
@@ -276,14 +277,14 @@
                     android:id="@+id/feedbackBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:layout_weight="1"
                     android:background="@drawable/btnround"
                     android:fontFamily="@font/timmana"
                     android:gravity="center"
                     android:text="Feedback"
-                    android:layout_marginRight="15dp"
-                    android:layout_weight="1"
                     android:textAllCaps="false"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp" />
 
                 <Button
                     android:id="@+id/deleteBtn"
