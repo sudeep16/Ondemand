@@ -51,6 +51,10 @@ public interface UsersApi {
     @GET("serviceAds/Plumber")
     Call<List<ServiceAds>> getCategory(@Header("Authorization") String token);
 
+    @GET("serviceAds/{category}")
+    Call<List<ServiceAds>> getServiceAdsByCategory(@Header("Authorization") String token,
+                                                   @Path("category") String category);
+
     @FormUrlEncoded
     @POST("feedbacks/{username}")
     Call<Void> addFeedback(@Header("Authorization") String token,
@@ -59,7 +63,7 @@ public interface UsersApi {
                            @Path("username") String username);
 
     /**
-     *Hire Post
+     * Hire Post
      */
     @FormUrlEncoded
     @POST("hiredList/{username}")
@@ -69,8 +73,4 @@ public interface UsersApi {
                     @Field("time") String time,
                     @Field("location") String location,
                     @Path("username") String username);
-
-//    @GET("serviceAds/{category}")
-//    Call<List<ServiceAdShow>> getAllServiceAds (@Header("Authorization") String token,
-//                                                @Path("category") String category);
 }

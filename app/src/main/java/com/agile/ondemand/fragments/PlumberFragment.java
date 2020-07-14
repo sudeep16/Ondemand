@@ -29,6 +29,7 @@ import retrofit2.Response;
 public class PlumberFragment extends Fragment {
 
     private RecyclerView rvPlumber;
+    private String category;
 
     @Nullable
     @Override
@@ -36,9 +37,11 @@ public class PlumberFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_plumber, container, false);
 
         rvPlumber = root.findViewById(R.id.rvPlumber);
+        Bundle bundle = getArguments();
+        category = bundle.getString("category");
 
         UsersApi usersApi = Url.getInstance().create(UsersApi.class);
-        Call<List<ServiceAds>> listCall = usersApi.getCategory(Url.token);
+        Call<List<ServiceAds>> listCall = usersApi.getServiceAdsByCategory(Url.token,category);
 //        Call<ServiceAds> serviceAdsCall = usersApi.getCategory(Url.token);
 
         listCall.enqueue(new Callback<List<ServiceAds>>() {
