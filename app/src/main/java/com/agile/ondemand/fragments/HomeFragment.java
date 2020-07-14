@@ -1,23 +1,19 @@
 package com.agile.ondemand.fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.agile.ondemand.R;
 import com.synnapps.carouselview.CarouselView;
-import com.synnapps.carouselview.ImageClickListener;
 import com.synnapps.carouselview.ImageListener;
 
 public class HomeFragment extends Fragment {
@@ -63,11 +59,11 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 fragmentTransaction = getFragmentManager().beginTransaction();
-                PlumberFragment plumberFragment = new PlumberFragment();
+                CategoryFragment categoryFragment = new CategoryFragment();
                 plumber = "Plumber";
                 bundle.putString("category", plumber);
-                plumberFragment.setArguments(bundle);
-                fragmentTransaction.replace(R.id.fragment_container, plumberFragment);
+                categoryFragment.setArguments(bundle);
+                fragmentTransaction.replace(R.id.fragment_container, categoryFragment);
                 fragmentTransaction.commit();
             }
         });
@@ -76,11 +72,11 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 fragmentTransaction = getFragmentManager().beginTransaction();
-                PlumberFragment plumberFragment = new PlumberFragment();
+                CategoryFragment categoryFragment = new CategoryFragment();
                 electrician = "Electrician";
                 bundle.putString("category", electrician);
-                plumberFragment.setArguments(bundle);
-                fragmentTransaction.replace(R.id.fragment_container, plumberFragment);
+                categoryFragment.setArguments(bundle);
+                fragmentTransaction.replace(R.id.fragment_container, categoryFragment);
                 fragmentTransaction.commit();
             }
         });
@@ -89,11 +85,11 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 fragmentTransaction = getFragmentManager().beginTransaction();
-                PlumberFragment plumberFragment = new PlumberFragment();
+                CategoryFragment categoryFragment = new CategoryFragment();
                 babysitter = "Baby Sitter";
                 bundle.putString("category", babysitter);
-                plumberFragment.setArguments(bundle);
-                fragmentTransaction.replace(R.id.fragment_container, plumberFragment);
+                categoryFragment.setArguments(bundle);
+                fragmentTransaction.replace(R.id.fragment_container, categoryFragment);
                 fragmentTransaction.commit();
             }
         });
@@ -102,11 +98,11 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 fragmentTransaction = getFragmentManager().beginTransaction();
-                PlumberFragment plumberFragment = new PlumberFragment();
+                CategoryFragment categoryFragment = new CategoryFragment();
                 handyMan = "Handy Man";
                 bundle.putString("category", handyMan);
-                plumberFragment.setArguments(bundle);
-                fragmentTransaction.replace(R.id.fragment_container, plumberFragment);
+                categoryFragment.setArguments(bundle);
+                fragmentTransaction.replace(R.id.fragment_container, categoryFragment);
                 fragmentTransaction.commit();
             }
         });
@@ -115,11 +111,11 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 fragmentTransaction = getFragmentManager().beginTransaction();
-                PlumberFragment plumberFragment = new PlumberFragment();
+                CategoryFragment categoryFragment = new CategoryFragment();
                 laundry = "Laundry";
                 bundle.putString("category", laundry);
-                plumberFragment.setArguments(bundle);
-                fragmentTransaction.replace(R.id.fragment_container, plumberFragment);
+                categoryFragment.setArguments(bundle);
+                fragmentTransaction.replace(R.id.fragment_container, categoryFragment);
                 fragmentTransaction.commit();
             }
         });
@@ -128,11 +124,11 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 fragmentTransaction = getFragmentManager().beginTransaction();
-                PlumberFragment plumberFragment = new PlumberFragment();
+                CategoryFragment categoryFragment = new CategoryFragment();
                 painter = "Painter";
                 bundle.putString("category", painter);
-                plumberFragment.setArguments(bundle);
-                fragmentTransaction.replace(R.id.fragment_container, plumberFragment);
+                categoryFragment.setArguments(bundle);
+                fragmentTransaction.replace(R.id.fragment_container, categoryFragment);
                 fragmentTransaction.commit();
             }
         });
@@ -141,11 +137,11 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 fragmentTransaction = getFragmentManager().beginTransaction();
-                PlumberFragment plumberFragment = new PlumberFragment();
+                CategoryFragment categoryFragment = new CategoryFragment();
                 gardener = "Gardener";
                 bundle.putString("category", gardener);
-                plumberFragment.setArguments(bundle);
-                fragmentTransaction.replace(R.id.fragment_container, plumberFragment);
+                categoryFragment.setArguments(bundle);
+                fragmentTransaction.replace(R.id.fragment_container, categoryFragment);
                 fragmentTransaction.commit();
             }
         });
@@ -154,11 +150,11 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 fragmentTransaction = getFragmentManager().beginTransaction();
-                PlumberFragment plumberFragment = new PlumberFragment();
+                CategoryFragment categoryFragment = new CategoryFragment();
                 catering = "Catering";
                 bundle.putString("category", catering);
-                plumberFragment.setArguments(bundle);
-                fragmentTransaction.replace(R.id.fragment_container, plumberFragment);
+                categoryFragment.setArguments(bundle);
+                fragmentTransaction.replace(R.id.fragment_container, categoryFragment);
                 fragmentTransaction.commit();
             }
         });
@@ -167,11 +163,11 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 fragmentTransaction = getFragmentManager().beginTransaction();
-                PlumberFragment plumberFragment = new PlumberFragment();
+                CategoryFragment categoryFragment = new CategoryFragment();
                 caretaker = "Care Taker";
                 bundle.putString("category", caretaker);
-                plumberFragment.setArguments(bundle);
-                fragmentTransaction.replace(R.id.fragment_container, plumberFragment);
+                categoryFragment.setArguments(bundle);
+                fragmentTransaction.replace(R.id.fragment_container, categoryFragment);
                 fragmentTransaction.commit();
             }
         });
@@ -180,11 +176,11 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 fragmentTransaction = getFragmentManager().beginTransaction();
-                PlumberFragment plumberFragment = new PlumberFragment();
+                CategoryFragment categoryFragment = new CategoryFragment();
                 housekeeping = "House Keeping";
                 bundle.putString("category", housekeeping);
-                plumberFragment.setArguments(bundle);
-                fragmentTransaction.replace(R.id.fragment_container, plumberFragment);
+                categoryFragment.setArguments(bundle);
+                fragmentTransaction.replace(R.id.fragment_container, categoryFragment);
                 fragmentTransaction.commit();
             }
         });

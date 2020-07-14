@@ -26,7 +26,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class PlumberFragment extends Fragment {
+public class CategoryFragment extends Fragment {
 
     private RecyclerView rvPlumber;
     private String category;
@@ -34,7 +34,7 @@ public class PlumberFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_plumber, container, false);
+        View root = inflater.inflate(R.layout.fragment_category, container, false);
 
         rvPlumber = root.findViewById(R.id.rvPlumber);
         Bundle bundle = getArguments();
