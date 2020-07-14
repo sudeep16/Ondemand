@@ -21,7 +21,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-
             android:orientation="vertical"
             android:padding="10dp">
 
@@ -61,7 +60,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/Availability"
-
                     android:text="Time : "
                     android:textSize="20sp" />
 

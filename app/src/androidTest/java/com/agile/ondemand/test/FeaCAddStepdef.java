@@ -1,15 +1,24 @@
 package com.agile.ondemand.test;
 
 import android.app.Activity;
+import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.widget.NumberPicker;
+import android.widget.TimePicker;
 
+import androidx.test.espresso.ViewInteraction;
+import androidx.test.espresso.contrib.PickerActions;
 import androidx.test.rule.ActivityTestRule;
 
 import com.agile.ondemand.activity.LoginActivity;
 import com.agile.ondemand.activity.MainActivity;
 import com.agile.ondemand.fragments.AddFragment;
 import com.agile.ondemand.R;
+
+import org.hamcrest.Matchers;
 import org.junit.Rule;
+
+import java.util.Calendar;
 
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
@@ -23,8 +32,12 @@ import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom;
+import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
+import static java.util.Calendar.AM;
+import static java.util.Calendar.AM_PM;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.instanceOf;
@@ -61,14 +74,18 @@ public class FeaCAddStepdef {
 
     @And("^I enter starting time$")
     public void iEnterStartTime(){
-//        onView(withId(R.id.time1)).perform(click());
-//        onData(allOf(is(instanceOf(String.class)), is("10:00 AM"))).perform(click());
+
+        onView(withId(R.id.time1)).perform(click());
+        onView(withClassName(Matchers.equalTo(TimePicker.class.getName()))).perform(PickerActions.setTime(9, 30));
+        onView(withText("OK")).perform(click());
     }
+
 
     @And("^I enter closing time$")
     public void iEnterCloseTime(){
-//        onView(withId(R.id.time2)).perform(click());
-//        onData(allOf(is(instanceOf(String.class)), is("4:00 PM"))).perform(click());
+        onView(withId(R.id.time2)).perform(click());
+        onView(withClassName(Matchers.equalTo(TimePicker.class.getName()))).perform(PickerActions.setTime(16, 30));
+        onView(withText("OK")).perform(click());
     }
 
     @And("^I enter starting day (\\S+)$")
