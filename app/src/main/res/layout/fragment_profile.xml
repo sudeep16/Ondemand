@@ -3,15 +3,148 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:orientation="vertical"
     tools:context=".fragments.HomeFragment">
 
     <!-- TODO: Update blank fragment layout -->
+
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="20dp"
+        android:layout_gravity="center">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/etPFirstName"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/etround"
+                android:gravity="center"
+                android:hint="First Name"
+                android:inputType="text"
+                android:padding="8dp"
+                android:textColor="#000000"
+                android:textColorHint="#D9FFFFFF" />
+
+            <EditText
+                android:id="@+id/etPLastName"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/etround"
+                android:gravity="center"
+                android:hint="Last Name"
+                android:inputType="text"
+                android:padding="8dp"
+                android:textColor="#000000"
+                android:textColorHint="#D9FFFFFF" />
+
+            <EditText
+                android:id="@+id/etPAddresss"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/etround"
+                android:gravity="center"
+                android:hint="Address"
+                android:inputType="text"
+                android:padding="8dp"
+                android:textColor="#000000"
+                android:textColorHint="#D9FFFFFF" />
+
+            <EditText
+                android:id="@+id/etPUsername"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/etround"
+                android:gravity="center"
+                android:hint="Username"
+                android:inputType="text"
+                android:padding="8dp"
+                android:textColor="#000000"
+                android:textColorHint="#D9FFFFFF" />
+
+            <EditText
+                android:id="@+id/etPEmail"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/etround"
+                android:gravity="center"
+                android:hint="Email"
+                android:inputType="text"
+                android:padding="8dp"
+                android:textColor="#000000"
+                android:textColorHint="#D9FFFFFF" />
+
+            <EditText
+                android:id="@+id/etPPhone"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/etround"
+                android:gravity="center"
+                android:hint="Phone no."
+                android:inputType="number"
+                android:padding="8dp"
+                android:textColor="#000000"
+                android:textColorHint="#D9FFFFFF" />
+
+            <Button
+                android:id="@+id/btnPUpdate"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:textAllCaps="false"
+                android:layout_margin="10dp"
+                android:layout_gravity="center"
+                android:textSize="20sp"
+                android:background="@drawable/btnround"
+                android:text="Update"/>
+
+            <Button
+                android:id="@+id/btnPDelete"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:textAllCaps="false"
+                android:layout_margin="10dp"
+                android:layout_gravity="center"
+                android:textSize="20sp"
+                android:background="@drawable/btnround"
+                android:text="Deactivate account"/>
+
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
     <Button
         android:id="@+id/btnLogout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="25dp"
-        android:background="@drawable/btnround"
-        android:text="logout" />
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="20dp"
+        android:layout_gravity="center"
+        android:background="@drawable/start"
+        />
+
+
 
 </LinearLayout>
