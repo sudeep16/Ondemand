@@ -79,8 +79,6 @@ public class FeaCAddStepdef {
         onView(withClassName(Matchers.equalTo(TimePicker.class.getName()))).perform(PickerActions.setTime(9, 30));
         onView(withText("OK")).perform(click());
     }
-//        onView(withId(R.id.time1)).perform(click());
-//        onData(allOf(is(instanceOf(String.class)), is("10 : 00 AM "))).perform(click());
 
 
     @And("^I enter closing time$")
