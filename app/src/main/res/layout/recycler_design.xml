@@ -237,7 +237,6 @@
                 android:layout_margin="1dp"
                 android:gravity="center"
                 android:orientation="horizontal">
-
                 <Button
                     android:id="@+id/btnHire"
                     android:layout_width="250dp"
