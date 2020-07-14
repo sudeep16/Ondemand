@@ -48,8 +48,8 @@ public interface UsersApi {
     /**
      * Category
      */
-    @GET("serviceAds/Plumber")
-    Call<List<ServiceAds>> getCategory(@Header("Authorization") String token);
+//    @GET("serviceAds/Plumber")
+//    Call<List<ServiceAds>> getCategory(@Header("Authorization") String token);
 
     @GET("serviceAds/{category}")
     Call<List<ServiceAds>> getServiceAdsByCategory(@Header("Authorization") String token,
