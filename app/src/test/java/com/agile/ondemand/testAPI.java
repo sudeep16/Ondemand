@@ -42,7 +42,7 @@ public class testAPI {
     public void testTokenFail()
     {
         UsersApi ondemandAPI=Url.getInstance().create(UsersApi.class);
-        Call<SignUpResponse> call =ondemandAPI.checkUser("Maxx","Maxx");
+        Call<SignUpResponse> call =ondemandAPI.checkUser("nischalshk","nischal123");
             try{
                 Response<SignUpResponse> response=call.execute();
               Url.token=response.headers().get("Set Token");
