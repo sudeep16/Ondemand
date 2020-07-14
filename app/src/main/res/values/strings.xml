@@ -7,10 +7,13 @@
         <item>Electrician</item>
         <item>Laundry</item>
         <item>Painter</item>
-        <item>Gardner</item>
+        <item>Gardener</item>
         <item>Baby Sitter</item>
         <item>Handy Man</item>
         <item>Care Taker</item>
+        <item>Catering</item>
+        <item>House Keeping</item>
+        <item></item>
     </string-array>
 
     <string-array name="paymentMethod">
