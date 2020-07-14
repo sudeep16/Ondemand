@@ -1,16 +1,20 @@
 package com.agile.ondemand.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.agile.ondemand.R;
-import com.agile.ondemand.model.ServiceAdShow;
+import com.agile.ondemand.activity.FeedbackActivity;
+import com.agile.ondemand.activity.HireActivity;
 import com.agile.ondemand.model.ServiceAds;
 
 import java.util.List;
@@ -33,7 +37,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CategoryViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final CategoryViewHolder holder, int position) {
         final ServiceAds serviceAds = serviceAdsList.get(position);
         holder.category.setText(serviceAds.getCategory());
         holder.description.setText(serviceAds.getDescription());
@@ -45,6 +49,27 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         holder.tvUsername.setText(serviceAds.getAdOwner().getUsername());
         holder.tvAddress.setText(serviceAds.getAdOwner().getAddress());
         holder.tvPhone.setText(serviceAds.getAdOwner().getPhone());
+
+
+        holder.feedbackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, FeedbackActivity.class);
+                intent.putExtra("username",serviceAds.getAdOwner().getUsername());
+                context.startActivity(intent);
+//                v.getContext().startActivity(new Intent(context, FeedbackActivity.class));
+            }
+        });
+
+        holder.btnHire.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, HireActivity.class);
+                intent.putExtra("username",serviceAds.getAdOwner().getUsername());
+                context.startActivity(intent);
+//                v.getContext().startActivity(new Intent(context, HireActivity.class));
+            }
+        });
     }
 
     @Override
@@ -55,6 +80,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     public class CategoryViewHolder extends RecyclerView.ViewHolder {
 
         private TextView category, description, timeFrom, timeTo, dayFrom, dayTo, price, tvUsername, tvAddress, tvPhone;
+        private Button feedbackButton, btnHire;
 
         public CategoryViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -68,6 +94,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
             tvUsername = itemView.findViewById(R.id.tvUsername);
             tvAddress = itemView.findViewById(R.id.tvAddress);
             tvPhone = itemView.findViewById(R.id.tvPhone);
+            feedbackButton = itemView.findViewById(R.id.feedbackBtn);
+            btnHire = itemView.findViewById(R.id.btnHire);
         }
     }
 }

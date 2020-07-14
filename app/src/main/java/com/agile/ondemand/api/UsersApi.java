@@ -1,6 +1,5 @@
 package com.agile.ondemand.api;
 
-import com.agile.ondemand.model.ServiceAdShow;
 import com.agile.ondemand.model.ServiceAds;
 import com.agile.ondemand.model.User;
 import com.agile.ondemand.serverresponse.SignUpResponse;
@@ -52,7 +51,26 @@ public interface UsersApi {
     @GET("serviceAds/Plumber")
     Call<List<ServiceAds>> getCategory(@Header("Authorization") String token);
 
-    @GET("serviceAds/{category}")
-    Call<List<ServiceAdShow>> getAllServiceAds (@Header("Authorization") String token,
-                                                @Path("category") String category);
+    @FormUrlEncoded
+    @POST("feedbacks/{username}")
+    Call<Void> addFeedback(@Header("Authorization") String token,
+                           @Field("rating") String rating,
+                           @Field("comment") String comment,
+                           @Path("username") String username);
+
+    /**
+     *Hire Post
+     */
+    @FormUrlEncoded
+    @POST("hiredList/{username}")
+    Call<Void> Hire(@Header("Authorization") String token,
+                    @Field("paymentMethod") String paymentMethod,
+                    @Field("day") String day,
+                    @Field("time") String time,
+                    @Field("location") String location,
+                    @Path("username") String username);
+
+//    @GET("serviceAds/{category}")
+//    Call<List<ServiceAdShow>> getAllServiceAds (@Header("Authorization") String token,
+//                                                @Path("category") String category);
 }

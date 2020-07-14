@@ -45,7 +45,7 @@ public class PlumberFragment extends Fragment {
             @Override
             public void onResponse(Call<List<ServiceAds>> call, Response<List<ServiceAds>> response) {
                 if (!response.isSuccessful()) {
-                    Toast.makeText(getActivity(), "" + response.code(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), ""+ response.code(), Toast.LENGTH_SHORT).show();
                     return;
                 }
                 List<ServiceAds> serviceAds = response.body();

@@ -20,7 +20,7 @@ import com.synnapps.carouselview.ImageListener;
 
 public class HomeFragment extends Fragment {
 
-    private CardView cvPlumber;
+    private CardView cvPlumber, cvElectrician, cvHandyMan, cvLaundry, cvCatering, cvPainter, cvBabySitter, cvCareTaker, cvHouseKeeper;
 
     private int[] images = new int[]{
             R.drawable.plumber1, R.drawable.painter1,
@@ -37,6 +37,14 @@ public class HomeFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_home, container, false);
 
         cvPlumber = root.findViewById(R.id.cardPlumber);
+        cvElectrician = root.findViewById(R.id.cardElectrician);
+        cvHandyMan = root.findViewById(R.id.cardHandyman);
+        cvLaundry = root.findViewById(R.id.cardLaundry);
+        cvCatering = root.findViewById(R.id.cardCatering);
+        cvPainter = root.findViewById(R.id.cardPainter);
+        cvBabySitter = root.findViewById(R.id.cardBabySitter);
+        cvCareTaker = root.findViewById(R.id.cardCareTaker);
+        cvHouseKeeper = root.findViewById(R.id.cardHouseKeeping);
 
         CarouselView carouselView = root.findViewById(R.id.carousel);
         carouselView.setPageCount(images.length);

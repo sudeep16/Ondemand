@@ -85,8 +85,8 @@ public class LoginActivity extends AppCompatActivity {
             finish();
 
         } else {
-            etPassword.setError("Incorrect password");
-            etPassword.requestFocus();
+            etPassword.setError("Password is incorrect");
+            etUsername.setError("Username is incorrect");
         }
     }
 
