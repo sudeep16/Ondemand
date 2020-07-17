@@ -31,25 +31,33 @@ import static org.hamcrest.Matchers.is;
 
 public class FeaEFeedbackStepdef {
     @Rule
-    private ActivityTestRule<FeedbackActivity> feedbackTestRule = new ActivityTestRule<>(FeedbackActivity.class);
-    private Activity feedbackActivity;
+    private ActivityTestRule<MainActivity> feedbackTestRule = new ActivityTestRule<>(MainActivity.class);
 
     @Before("@review-feature")
     public void setup() {
         feedbackTestRule.launchActivity(new Intent());
-        feedbackActivity = feedbackTestRule.getActivity();
     }
 
     @After("@review-feature")
     public void tearDown() {
         feedbackTestRule.finishActivity();
     }
-    @cucumber.api.java.en.Given("^I am on feedback service screen$")
+    @cucumber.api.java.en.Given("^I am in hire service screen$")
     public void iAmOnTheHireServiceDashboard(){
-        assertNotNull(feedbackActivity);
+        onView(withId(R.id.nav_home)).perform(click());
     }
 
-    @When("^I enter rating$")
+    @When("^I select a service card")
+    public void isSelectCard() {
+        onView(withId(R.id.cardPlumber)).perform(click());
+    }
+
+    @And("^I click on feedback button")
+    public void isClickHireButton() {
+        onView(withId(R.id.feedbackBtn)).perform(click());
+    }
+
+    @And("^I enter rating$")
     public void isSelectRating(){
         onView(withId(R.id.ratingBar)).perform(click());
         closeSoftKeyboard();
@@ -63,8 +71,8 @@ public class FeaEFeedbackStepdef {
 
     @And("^I click on submit button$")
     public void iClickFeedbackButton(){
-//        onView(withId(R.id.btnFeedback)).perform(click());
-//        closeSoftKeyboard();
+        onView(withId(R.id.btnFeedback)).perform(click());
+        closeSoftKeyboard();
     }
     @Then("^I should get message$")
     public void iReceiveMessage(){
