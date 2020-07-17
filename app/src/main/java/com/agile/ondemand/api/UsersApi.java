@@ -9,6 +9,7 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -82,10 +83,14 @@ public interface UsersApi {
     Call<UserUpdate> getUserDetail(@Header("Authorization") String token);
 
     /**
-     *update user
+     * update user
      */
     @PUT("users/profile/{id}")
-    Call<Void> updateUserData (@Header("Authorization")String token,
-                               @Path("id") String id,
-                               @Body UserUpdate userUpdate);
+    Call<Void> updateUserData(@Header("Authorization") String token,
+                              @Path("id") String id,
+                              @Body UserUpdate userUpdate);
+
+    @DELETE("users/profile/{id}")
+    Call<Void> deleteUserAccount(@Header("Authorization") String token,
+                                 @Path("id") String id);
 }
