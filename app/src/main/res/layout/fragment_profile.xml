@@ -141,7 +141,7 @@
                 android:layout_gravity="center"
                 android:textSize="20sp"
                 android:background="@drawable/btnround"
-                android:text="Deactivate account"/>
+                android:text="Delete my account"/>
 
 
         </LinearLayout>

@@ -34,7 +34,7 @@ public class ProfileFragment extends Fragment {
     private EditText etPFirstName, etPLastName, etPAddresss, etPUsername, etPEmail, etPhone;
     private TextView etPId;
 
-    private Button btnLogout, btnUpdate;
+    private Button btnLogout, btnUpdate, btnPDelete;
 
     @Nullable
     @Override
@@ -51,7 +51,7 @@ public class ProfileFragment extends Fragment {
 
         btnLogout = view.findViewById(R.id.btnLogout);
         btnUpdate = view.findViewById(R.id.btnPUpdate);
-
+        btnPDelete = view.findViewById(R.id.btnPDelete);
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,6 +65,12 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 userUpdate();
+            }
+        });
+        btnPDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                userDelete();
             }
         });
 
@@ -153,7 +159,29 @@ public class ProfileFragment extends Fragment {
                 Toast.makeText(getContext(), "Error " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
 
+    //delete account
+    private void userDelete() {
+        String id = etPId.getText().toString().trim();
+
+        UsersApi usersApi = Url.getInstance().create(UsersApi.class);
+        Call<Void> userDeleteCall = usersApi.deleteUserAccount(Url.token, id);
+
+        userDeleteCall.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (!response.isSuccessful()) {
+                    Toast.makeText(getContext(), "Code " + response.code(), Toast.LENGTH_SHORT).show();
+                    return;
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Toast.makeText(getContext(), "Error " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 }
