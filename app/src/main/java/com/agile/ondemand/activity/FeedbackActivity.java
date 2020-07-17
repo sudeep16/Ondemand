@@ -14,6 +14,8 @@ import android.widget.Toast;
 import com.agile.ondemand.R;
 import com.agile.ondemand.adapter.CategoryAdapter;
 import com.agile.ondemand.api.UsersApi;
+import com.agile.ondemand.bll.FeedbackBLL;
+import com.agile.ondemand.strictmode.StrictModeClass;
 import com.agile.ondemand.url.Url;
 
 import retrofit2.Call;
@@ -66,30 +68,16 @@ public class FeedbackActivity extends AppCompatActivity {
     }
 
     private void feedback() {
+        FeedbackBLL feedbackBLL = new FeedbackBLL();
+        StrictModeClass.StrictMode();
         String comment = etFeedback.getText().toString();
         String rating = Float.toString(ratingValue);
         String username = getIntent().getExtras().getString("username");
-        Toast.makeText(FeedbackActivity.this, "" + username, Toast.LENGTH_SHORT).show();
-
-        UsersApi usersApi = Url.getInstance().create(UsersApi.class);
-        Call<Void> feedbackCall = usersApi.addFeedback(Url.token, rating, comment, username);
-
-        feedbackCall.enqueue(new Callback<Void>() {
-            @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
-                if (!response.isSuccessful()) {
-                    Toast.makeText(FeedbackActivity.this, "Code " + response.body(),
-                            Toast.LENGTH_SHORT).show();
-                    return;
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Void> call, Throwable t) {
-                Toast.makeText(FeedbackActivity.this, "Error " + t.getLocalizedMessage(),
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
+        if (feedbackBLL.giveFeedback(Url.token, rating, comment, username)) {
+            Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Failed", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void initialize() {

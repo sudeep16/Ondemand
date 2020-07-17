@@ -71,6 +71,7 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 userDelete();
+                logOut();
             }
         });
 
@@ -124,7 +125,7 @@ public class ProfileFragment extends Fragment {
 
             @Override
             public void onFailure(Call<UserUpdate> call, Throwable t) {
-
+                Toast.makeText(getContext(), "Error " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -152,6 +153,7 @@ public class ProfileFragment extends Fragment {
                     Toast.makeText(getContext(), "Code " + response.code(), Toast.LENGTH_SHORT).show();
                     return;
                 }
+                Toast.makeText(getContext(), "Profile updated!", Toast.LENGTH_SHORT).show();
             }
 
             @Override
