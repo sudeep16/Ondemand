@@ -1,6 +1,6 @@
 Feature: hire service in the system
 
-  @add-feature
+  @hire-feature
   Scenario Outline: User can hire a service
     Given I am on hire service screen
     When I select a card
