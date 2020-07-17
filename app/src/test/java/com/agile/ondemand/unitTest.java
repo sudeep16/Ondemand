@@ -109,11 +109,68 @@ public void testLogin_correct(){
 
 
     @Test
-    public void testFeedback(){
+    public void testFeedback_correct(){
         FeedbackBLL feedbackBLL=new FeedbackBLL();
         boolean result=feedbackBLL.addFeedback("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjBhZTY4NjUwNWI3MzE3NTI0M2EzNmEiLCJpYXQiOjE1OTQ3MDgzMzV9.YEmWJprqNNBqBSqTT3XCsGtJD_owljFjP58CazAz-w8","3","testing Feedback","shknischal");
         assertEquals(true,result);
     }
+
+    @Test
+    public void testFeedback_empty(){
+        FeedbackBLL feedbackBLL=new FeedbackBLL();
+        boolean result=feedbackBLL.addFeedback("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjBhZTY4NjUwNWI3MzE3NTI0M2EzNmEiLCJpYXQiOjE1OTQ3MDgzMzV9.YEmWJprqNNBqBSqTT3XCsGtJD_owljFjP58CazAz-w8","3","testing Feedback","shknischal");
+        assertEquals(true,result);
+    }
+
+    @Test
+    public void testProfile_load(){
+        FeedbackBLL feedbackBLL=new FeedbackBLL();
+        boolean result=feedbackBLL.addFeedback("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjBhZTY4NjUwNWI3MzE3NTI0M2EzNmEiLCJpYXQiOjE1OTQ3MDgzMzV9.YEmWJprqNNBqBSqTT3XCsGtJD_owljFjP58CazAz-w8","3","testing Feedback","shknischal");
+        assertEquals(true,result);
+    }
+
+
+
+    @Test
+    public void testProfile_delete(){
+        FeedbackBLL feedbackBLL=new FeedbackBLL();
+        boolean result=feedbackBLL.addFeedback("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjBhZTY4NjUwNWI3MzE3NTI0M2EzNmEiLCJpYXQiOjE1OTQ3MDgzMzV9.YEmWJprqNNBqBSqTT3XCsGtJD_owljFjP58CazAz-w8","3","testing Feedback","shknischal");
+        assertEquals(true,result);
+    }
+
+
+    @Test
+    public void testProfile_update(){
+        FeedbackBLL feedbackBLL=new FeedbackBLL();
+        boolean result=feedbackBLL.addFeedback("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjBhZTY4NjUwNWI3MzE3NTI0M2EzNmEiLCJpYXQiOjE1OTQ3MDgzMzV9.YEmWJprqNNBqBSqTT3XCsGtJD_owljFjP58CazAz-w8","3","testing Feedback","shknischal");
+        assertEquals(true,result);
+    }
+
+
+
+
+    @Test
+    public void testNotification_load(){
+        FeedbackBLL feedbackBLL=new FeedbackBLL();
+        boolean result=feedbackBLL.addFeedback("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjBhZTY4NjUwNWI3MzE3NTI0M2EzNmEiLCJpYXQiOjE1OTQ3MDgzMzV9.YEmWJprqNNBqBSqTT3XCsGtJD_owljFjP58CazAz-w8","3","testing Feedback","shknischal");
+        assertEquals(true,result);
+    }
+
+
+
+
+
+    @Test
+    public void testNotification_load(){
+        FeedbackBLL feedbackBLL=new FeedbackBLL();
+        boolean result=feedbackBLL.addFeedback("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjBhZTY4NjUwNWI3MzE3NTI0M2EzNmEiLCJpYXQiOjE1OTQ3MDgzMzV9.YEmWJprqNNBqBSqTT3XCsGtJD_owljFjP58CazAz-w8","3","testing Feedback","shknischal");
+        assertEquals(true,result);
+    }
+
+
+
+
+
 
 
 
