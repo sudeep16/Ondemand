@@ -2,6 +2,7 @@ package com.agile.ondemand.api;
 
 import com.agile.ondemand.model.ServiceAds;
 import com.agile.ondemand.model.User;
+import com.agile.ondemand.model.UserUpdate;
 import com.agile.ondemand.serverresponse.SignUpResponse;
 
 import java.util.List;
@@ -13,6 +14,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 
@@ -77,9 +79,13 @@ public interface UsersApi {
      * get user
      */
     @GET("users/profile")
-    Call<User> getUserDetail(@Header("Authorization") String token);
+    Call<UserUpdate> getUserDetail(@Header("Authorization") String token);
 
     /**
      *update user
      */
+    @PUT("users/profile/{id}")
+    Call<Void> updateUserData (@Header("Authorization")String token,
+                               @Path("id") String id,
+                               @Body UserUpdate userUpdate);
 }

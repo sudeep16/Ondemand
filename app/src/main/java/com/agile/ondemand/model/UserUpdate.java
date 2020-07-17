@@ -2,6 +2,7 @@ package com.agile.ondemand.model;
 
 public class UserUpdate {
 
+    private String _id;
     private String firstName;
     private String lastName;
     private String address;
@@ -9,13 +10,22 @@ public class UserUpdate {
     private String email;
     private String phone;
 
-    public UserUpdate(String firstName, String lastName, String address, String username, String email, String phone) {
+    public UserUpdate(String _id, String firstName, String lastName, String address, String username, String email, String phone) {
+        this._id = _id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
         this.username = username;
         this.email = email;
         this.phone = phone;
+    }
+
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
     }
 
     public String getFirstName() {

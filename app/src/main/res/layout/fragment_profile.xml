@@ -24,6 +24,19 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/etPId"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/etround"
+                android:gravity="center"
+                android:text="Profile ID"
+                android:padding="8dp"
+                android:textColor="#000000"
+                android:textColorHint="#D9FFFFFF" />
+
             <EditText
                 android:id="@+id/etPFirstName"
                 android:layout_width="280dp"
