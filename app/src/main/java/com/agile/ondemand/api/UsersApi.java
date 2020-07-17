@@ -50,7 +50,6 @@ public interface UsersApi {
      */
 //    @GET("serviceAds/Plumber")
 //    Call<List<ServiceAds>> getCategory(@Header("Authorization") String token);
-
     @GET("serviceAds/{category}")
     Call<List<ServiceAds>> getServiceAdsByCategory(@Header("Authorization") String token,
                                                    @Path("category") String category);
@@ -73,4 +72,14 @@ public interface UsersApi {
                     @Field("time") String time,
                     @Field("location") String location,
                     @Path("username") String username);
+
+    /**
+     * get user
+     */
+    @GET("users/profile")
+    Call<User> getUserDetail(@Header("Authorization") String token);
+
+    /**
+     *update user
+     */
 }
