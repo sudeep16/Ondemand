@@ -7,6 +7,7 @@ import androidx.core.app.NotificationManagerCompat;
 import android.app.Notification;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -17,6 +18,8 @@ import android.widget.Toast;
 
 import com.agile.ondemand.R;
 import com.agile.ondemand.api.UsersApi;
+import com.agile.ondemand.bll.HireBLL;
+import com.agile.ondemand.strictmode.StrictModeClass;
 import com.agile.ondemand.url.Url;
 
 import java.util.Calendar;
@@ -108,7 +111,38 @@ public class HireActivity extends AppCompatActivity {
 
     }
 
-    private void Hire() {
+//    private void Hire() {
+//        String paymentM = spinner1.getSelectedItem().toString().trim();
+//        String daysM = spinnerDays.getSelectedItem().toString().trim();
+//        String timeM = tvHireTime.getText().toString().trim();
+//        String locations = etLocation.getText().toString().trim();
+//
+//        String username = getIntent().getExtras().getString("username");
+//
+//        UsersApi usersApi = Url.getInstance().create(UsersApi.class);
+//        Call<Void> hirePost = usersApi.Hire(Url.token, paymentM, daysM, timeM, locations, username);
+//
+//        hirePost.enqueue(new Callback<Void>() {
+//            @Override
+//            public void onResponse(Call<Void> call, Response<Void> response) {
+//                if (!response.isSuccessful()) {
+//                    Toast.makeText(HireActivity.this, "Code " + response.body(),
+//                            Toast.LENGTH_SHORT).show();
+//                    return;
+//                }
+//            }
+//            @Override
+//            public void onFailure(Call<Void> call, Throwable t) {
+//                Toast.makeText(HireActivity.this, "Error " + t.getLocalizedMessage(),
+//                        Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//    }
+
+    private void Hire(){
+        HireBLL hireBLL=new HireBLL();
+        StrictModeClass.StrictMode();
+
         String paymentM = spinner1.getSelectedItem().toString().trim();
         String daysM = spinnerDays.getSelectedItem().toString().trim();
         String timeM = tvHireTime.getText().toString().trim();
@@ -116,23 +150,15 @@ public class HireActivity extends AppCompatActivity {
 
         String username = getIntent().getExtras().getString("username");
 
-        UsersApi usersApi = Url.getInstance().create(UsersApi.class);
-        Call<Void> hirePost = usersApi.Hire(Url.token, paymentM, daysM, timeM, locations, username);
+        if (hireBLL.hirePost(Url.token,paymentM,daysM,timeM,locations,username)) {
+            Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(this, "Failed", Toast.LENGTH_SHORT).show();
 
-        hirePost.enqueue(new Callback<Void>() {
-            @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
-                if (!response.isSuccessful()) {
-                    Toast.makeText(HireActivity.this, "Code " + response.body(),
-                            Toast.LENGTH_SHORT).show();
-                    return;
-                }
             }
-            @Override
-            public void onFailure(Call<Void> call, Throwable t) {
-                Toast.makeText(HireActivity.this, "Error " + t.getLocalizedMessage(),
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
+
+
+        }
     }
-}
+
+

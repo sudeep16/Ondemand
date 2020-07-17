@@ -16,7 +16,7 @@ import android.widget.Toast;
 import com.agile.ondemand.R;
 import com.agile.ondemand.adapter.CategoryAdapter;
 import com.agile.ondemand.api.UsersApi;
-import com.agile.ondemand.bll.PlumberBLL;
+import com.agile.ondemand.bll.HireBLL;
 import com.agile.ondemand.model.ServiceAds;
 import com.agile.ondemand.strictmode.StrictModeClass;
 import com.agile.ondemand.url.Url;
@@ -42,7 +42,7 @@ public class CategoryFragment extends Fragment {
         Bundle bundle = getArguments();
         category = bundle.getString("category");
 
-        PlumberBLL plumberBLL=new PlumberBLL();
+        HireBLL hireBLL =new HireBLL();
         StrictModeClass.StrictMode();
 
         UsersApi usersApi = Url.getInstance().create(UsersApi.class);
