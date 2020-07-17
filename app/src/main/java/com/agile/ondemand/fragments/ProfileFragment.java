@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -31,6 +32,7 @@ import retrofit2.Response;
 public class ProfileFragment extends Fragment {
 
     private EditText etPFirstName, etPLastName, etPAddresss, etPUsername, etPEmail, etPhone;
+    private TextView etPId;
 
     private Button btnLogout, btnUpdate;
 
@@ -45,6 +47,7 @@ public class ProfileFragment extends Fragment {
         etPUsername = view.findViewById(R.id.etPUsername);
         etPEmail = view.findViewById(R.id.etPEmail);
         etPhone = view.findViewById(R.id.etPPhone);
+        etPId = view.findViewById(R.id.etPId);
 
         btnLogout = view.findViewById(R.id.btnLogout);
         btnUpdate = view.findViewById(R.id.btnPUpdate);
@@ -78,58 +81,78 @@ public class ProfileFragment extends Fragment {
         System.exit(0);
     }
 
-    /**get user*/
+    /**
+     * get user
+     */
     private void loadUser() {
         UsersApi usersApi = Url.getInstance().create(UsersApi.class);
-        Call<User> userCall = usersApi.getUserDetail(Url.token);
+        Call<UserUpdate> userUpdateCall = usersApi.getUserDetail(Url.token);
 
-        userCall.enqueue(new Callback<User>() {
+        userUpdateCall.enqueue(new Callback<UserUpdate>() {
             @Override
-            public void onResponse(Call<User> call, Response<User> response) {
+            public void onResponse(Call<UserUpdate> call, Response<UserUpdate> response) {
                 if (!response.isSuccessful()) {
                     Toast.makeText(getContext(), "code" + response.code(), Toast.LENGTH_SHORT).show();
                     return;
                 }
                 StrictModeClass.StrictMode();
                 try {
+                    String id = response.body().get_id();
                     String firstName = response.body().getFirstName();
                     String LastName = response.body().getLastName();
                     String address = response.body().getAddress();
                     String username = response.body().getUsername();
                     String email = response.body().getEmail();
                     String phone = response.body().getPhone();
-
+                    etPId.setText(id);
                     etPFirstName.setText(firstName);
                     etPLastName.setText(LastName);
                     etPAddresss.setText(address);
                     etPUsername.setText(username);
                     etPEmail.setText(email);
                     etPhone.setText(phone);
-
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-
             }
 
             @Override
-            public void onFailure(Call<User> call, Throwable t) {
+            public void onFailure(Call<UserUpdate> call, Throwable t) {
 
             }
         });
     }
 
-    /**update user*/
+    /**
+     * update user
+     */
     private void userUpdate() {
-        String PFirstName = etPFirstName.getText().toString().trim();
-        String PLastName = etPLastName.getText().toString().trim();
-        String PAddress = etPAddresss.getText().toString().trim();
-        String PUsername = etPUsername.getText().toString().trim();
-        String PEmail = etPEmail.getText().toString().trim();
-        String PPhone = etPhone.getText().toString().trim();
+        String pFirstName = etPFirstName.getText().toString().trim();
+        String pLastName = etPLastName.getText().toString().trim();
+        String pAddress = etPAddresss.getText().toString().trim();
+        String pUsername = etPUsername.getText().toString().trim();
+        String pEmail = etPEmail.getText().toString().trim();
+        String pPhone = etPhone.getText().toString().trim();
+        String pId = etPId.getText().toString().trim();
 
-        UserUpdate userUpdate = new UserUpdate(PFirstName, PLastName, PAddress, PUsername, PEmail, PPhone);
+        UserUpdate userUpdate = new UserUpdate(pId, pFirstName, pLastName, pAddress, pUsername, pEmail, pPhone);
         UsersApi usersApi = Url.getInstance().create(UsersApi.class);
+
+        Call<Void> updateUserCall = usersApi.updateUserData(Url.token, pId, userUpdate);
+        updateUserCall.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (!response.isSuccessful()) {
+                    Toast.makeText(getContext(), "Code " + response.code(), Toast.LENGTH_SHORT).show();
+                    return;
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Toast.makeText(getContext(), "Error " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 
