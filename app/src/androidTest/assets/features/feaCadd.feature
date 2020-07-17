@@ -11,7 +11,7 @@ Feature: Add service to the system
     And I enter ending day <end_day>
     And I enter price <price>
     And I click on post button
-    Then I receive a success message
+    Then I should redirect to dashboard
 
     Examples:
       | description | start_day | end_day | price |
