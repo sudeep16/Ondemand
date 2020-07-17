@@ -27,6 +27,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
+import static androidx.test.espresso.Espresso.closeSoftKeyboard;
 import static androidx.test.espresso.Espresso.onData;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
@@ -80,7 +81,6 @@ public class FeaCAddStepdef {
         onView(withText("OK")).perform(click());
     }
 
-
     @And("^I enter closing time$")
     public void iEnterCloseTime(){
         onView(withId(R.id.time2)).perform(click());
@@ -101,16 +101,17 @@ public class FeaCAddStepdef {
     @And("^I enter price (\\S+)$")
     public void iEnterPrice(String price){
         onView(withId(R.id.etPrice)).perform(typeText(price));
+        closeSoftKeyboard();
     }
 
     @And("^I click on post button$")
     public void iClickPostButton(){
         onView(withId(R.id.btnPost)).perform(click());
+        closeSoftKeyboard();
     }
 
-    @Then("^I receive a success message$")
+    @Then("^I should redirect to dashboard$")
     public void iReceiveSuccessMessage(){
 
     }
-
 }
