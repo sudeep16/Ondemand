@@ -48,12 +48,12 @@ public class FeaCAddStepdef {
     @Rule
     private ActivityTestRule<MainActivity> mainTestRule = new ActivityTestRule<>(MainActivity.class);
 
-    @Before("@exp-feature")
+    @Before("@add-feature")
     public void setup() {
         mainTestRule.launchActivity(new Intent());
     }
 
-    @After("@exp-feature")
+    @After("@add-feature")
     public void tearDown() {
         mainTestRule.finishActivity();
     }

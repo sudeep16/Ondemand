@@ -8,7 +8,6 @@ import androidx.test.rule.ActivityTestRule;
 
 import com.agile.ondemand.R;
 import com.agile.ondemand.activity.MainActivity;
-import com.agile.ondemand.fragments.HomeFragment;
 
 import org.hamcrest.Matchers;
 import org.junit.Rule;
@@ -35,58 +34,64 @@ public class FeaDHireStepdef {
     @Rule
     private ActivityTestRule<MainActivity> mainTestRule = new ActivityTestRule<>(MainActivity.class);
 
-    @Before("@exp-feature")
+    @Before("@hire-feature")
     public void setup() {
         mainTestRule.launchActivity(new Intent());
     }
 
-    @After("@exp-feature")
+    @After("@hire-feature")
     public void tearDown() {
         mainTestRule.finishActivity();
     }
+
     @cucumber.api.java.en.Given("^I am on hire service screen$")
-    public void iAmOnTheHireServiceDashboard(){
+    public void iAmOnTheHireServiceDashboard() {
         onView(withId(R.id.nav_home)).perform(click());
     }
+
     @When("^I select a card")
-    public void isSelectCard(){
+    public void isSelectCard() {
         onView(withId(R.id.cardPlumber)).perform(click());
     }
+
     @And("^I click on hire button")
-    public void isClickHireButton(){
+    public void isClickHireButton() {
         onView(withId(R.id.btnHire)).perform(click());
     }
 
     @And("^I enter payment method$")
-    public void isSelectPaymentType(){
+    public void isSelectPaymentType() {
         onView(withId(R.id.Spinner1)).perform(click());
         onData(allOf(is(instanceOf(String.class)), is("Cash on Delivery"))).perform(click());
     }
 
     @And("^I enter location (\\S+)$")
-    public void iEnterLocation(String location){
+    public void iEnterLocation(String location) {
         onView(withId(R.id.etLocation)).perform(typeText(location));
     }
+
     @And("^I enter hiring day$")
-    public void iEnterHiringDay(){
+    public void iEnterHiringDay() {
         onView(withId(R.id.SpinnerDays)).perform(click());
         onData(allOf(is(instanceOf(String.class)), is("Tuesday"))).perform(click());
     }
+
     @And("^I enter time$")
-    public void iEnterTime(){
+    public void iEnterTime() {
         onView(withId(R.id.tvHireTime)).perform(click());
         onView(withClassName(Matchers.equalTo(TimePicker.class.getName()))).perform(PickerActions.setTime(11, 30));
         onView(withText("OK")).perform(click());
     }
 
     @And("^I click on confirm button$")
-    public void iClickPostButton(){
+    public void iClickPostButton() {
         onView(withId(R.id.btnConfirm)).perform(click());
         closeSoftKeyboard();
     }
 
     @Then("^I should get notification$")
-    public void iClickConfirmButton(){
+    public void iClickConfirmButton() {
+
 
     }
 
