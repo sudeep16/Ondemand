@@ -32,7 +32,6 @@ public class WishListFragment extends Fragment {
 
     private RecyclerView wishListRecycler;
 
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

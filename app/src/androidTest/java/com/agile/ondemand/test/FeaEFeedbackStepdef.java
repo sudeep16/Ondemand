@@ -15,6 +15,7 @@ import org.junit.Rule;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
+import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
@@ -42,7 +43,8 @@ public class FeaEFeedbackStepdef {
     public void tearDown() {
         feedbackTestRule.finishActivity();
     }
-    @cucumber.api.java.en.Given("^I am in hire service screen$")
+
+    @Given("^I am in hire service screen$")
     public void iAmOnTheHireServiceDashboard(){
         onView(withId(R.id.nav_home)).perform(click());
     }
