@@ -15,6 +15,7 @@ import org.junit.Rule;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
+import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
@@ -32,19 +33,19 @@ import static org.hamcrest.Matchers.is;
 
 public class FeaDHireStepdef {
     @Rule
-    private ActivityTestRule<MainActivity> mainTestRule = new ActivityTestRule<>(MainActivity.class);
+    private ActivityTestRule<MainActivity> hireTestRule = new ActivityTestRule<>(MainActivity.class);
 
     @Before("@hire-feature")
     public void setup() {
-        mainTestRule.launchActivity(new Intent());
+        hireTestRule.launchActivity(new Intent());
     }
 
     @After("@hire-feature")
     public void tearDown() {
-        mainTestRule.finishActivity();
+        hireTestRule.finishActivity();
     }
 
-    @cucumber.api.java.en.Given("^I am on hire service screen$")
+    @Given("^I am on hire service screen$")
     public void iAmOnTheHireServiceDashboard() {
         onView(withId(R.id.nav_home)).perform(click());
     }

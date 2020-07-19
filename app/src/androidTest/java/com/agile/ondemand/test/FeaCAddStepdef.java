@@ -57,7 +57,7 @@ public class FeaCAddStepdef {
     public void tearDown() {
         mainTestRule.finishActivity();
     }
-    @cucumber.api.java.en.Given("^I am on add service screen$")
+    @Given("^I am on add service screen$")
     public void iAmOnTheAddServiceDashboard(){
         onView(withId(R.id.nav_add)).perform(click());
     }
