@@ -15,6 +15,7 @@ import com.agile.ondemand.fragments.AddFragment;
 import com.agile.ondemand.fragments.HomeFragment;
 import com.agile.ondemand.fragments.NotificationFragment;
 import com.agile.ondemand.fragments.ProfileFragment;
+import com.agile.ondemand.fragments.WishListFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -55,6 +56,9 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.nav_add:
                     selectedFragment = new AddFragment();
+                    break;
+                case R.id.nav_wishList:
+                    selectedFragment = new WishListFragment();
                     break;
             }
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
