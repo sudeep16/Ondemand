@@ -3,6 +3,7 @@ package com.agile.ondemand.api;
 import com.agile.ondemand.model.ServiceAds;
 import com.agile.ondemand.model.User;
 import com.agile.ondemand.model.UserUpdate;
+import com.agile.ondemand.model.WishList;
 import com.agile.ondemand.serverresponse.SignUpResponse;
 
 import java.util.List;
@@ -93,4 +94,11 @@ public interface UsersApi {
     @DELETE("users/profile/{id}")
     Call<Void> deleteUserAccount(@Header("Authorization") String token,
                                  @Path("id") String id);
+
+    @POST("wishlist/{username}")
+    Call<Void> wishList(@Header("Authorization") String token,
+                        @Path("username") String username);
+
+    @GET("wishlist")
+    Call<List<WishList>> getWishList(@Header("Authorization") String token);
 }

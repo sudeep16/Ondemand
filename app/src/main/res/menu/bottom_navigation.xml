@@ -13,6 +13,12 @@
         android:id="@+id/nav_add"
         android:icon="@drawable/add_24"
         android:title="Add" />
+
+    <item
+        android:id="@+id/nav_wishList"
+        android:icon="@drawable/wishlist"
+        android:title="Wish List" />
+
     <item
         android:id="@+id/nav_profile"
         android:icon="@drawable/person_24"

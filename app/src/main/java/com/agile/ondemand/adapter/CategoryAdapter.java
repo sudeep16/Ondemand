@@ -15,9 +15,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.agile.ondemand.R;
 import com.agile.ondemand.activity.FeedbackActivity;
 import com.agile.ondemand.activity.HireActivity;
+import com.agile.ondemand.api.UsersApi;
 import com.agile.ondemand.model.ServiceAds;
+import com.agile.ondemand.url.Url;
 
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder> {
 
@@ -55,7 +61,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, FeedbackActivity.class);
-                intent.putExtra("username",serviceAds.getAdOwner().getUsername());
+                intent.putExtra("username", serviceAds.getAdOwner().getUsername());
                 context.startActivity(intent);
 //                v.getContext().startActivity(new Intent(context, FeedbackActivity.class));
             }
@@ -65,9 +71,34 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, HireActivity.class);
-                intent.putExtra("username",serviceAds.getAdOwner().getUsername());
+                intent.putExtra("username", serviceAds.getAdOwner().getUsername());
                 context.startActivity(intent);
 //                v.getContext().startActivity(new Intent(context, HireActivity.class));
+            }
+        });
+
+        holder.btnWishList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UsersApi usersApi = Url.getInstance().create(UsersApi.class);
+                Call<Void> wishList = usersApi.wishList(Url.token, serviceAds.getAdOwner().getUsername());
+
+                wishList.enqueue(new Callback<Void>() {
+                    @Override
+                    public void onResponse(Call<Void> call, Response<Void> response) {
+                        if (!response.isSuccessful()) {
+                            Toast.makeText(context, "" + response.code(), Toast.LENGTH_SHORT).show();
+                        }
+                        Toast.makeText(context, "success", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onFailure(Call<Void> call, Throwable t) {
+
+                        Toast.makeText(context, "" + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+
+                    }
+                });
             }
         });
     }
@@ -80,7 +111,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     public class CategoryViewHolder extends RecyclerView.ViewHolder {
 
         private TextView category, description, timeFrom, timeTo, dayFrom, dayTo, price, tvUsername, tvAddress, tvPhone;
-        private Button feedbackButton, btnHire;
+        private Button feedbackButton, btnHire, btnWishList;
 
         public CategoryViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -96,6 +127,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
             tvPhone = itemView.findViewById(R.id.tvPhone);
             feedbackButton = itemView.findViewById(R.id.feedbackBtn);
             btnHire = itemView.findViewById(R.id.btnHire);
+            btnWishList = itemView.findViewById(R.id.btnWishList);
         }
     }
 }
