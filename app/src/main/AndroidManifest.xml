@@ -18,7 +18,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.HireActivity"></activity>
+        <activity android:name=".activity.AboutusActivity"></activity>
+        <activity android:name=".activity.HireActivity" />
         <activity android:name=".activity.FeedbackActivity" />
         <activity android:name=".activity.SplashScreen">
             <intent-filter>
