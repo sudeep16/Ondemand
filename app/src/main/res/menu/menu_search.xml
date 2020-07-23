@@ -10,9 +10,9 @@
         app:showAsAction="never"
         />
     <item
-        android:id="@+id/action_menu"
+        android:id="@+id/itemFaq"
         android:orderInCategory="100"
-        android:title="Help/Guidelines"
+        android:title="FAQ'S"
         app:showAsAction="never"
         />
 </menu>
