@@ -17,10 +17,12 @@ import cucumber.api.java.en.Then;
 import static androidx.test.espresso.Espresso.closeSoftKeyboard;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.action.ViewActions.scrollTo;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.hasErrorText;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.isNotChecked;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static junit.framework.TestCase.assertNotNull;
@@ -53,11 +55,15 @@ public class FeaBSigninStepdef {
         onView(withId(R.id.etLoginUsername)).perform(typeText(username));
         closeSoftKeyboard();
     }
-
     @cucumber.api.java.en.And("^I enter password (\\S+)$")
     public void iEnterPasswordPassword(String password) {
         onView(withId(R.id.etLoginPassword)).perform(typeText((password)));
         closeSoftKeyboard();
+    }
+
+    @cucumber.api.java.en.And("^I click the checkbox$")
+    public void iClickCheckBox() {
+        onView(withId(R.id.checkBox)).perform(click());
     }
 
     @cucumber.api.java.en.And("^I click on the login button$")

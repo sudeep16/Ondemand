@@ -3,14 +3,11 @@ package com.agile.ondemand.test;
 import android.content.Intent;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
-
 import androidx.test.espresso.contrib.PickerActions;
 import androidx.test.rule.ActivityTestRule;
-
 import com.agile.ondemand.R;
 import com.agile.ondemand.activity.HireActivity;
 import com.agile.ondemand.activity.MainActivity;
-
 import org.hamcrest.Matchers;
 import org.junit.Rule;
 
