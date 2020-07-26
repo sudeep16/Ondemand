@@ -29,7 +29,6 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:padding="15dp"
-            android:background="#38ef7d"
             android:layout_margin="10dp"
 
             >
@@ -243,10 +242,10 @@
                     android:id="@+id/btnHire"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/ic_icons8_toolbox"
-                    android:background="@drawable/roundbtn"
-                    android:fontFamily="@font/timmana"
+                    android:background="@drawable/btngradient"
+
                     android:text="Hire"
+
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:textSize="30dp"
@@ -266,10 +265,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
-                    android:layout_weight="1"
-                    android:drawableLeft="@drawable/ic_baseline_feedback_24"
-                    android:background="@drawable/roundbtn"
-                    android:fontFamily="@font/timmana"
+                    android:layout_weight=".8"
+
+                    android:background="@drawable/btngradient"
                     android:gravity="center"
                     android:text="Feedback"
                     android:textAllCaps="false"
@@ -281,12 +279,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:drawableLeft="@drawable/ic_baseline_stars_24"
+
                     android:layout_marginLeft="10dp"
                     android:layout_weight=".5"
                     android:padding="10dp"
-                    android:background="@drawable/roundbtn"
-                    android:fontFamily="@font/timmana"
+                    android:background="@drawable/btngradient"
                     android:gravity="center"
                     android:text="Add to WishList"
                     android:textAllCaps="false"
