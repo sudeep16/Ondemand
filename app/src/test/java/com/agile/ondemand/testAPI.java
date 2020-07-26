@@ -1,8 +1,20 @@
 package com.agile.ondemand;
 
+import com.agile.ondemand.api.UsersApi;
+import com.agile.ondemand.serverresponse.SignUpResponse;
+import com.agile.ondemand.url.Url;
+
+import org.hamcrest.core.IsNull;
 import org.junit.Test;
 
 import java.io.IOException;
+
+import retrofit2.Call;
+import retrofit2.Response;
+
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 public class testAPI {
 
@@ -10,40 +22,38 @@ public class testAPI {
     public void testLogin() throws IOException
 
     {
-//        OndemandAPI ondemandAPI=Url.getInstance().create(OndemandAPI.class);
-//        Call<LoginSignupResponse> call =ondemandAPI.checkUser("Maxx,"Maxx");
-//            try{
-//                Response<LoginSignupResponse> response=-call.execute();
-//                LoginSignupResponse loginSignupResponse=response.body();
-//                assertTrue(response.isSuccessful() && loginSignupResponse.getSuccess());
-//
-//
-//    }
-//            catch (Exception ex)
-//            {
-//                ex.printStackTrace();
-//
-//            }
+        UsersApi usersApi= Url.getInstance().create(UsersApi.class);
+        Call<SignUpResponse> call =usersApi.checkUser("username","password");
+            try{
+                Response<SignUpResponse> response=call.execute();
+        SignUpResponse signUpResponse=response.body();
+                assertTrue(response.isSuccessful() );
+
+
+    }
+            catch (Exception ex)
+            {
+                ex.printStackTrace();
+
+            }
     }
 
 
     @Test
     public void testTokenFail()
     {
-     //   OndemandAPI ondemandAPI=Url.getInstance().create(OndemandAPI.class);
-//        Call<LoginSignupResponse> call =ondemandAPI.checkUser("Maxx,"Maxx");
-//            try{
-//                Response<LoginSignupResponse> response=-call.execute();
-//              Url.Token=response.headers().get("Set Token");
-//                assertThat(Url.Token,is(IsNull.notNullValue()));
+//        UsersApi usersApi=Url.getInstance().create(UsersApi.class);
+//        Call<SignUpResponse> call =usersApi.checkUser("Maxx","asdas");
+//        try {
+//            Response<SignUpResponse> response = -call.execute();
+//            Url.token = response.headers().get("Set Token");
+//            assertThat(Url.token, is(IsNull.notNullValue()));
 //
 //
-//    }
-//            catch (Exception ex)
-//            {
-//                ex.printStackTrace();
+//        } catch (IOException ex) {
+//            ex.printStackTrace();
 //
-//            }
+//        }
 
 
 
@@ -53,8 +63,8 @@ public class testAPI {
     public void testTokenPass()
     {
 
-    //    OndemandAPI ondemandAPI=Url.getInstance().create(OndemandAPI.class);
-//        Call<LoginSignupResponse> call =ondemandAPI.checkUser("Maxx,"Maxx");
+    //    UsersApi UsersApi=Url.getInstance().create(UsersApi.class);
+//        Call<LoginSignupResponse> call =UsersApi.checkUser("Maxx,"Maxx");
 //            try{
 //                Response<LoginSignupResponse> response=-call.execute();
 //              Url.Token=response.headers().get("Set Token");

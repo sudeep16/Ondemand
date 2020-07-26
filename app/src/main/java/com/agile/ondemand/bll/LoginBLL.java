@@ -17,7 +17,7 @@ public class LoginBLL {
 
     public boolean checkUser(String username, String password) {
         UsersApi usersApi = Url.getInstance().create(UsersApi.class);
-        Call<SignUpResponse> userCall = usersApi.checkUser(username, password);
+        Call<SignUpResponse> userCall = usersApi.checkUser("username", "password");
 
         try {
             Response<SignUpResponse> loginResponse = userCall.execute();
