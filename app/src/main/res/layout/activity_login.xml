@@ -10,7 +10,7 @@ android:background="@drawable/sky1"
 
 
     <TextView
-        android:id="@+id/textView"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -23,19 +23,16 @@ android:background="@drawable/sky1"
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#2ffffff"
         android:gravity="center"
         android:orientation="vertical">
         <!--tv_login,-->
 
-
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/etLoginUsername"
+
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
-            android:background="@drawable/etround"
-            android:drawableLeft="@drawable/person_24"
+
             android:gravity="center"
             android:hint="Username"
             android:inputType="text"
@@ -45,7 +42,9 @@ android:background="@drawable/sky1"
 
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etLoginUsername"
                 android:layout_width="match_parent"
+                android:drawableLeft="@drawable/person_24"
                 android:layout_height="wrap_content"
                 android:inputType="text"/>
         </com.google.android.material.textfield.TextInputLayout>
@@ -53,12 +52,10 @@ android:background="@drawable/sky1"
 
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/etLoginPassword"
+
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:background="@drawable/etround"
-            android:drawableLeft="@drawable/ic_baseline_lock_24"
             android:gravity="center"
             android:hint="Password"
             android:inputType="textPassword"
@@ -67,6 +64,8 @@ android:background="@drawable/sky1"
             app:passwordToggleEnabled="true"
             >
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etLoginPassword"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"/>
@@ -82,12 +81,12 @@ android:background="@drawable/sky1"
             android:text="Remember me"
             android:textColor="@color/white" />
 
-        <com.google.android.material.button.MaterialButton
+        <Button
             android:id="@+id/btnLogin"
             android:layout_width="280dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:background="@drawable/btngradient"
+            android:background="@drawable/btnround"
             android:fontFamily="sans-serif-light"
             android:text="Login"
             android:textColor="@color/white"
@@ -95,12 +94,12 @@ android:background="@drawable/sky1"
             android:textSize="30dp"
             />
 
-        <com.google.android.material.button.MaterialButton
+        <Button
             android:id="@+id/btnRegister"
             android:layout_width="280dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:background="@drawable/btngradient"
+            android:background="@drawable/btnround"
             android:fontFamily="sans-serif-light"
             android:text="Register"
             android:textAllCaps="false"
