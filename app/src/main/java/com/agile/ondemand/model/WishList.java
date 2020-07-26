@@ -6,6 +6,7 @@ public class WishList {
     public WishList(String username) {
         this.username = username;
     }
+
     public String getUsername() {
         return username;
     }

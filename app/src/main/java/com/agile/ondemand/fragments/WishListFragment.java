@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -19,8 +18,6 @@ import com.agile.ondemand.api.UsersApi;
 import com.agile.ondemand.model.WishList;
 import com.agile.ondemand.strictmode.StrictModeClass;
 import com.agile.ondemand.url.Url;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -39,6 +36,9 @@ public class WishListFragment extends Fragment {
 
 
         wishListRecycler = view.findViewById(R.id.wishListRecycler);
+        StrictModeClass.StrictMode();
+
+
         UsersApi usersApi = Url.getInstance().create(UsersApi.class);
         Call<List<WishList>> listCall = usersApi.getWishList(Url.token);
 
@@ -46,7 +46,7 @@ public class WishListFragment extends Fragment {
             @Override
             public void onResponse(Call<List<WishList>> call, Response<List<WishList>> response) {
                 if (!response.isSuccessful()) {
-                    Toast.makeText(getActivity(), "" + response.code(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Code " + response.code(), Toast.LENGTH_SHORT).show();
                     return;
                 }
                 List<WishList> wishLists = response.body();
@@ -57,11 +57,9 @@ public class WishListFragment extends Fragment {
 
             @Override
             public void onFailure(Call<List<WishList>> call, Throwable t) {
-
+                Toast.makeText(getActivity(), "Error " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-
-
         return view;
     }
 }

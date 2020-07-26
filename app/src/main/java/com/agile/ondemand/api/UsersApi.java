@@ -101,4 +101,7 @@ public interface UsersApi {
 
     @GET("wishlist")
     Call<List<WishList>> getWishList(@Header("Authorization") String token);
+
+//    @GET("wishlist")
+//    Call<WishlistResponse> getWishList(@Header("Authorization") String token);
 }
