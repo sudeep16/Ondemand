@@ -106,6 +106,11 @@ public interface UsersApi {
     @GET("hiredList/pending")
     Call<List<PendingJob>> getHiredList(@Header("Authorization") String token);
 
+    @GET("users/profile/{firstName}")
+    Call<List<UserUpdate>> getUserByFirstName (@Header("Authorization") String token,
+                                               @Path("firstName") String firstName);
+
+
 //    @GET("wishlist")
 //    Call<WishlistResponse> getWishList(@Header("Authorization") String token);
 }

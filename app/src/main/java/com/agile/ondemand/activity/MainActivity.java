@@ -11,19 +11,31 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.agile.ondemand.R;
+import com.agile.ondemand.api.UsersApi;
 import com.agile.ondemand.fragments.AddFragment;
 import com.agile.ondemand.fragments.HomeFragment;
 import com.agile.ondemand.fragments.NotificationFragment;
 import com.agile.ondemand.fragments.ProfileFragment;
 import com.agile.ondemand.fragments.WishListFragment;
+import com.agile.ondemand.model.UserUpdate;
+import com.agile.ondemand.url.Url;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
 
     private SearchView searchView;
+    private Button btnSearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
         searchView = findViewById(R.id.searchView);
+        btnSearch = findViewById(R.id.btnSearch);
 
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
@@ -86,7 +99,31 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent1 = new Intent(this, FaqActivity.class);
                 startActivity(intent1);
                 break;
+            case R.id.btnSearch:
+                loadUserByFirstName();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void loadUserByFirstName() {
+        UsersApi usersApi = Url.getInstance().create(UsersApi.class);
+        String firstName = searchView.getQuery().toString();
+        Call<List<UserUpdate>> listCall = usersApi.getUserByFirstName(Url.token, firstName);
+
+        listCall.enqueue(new Callback<List<UserUpdate>>() {
+            @Override
+            public void onResponse(Call<List<UserUpdate>> call, Response<List<UserUpdate>> response) {
+                if (!response.isSuccessful()) {
+                    Toast.makeText(MainActivity.this, "Code " + response.code(), Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                List<UserUpdate> usersFirstName = response.body();
+            }
+
+            @Override
+            public void onFailure(Call<List<UserUpdate>> call, Throwable t) {
+                Toast.makeText(MainActivity.this, "Error " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
