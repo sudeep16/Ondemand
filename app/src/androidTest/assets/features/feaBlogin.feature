@@ -4,6 +4,7 @@ Feature: Login into the system
   Scenario Outline: User provide an empty field
     Given I am on login screen
     When I enter username <username>
+    And I click the checkbox
     And I click on the login button
     Then I receive a field required message
 
@@ -16,6 +17,7 @@ Feature: Login into the system
     Given I am on login screen
     When I enter username <username>
     And I enter password <password>
+    And I click the checkbox
     And I click on the login button
     Then I am redirected to dashboard
 
