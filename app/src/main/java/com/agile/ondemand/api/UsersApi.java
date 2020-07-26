@@ -1,5 +1,6 @@
 package com.agile.ondemand.api;
 
+import com.agile.ondemand.model.PendingJob;
 import com.agile.ondemand.model.ServiceAds;
 import com.agile.ondemand.model.User;
 import com.agile.ondemand.model.UserUpdate;
@@ -101,6 +102,9 @@ public interface UsersApi {
 
     @GET("wishlist")
     Call<List<WishList>> getWishList(@Header("Authorization") String token);
+
+    @GET("hiredList/pending")
+    Call<List<PendingJob>> getHiredList(@Header("Authorization") String token);
 
 //    @GET("wishlist")
 //    Call<WishlistResponse> getWishList(@Header("Authorization") String token);

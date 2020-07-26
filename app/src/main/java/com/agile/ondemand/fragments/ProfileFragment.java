@@ -85,6 +85,13 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        btnPjob.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new PendingjobFragment()).commit();
+            }
+        });
+
         return view;
     }
 
