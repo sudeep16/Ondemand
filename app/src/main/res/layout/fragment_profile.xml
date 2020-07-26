@@ -13,7 +13,7 @@
             android:id="@+id/toplay"
             android:layout_width="match_parent"
             android:layout_height="300dp"
-            android:background="#1F40AA"
+            android:background="@drawable/gradient"
             android:padding="20dp">
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profile_image_gp"
@@ -257,7 +257,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:background="#1F40AA"
+            android:background="@drawable/gradient"
             >
             <Button
                 android:id="@+id/btnPUpdate"
