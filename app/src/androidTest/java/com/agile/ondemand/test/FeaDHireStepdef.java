@@ -1,6 +1,7 @@
 package com.agile.ondemand.test;
 
 import android.content.Intent;
+import android.widget.DatePicker;
 import android.widget.TimePicker;
 
 import androidx.test.espresso.contrib.PickerActions;
@@ -74,10 +75,11 @@ public class FeaDHireStepdef {
         onView(withId(R.id.etLocation)).perform(typeText(location));
     }
 
-    @And("^I enter hiring day$")
-    public void iEnterHiringDay() {
-        onView(withId(R.id.SpinnerDays)).perform(click());
-        onData(allOf(is(instanceOf(String.class)), is("Tuesday"))).perform(click());
+    @And("^I pick a date$")
+    public void iPickADate() {
+        onView(withId(R.id.tvDatePicker)).perform(click());
+        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(PickerActions.setDate(2020, 12, 12));
+        onView(withText("OK")).perform(click());
     }
 
     @And("^I enter time$")
