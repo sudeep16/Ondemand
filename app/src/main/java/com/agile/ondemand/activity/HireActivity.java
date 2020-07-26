@@ -3,13 +3,16 @@ package com.agile.ondemand.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
+import androidx.fragment.app.DialogFragment;
 
+import android.app.DatePickerDialog;
 import android.app.Notification;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -19,19 +22,20 @@ import com.agile.ondemand.R;
 import com.agile.ondemand.api.UsersApi;
 import com.agile.ondemand.url.Url;
 
+import java.text.DateFormat;
 import java.util.Calendar;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class HireActivity extends AppCompatActivity {
+public class HireActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
     private NotificationManagerCompat notificationManagerCompat;
     int counter = 1;
 
-    private Spinner spinner1, spinnerDays;
-    private TextView etLocation, tvHireTime;
+    private Spinner spinner1;
+    private TextView etLocation, tvHireTime, tvDatePicker;
     private Button btnConfirm;
 
     @Override
@@ -42,16 +46,14 @@ public class HireActivity extends AppCompatActivity {
         tvHireTime = findViewById(R.id.tvHireTime);
         etLocation = findViewById(R.id.etLocation);
         btnConfirm = findViewById(R.id.btnConfirm);
+        tvDatePicker = findViewById(R.id.tvDatePicker);
 
         spinner1 = findViewById(R.id.Spinner1);
-        spinnerDays = findViewById(R.id.SpinnerDays);
         ArrayAdapter<CharSequence> arrayAdapter = ArrayAdapter.createFromResource(this, R.array.paymentMethod, android.R.layout.simple_spinner_item);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner1.setAdapter(arrayAdapter);
 
-        ArrayAdapter<CharSequence> arrayDays = ArrayAdapter.createFromResource(this, R.array.days, android.R.layout.simple_spinner_item);
-        arrayDays.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerDays.setAdapter(arrayDays);
+
 
         notificationManagerCompat = NotificationManagerCompat.from(this);
         CreateChannel channel = new CreateChannel(this);
@@ -68,6 +70,14 @@ public class HireActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Hire();
                 DisplayNotification();
+            }
+        });
+
+        tvDatePicker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogFragment dialogFragment = new com.agile.ondemand.datepicker.DatePicker();
+                dialogFragment.show(getSupportFragmentManager(), "date picker");
             }
         });
 
@@ -110,14 +120,15 @@ public class HireActivity extends AppCompatActivity {
 
     private void Hire() {
         String paymentM = spinner1.getSelectedItem().toString().trim();
-        String daysM = spinnerDays.getSelectedItem().toString().trim();
+        String datepicker = tvDatePicker.getText().toString().trim();
+//        String daysM = spinnerDays.getSelectedItem().toString().trim();
         String timeM = tvHireTime.getText().toString().trim();
         String locations = etLocation.getText().toString().trim();
 
         String username = getIntent().getExtras().getString("username");
 
         UsersApi usersApi = Url.getInstance().create(UsersApi.class);
-        Call<Void> hirePost = usersApi.Hire(Url.token, paymentM, daysM, timeM, locations, username);
+        Call<Void> hirePost = usersApi.Hire(Url.token, paymentM, datepicker, timeM, locations, username);
 
         hirePost.enqueue(new Callback<Void>() {
             @Override
@@ -128,11 +139,24 @@ public class HireActivity extends AppCompatActivity {
                     return;
                 }
             }
+
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
                 Toast.makeText(HireActivity.this, "Error " + t.getLocalizedMessage(),
                         Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        Calendar c = Calendar.getInstance();
+        c.set(Calendar.YEAR, year);
+        c.set(Calendar.MONTH, month);
+        c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+        String currentDate = DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
+
+        TextView textView = (TextView) findViewById(R.id.tvDatePicker);
+        textView.setText(currentDate);
     }
 }
