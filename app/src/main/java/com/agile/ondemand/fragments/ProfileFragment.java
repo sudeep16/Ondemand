@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,9 +33,10 @@ import retrofit2.Response;
 public class ProfileFragment extends Fragment {
 
     private EditText etPFirstName, etPLastName, etPAddresss, etPUsername, etPEmail, etPhone;
-    private TextView etPId;
+    private TextView etPId,tvPendingJob,tvReward;
 
-    private Button btnLogout, btnUpdate, btnPDelete;
+    private Button btnLogout, btnUpdate, btnPDelete,btnPjob,btnReward;
+    private ImageView profile_image_gp;
 
     @Nullable
     @Override
@@ -49,9 +51,17 @@ public class ProfileFragment extends Fragment {
         etPhone = view.findViewById(R.id.etPPhone);
         etPId = view.findViewById(R.id.etPId);
 
+        tvPendingJob = view.findViewById(R.id.tvPendingJob);
+        tvReward = view.findViewById(R.id.tvReward);
+
         btnLogout = view.findViewById(R.id.btnLogout);
         btnUpdate = view.findViewById(R.id.btnPUpdate);
         btnPDelete = view.findViewById(R.id.btnPDelete);
+        btnPjob = view.findViewById(R.id.btnPjob);
+        btnReward = view.findViewById(R.id.btnReward);
+
+        profile_image_gp =view.findViewById(R.id.profile_image_gp);
+
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
