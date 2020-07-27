@@ -33,10 +33,12 @@ import retrofit2.Response;
 public class ProfileFragment extends Fragment {
 
     private EditText etPFirstName, etPLastName, etPAddresss, etPUsername, etPEmail, etPhone;
-    private TextView etPId,tvPendingJob,tvReward;
+    private TextView etPId, tvPendingJob, tvReward, tvPFirstName1;
 
-    private Button btnLogout, btnUpdate, btnPDelete,btnPjob,btnReward;
+    private Button btnLogout, btnUpdate, btnPDelete, btnPjob, btnReward;
     private ImageView profile_image_gp;
+
+
 
     @Nullable
     @Override
@@ -44,6 +46,7 @@ public class ProfileFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
         etPFirstName = view.findViewById(R.id.etPFirstName);
+        tvPFirstName1 = view.findViewById(R.id.etPFirstName1);
         etPLastName = view.findViewById(R.id.etPLastName);
         etPAddresss = view.findViewById(R.id.etPAddresss);
         etPUsername = view.findViewById(R.id.etPUsername);
@@ -60,7 +63,7 @@ public class ProfileFragment extends Fragment {
         btnPjob = view.findViewById(R.id.btnPjob);
         btnReward = view.findViewById(R.id.btnReward);
 
-        profile_image_gp =view.findViewById(R.id.profile_image_gp);
+        profile_image_gp = view.findViewById(R.id.profile_image_gp);
 
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,6 +133,7 @@ public class ProfileFragment extends Fragment {
                     String phone = response.body().getPhone();
                     etPId.setText(id);
                     etPFirstName.setText(firstName);
+                    tvPFirstName1.setText(firstName);
                     etPLastName.setText(LastName);
                     etPAddresss.setText(address);
                     etPUsername.setText(username);
