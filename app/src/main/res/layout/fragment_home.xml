@@ -14,7 +14,7 @@
         android:layout_height="200dp"
         android:layout_marginBottom="10dp"
         app:fillColor="#ffffff"
-        app:pageColor="#000000"
+        app:pageColor="#ffffff"
         app:radius="6dp"
         app:slideInterval="3000"
         app:strokeColor="#ff777777"
@@ -25,6 +25,7 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/carousel"
         android:orientation="vertical"
+        android:background="@color/cardview_light_background"
         android:weightSum="10">
 
         <!--        <RelativeLayout-->
@@ -39,7 +40,7 @@
         <!--                android:layout_centerInParent="true"-->
         <!--                android:text="Dashboard"-->
         <!--                android:textSize="40sp"-->
-        <!--                android:textStyle="bold" />-->
+        <!--              />-->
         <!--        </RelativeLayout>-->
 
         <GridLayout
@@ -69,21 +70,24 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_margin="5dp"
+                   
+                    android:background="@drawable/cardbg"
                     android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/plumber" />
+                        android:src="@drawable/plumber"
+                        android:layout_margin="5dp"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="Plumber"
-                        android:textSize="20sp"
+                        android:layout_margin="15dp"
+                        android:textSize="15sp"
                          />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -99,27 +103,31 @@
                 android:layout_marginBottom="10dp"
                 android:focusable="true"
                 app:cardCornerRadius="8dp"
-                app:cardElevation="8dp">
+                app:cardElevation="8dp"
+            >
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:background="@drawable/cardbg"
                     android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="wrap_content"
-                        android:layout_height="60dp"
+                        android:layout_height="50dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/idea"/>
+                        android:src="@drawable/idea"
+                        android:layout_margin="5dp"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="Electrician"
-                        android:textSize="20sp"
+                        android:layout_margin="15dp"
+                        android:textSize="15sp"
                          />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -136,19 +144,21 @@
                 android:layout_marginBottom="10dp"
                 android:focusable="true"
                 app:cardCornerRadius="8dp"
-                app:cardElevation="8dp">
+                app:cardElevation="8dp"
+            >
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_margin="5dp"
+                    android:background="@drawable/cardbg"
                     android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_gravity="center"
+                        android:layout_margin="5dp"
                         android:src="@drawable/handyman" />
 
                     <TextView
@@ -156,7 +166,8 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="Handyman"
-                        android:textSize="20sp"
+                        android:textSize="15sp"
+                        android:layout_margin="15dp"
                         />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -172,27 +183,31 @@
                 android:layout_marginBottom="10dp"
                 android:focusable="true"
                 app:cardCornerRadius="8dp"
-                app:cardElevation="8dp">
+                app:cardElevation="8dp"
+            >
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:background="@drawable/cardbg"
                     android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="wrap_content"
-                        android:layout_height="60dp"
+                        android:layout_height="50dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/laundry" />
+                        android:src="@drawable/laundry"
+                        android:layout_margin="5dp"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="Laundry"
-                        android:textSize="20sp"
+                        android:layout_margin="15dp"
+                        android:textSize="15sp"
                        />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -208,28 +223,31 @@
                 android:layout_marginBottom="10dp"
                 android:focusable="true"
                 app:cardCornerRadius="8dp"
-                app:cardElevation="8dp">
+                app:cardElevation="8dp"
+            >
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_margin="5dp"
+                    android:background="@drawable/cardbg"
                     android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/catering" />
+                        android:src="@drawable/catering"
+                        android:layout_margin="5dp"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="Catering"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+                        android:textSize="15sp"
+                        android:layout_margin="15dp"
+                        />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -245,27 +263,30 @@
                 android:layout_marginBottom="10dp"
                 android:focusable="true"
                 app:cardCornerRadius="8dp"
+            
                 app:cardElevation="8dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_margin="5dp"
+                    android:background="@drawable/cardbg"
                     android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/painter" />
+                        android:src="@drawable/painter"
+                        android:layout_margin="5dp"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="Painter"
-                        android:textSize="20sp"
+                        android:textSize="15sp"
+                        android:layout_margin="15dp"
                          />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -281,28 +302,31 @@
                 android:layout_marginBottom="10dp"
                 android:focusable="true"
                 app:cardCornerRadius="8dp"
+            
                 app:cardElevation="8dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_margin="5dp"
+                    android:background="@drawable/cardbg"
                     android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/gardener" />
+                        android:src="@drawable/gardener"
+                        android:layout_margin="5dp"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="Gardener"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+                        android:textSize="15sp"
+                        android:layout_margin="15dp"
+                      />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -317,28 +341,31 @@
                 android:layout_marginBottom="10dp"
                 android:focusable="true"
                 app:cardCornerRadius="8dp"
-                app:cardElevation="8dp">
+                app:cardElevation="8dp"
+            >
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_margin="5dp"
+                    android:background="@drawable/cardbg"
                     android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/babysitter" />
+                        android:src="@drawable/babysitter"
+                        android:layout_margin="5dp"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="Baby Sitter"
+                        android:layout_margin="15dp"
                         android:textSize="15sp"
-                        android:textStyle="bold" />
+                      />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -354,28 +381,31 @@
                 android:layout_marginBottom="10dp"
                 android:focusable="true"
                 app:cardCornerRadius="8dp"
+            
                 app:cardElevation="8dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_margin="5dp"
+                    android:background="@drawable/cardbg"
                     android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/caretaker" />
+                        android:src="@drawable/caretaker"
+                        android:layout_margin="5dp"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="Care Taker"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+                        android:layout_margin="15dp"
+                         android:textSize="15sp"
+                      />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -390,28 +420,31 @@
                 android:layout_marginBottom="10dp"
                 android:focusable="true"
                 app:cardCornerRadius="8dp"
+            
                 app:cardElevation="8dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_margin="5dp"
+                    android:background="@drawable/cardbg"
                     android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/housekeeper"/>
+                        android:src="@drawable/housekeeper"
+                        android:layout_margin="5dp"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="House Keeper"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
+                        android:text="HouseKeeper"
+                        android:layout_margin="15dp"
+                        android:textSize="14sp"
+                      />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
