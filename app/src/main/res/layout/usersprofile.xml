@@ -19,23 +19,23 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#ffffff"
-                android:text="Name : " />
+                android:text="Name : "
+                android:textColor="#ffffff" />
 
             <TextView
                 android:id="@+id/tvFirstName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#ffffff"
                 android:paddingRight="4dp"
-                android:text="firstname" />
+                android:text="firstname"
+                android:textColor="#ffffff" />
 
             <TextView
                 android:id="@+id/tvLastName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#ffffff"
-                android:text="lastname" />
+                android:text="lastname"
+                android:textColor="#ffffff" />
 
         </LinearLayout>
 
@@ -48,29 +48,29 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#ffffff"
-                android:text="Username : " />
+                android:text="Username : "
+                android:textColor="#ffffff" />
 
             <TextView
                 android:id="@+id/tvUsername"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#ffffff"
                 android:paddingRight="15dp"
-                android:text="username" />
+                android:text="username"
+                android:textColor="#ffffff" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#ffffff"
-                android:text="Address : " />
+                android:text="Address : "
+                android:textColor="#ffffff" />
 
             <TextView
                 android:id="@+id/tvAddress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#ffffff"
-                android:text="address" />
+                android:text="address"
+                android:textColor="#ffffff" />
 
         </LinearLayout>
 
@@ -83,37 +83,37 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#ffffff"
-                android:text="Email/Phone : " />
+                android:text="Email/Phone : "
+                android:textColor="#ffffff" />
 
             <TextView
                 android:id="@+id/tvEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#ffffff"
-                android:text="Email" />
+                android:text="Email"
+                android:textColor="#ffffff" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#ffffff"
-                android:text="/" />
+                android:text="/"
+                android:textColor="#ffffff" />
 
             <TextView
                 android:id="@+id/tvNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#ffffff"
-                android:text="number" />
+                android:text="number"
+                android:textColor="#ffffff" />
 
         </LinearLayout>
 
         <Button
             android:id="@+id/btnViewProfile"
             android:layout_width="match_parent"
-            android:textColor="#ffffff"
             android:layout_height="wrap_content"
-            android:text="View Profile" />
+            android:text="View Profile"
+            android:textColor="#ffffff" />
     </LinearLayout>
 
     <View
