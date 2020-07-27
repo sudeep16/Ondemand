@@ -86,7 +86,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="Plumber"
-                        android:layout_margin="15dp"
+                      
                         android:textSize="15sp"
                          />
                 </LinearLayout>
@@ -126,7 +126,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="Electrician"
-                        android:layout_margin="15dp"
+                       
                         android:textSize="15sp"
                          />
                 </LinearLayout>
@@ -167,7 +167,7 @@
                         android:layout_gravity="center"
                         android:text="Handyman"
                         android:textSize="15sp"
-                        android:layout_margin="15dp"
+                       
                         />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -206,7 +206,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="Laundry"
-                        android:layout_margin="15dp"
+                       
                         android:textSize="15sp"
                        />
                 </LinearLayout>
@@ -246,7 +246,7 @@
                         android:layout_gravity="center"
                         android:text="Catering"
                         android:textSize="15sp"
-                        android:layout_margin="15dp"
+                       
                         />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -286,7 +286,7 @@
                         android:layout_gravity="center"
                         android:text="Painter"
                         android:textSize="15sp"
-                        android:layout_margin="15dp"
+                       
                          />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -325,7 +325,7 @@
                         android:layout_gravity="center"
                         android:text="Gardener"
                         android:textSize="15sp"
-                        android:layout_margin="15dp"
+                       
                       />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -363,7 +363,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="Baby Sitter"
-                        android:layout_margin="15dp"
+                       
                         android:textSize="15sp"
                       />
                 </LinearLayout>
@@ -403,7 +403,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="Care Taker"
-                        android:layout_margin="15dp"
+                       
                          android:textSize="15sp"
                       />
                 </LinearLayout>
@@ -442,7 +442,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="HouseKeeper"
-                        android:layout_margin="15dp"
+                       
                         android:textSize="14sp"
                       />
                 </LinearLayout>
