@@ -3,7 +3,6 @@ package com.agile.ondemand;
 import com.agile.ondemand.bll.CategoryBLL;
 import com.agile.ondemand.bll.FeedbackBLL;
 import com.agile.ondemand.bll.LoginBLL;
-import com.agile.ondemand.bll.HireBLL;
 import com.agile.ondemand.bll.SignUpBLL;
 
 import org.junit.Test;
@@ -92,20 +91,20 @@ public void testLogin_correct(){
         assertEquals(false,result);
     }
 
-    @Test
-public void testHirePost_correct(){
-        HireBLL hireBLL =new HireBLL();
-        boolean result= hireBLL.hirePost("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjBkMDEzOTY0YjlmMDBkMTMxZjllNzgiLCJpYXQiOjE1OTQ2ODc4OTR9.gG_sGP9OAKIVhSJ9vVGb6rbG1rNgwZ00iDyxEGHb-CQ",
-                "Cash On Delivery","Sunday","12pm","hire","nischalsed");
-        assertEquals(true,result);
-    }
-    @Test
-    public void testHirePost_if_token_not_found(){
-        HireBLL hireBLL =new HireBLL();
-        boolean result= hireBLL.hirePost(" ",
-                "Cash On Delivery","Sunday","12pm","hire","nischalsed");
-        assertEquals(false,result);
-    }
+//    @Test
+//public void testHirePost_correct(){
+//        HireBLL hireBLL =new HireBLL();
+//        boolean result= hireBLL.hirePost("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjBkMDEzOTY0YjlmMDBkMTMxZjllNzgiLCJpYXQiOjE1OTQ2ODc4OTR9.gG_sGP9OAKIVhSJ9vVGb6rbG1rNgwZ00iDyxEGHb-CQ",
+//                "Cash On Delivery","Sunday","12pm","hire","nischalsed");
+//        assertEquals(true,result);
+//    }
+//    @Test
+//    public void testHirePost_if_token_not_found(){
+//        HireBLL hireBLL =new HireBLL();
+//        boolean result= hireBLL.hirePost(" ",
+//                "Cash On Delivery","Sunday","12pm","hire","nischalsed");
+//        assertEquals(false,result);
+//    }
 
 
 
@@ -129,6 +128,8 @@ public void testHirePost_correct(){
         boolean result=feedbackBLL.giveFeedback("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjBhZTY4NjUwNWI3MzE3NTI0M2EzNmEiLCJpYXQiOjE1OTQ3MDgzMzV9.YEmWJprqNNBqBSqTT3XCsGtJD_owljFjP58CazAz-w8","3","testing Feedback","shknischal");
         assertEquals(true,result);
     }
+
+
 
 
 
