@@ -19,12 +19,14 @@
         android:orientation="horizontal">
 
         <TextView
+            android:id="@+id/tvFirstName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingRight="20dp"
             android:text="firstname" />
 
         <TextView
+            android:id="@+id/tvLastName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="lastname" />
@@ -38,12 +40,14 @@
         android:orientation="horizontal">
 
         <TextView
+            android:id="@+id/tvUsername"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingRight="20dp"
             android:text="username" />
 
         <TextView
+            android:id="@+id/tvAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="address" />
@@ -57,18 +61,21 @@
         android:orientation="horizontal">
 
         <TextView
+            android:id="@+id/tvEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingRight="20dp"
             android:text="Email" />
 
         <TextView
+            android:id="@+id/tvNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="number" />
 
     </LinearLayout>
     <Button
+        android:id="@+id/btnViewProfile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="View Profile"/>

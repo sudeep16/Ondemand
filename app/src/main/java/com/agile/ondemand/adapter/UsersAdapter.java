@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -35,10 +36,12 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UserSearchHo
     @Override
     public void onBindViewHolder(@NonNull UserSearchHolder holder, int position) {
         final UserUpdate userUpdate = userUpdateList.get(position);
-
-
-
-
+        holder.tvUsername.setText(userUpdate.getUsername());
+        holder.tvFirstName.setText(userUpdate.getFirstName());
+        holder.tvLastName.setText(userUpdate.getLastName());
+        holder.tvAddress.setText(userUpdate.getAddress());
+        holder.tvEmail.setText(userUpdate.getEmail());
+        holder.tvNumber.setText(userUpdate.getPhone());
     }
 
     @Override
@@ -48,15 +51,19 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UserSearchHo
 
     public class UserSearchHolder extends RecyclerView.ViewHolder {
 
-        private TextView Username;
-//        private Button btnRemove;
+        private TextView tvUsername, tvFirstName, tvLastName, tvEmail, tvNumber, tvAddress;
+        private Button btnViewProfile;
+
 
         public UserSearchHolder(@NonNull View itemView) {
             super(itemView);
-
-            Username = itemView.findViewById(R.id.tvFUsername);
-//            btnRemove = itemView.findViewById(R.id.btnRemove);
-
+            tvUsername = itemView.findViewById(R.id.tvUsername);
+            tvFirstName = itemView.findViewById(R.id.tvFirstName);
+            tvLastName = itemView.findViewById(R.id.tvLastName);
+            tvEmail = itemView.findViewById(R.id.tvEmail);
+            tvNumber = itemView.findViewById(R.id.tvNumber);
+            tvAddress = itemView.findViewById(R.id.tvAddress);
+            btnViewProfile = itemView.findViewById(R.id.btnViewProfile);
         }
     }
 }
