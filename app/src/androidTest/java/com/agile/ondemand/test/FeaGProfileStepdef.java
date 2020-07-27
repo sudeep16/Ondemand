@@ -30,7 +30,6 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static junit.framework.TestCase.assertNotNull;
 
-
 @CucumberOptions(features = "features")
 public class FeaGProfileStepdef {
 

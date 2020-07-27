@@ -31,7 +31,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
                 android:gravity="center"
-                android:text="add fragment" />
+                android:text="add fragment"
+                />
 
             <EditText
                 android:id="@+id/etDescription"
@@ -40,14 +41,14 @@
                 android:layout_below="@id/Spinner"
                 android:hint="Description"
                 android:inputType="textMultiLine"
-                android:textColorHint="@color/black"/>
+                android:textColorHint="@color/black"
+                android:textColor="@color/black"/>
 
 
             <TextView
                 android:id="@+id/Availability"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:text="Availability : "
                 android:textSize="20sp" />
 
@@ -120,6 +121,7 @@
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/priceperhour"
                     android:hint="Day"
+                    android:textColor="@color/black"
                     android:textSize="15sp" />
 
                 <TextView
@@ -128,6 +130,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:text="To : "
+                    android:textColor="@color/black"
                     android:textSize="20sp" />
 
                 <EditText
@@ -158,7 +161,8 @@
                     android:inputType="number"
                     android:layout_toRightOf="@id/priceperhour"
                     android:hint="price"
-                    android:textSize="15sp" />
+                    android:textSize="15sp"
+                    android:textColor="@color/black"/>
             </LinearLayout>
 
             <Button
