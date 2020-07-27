@@ -73,7 +73,8 @@
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:padding="5dp"
-            android:drawableLeft="@drawable/date" />
+            android:drawableLeft="@drawable/date"
+            android:textColor="@color/white"/>
 
     </LinearLayout>
 

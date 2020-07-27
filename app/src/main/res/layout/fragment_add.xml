@@ -139,7 +139,8 @@
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/priceperhour"
                     android:hint="Day"
-                    android:textSize="15sp" />
+                    android:textSize="15sp"
+                    android:textColor="@color/black"/>
             </LinearLayout>
 
             <LinearLayout
