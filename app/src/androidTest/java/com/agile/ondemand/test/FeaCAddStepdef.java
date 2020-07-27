@@ -19,6 +19,7 @@ import org.junit.Rule;
 
 import java.util.Calendar;
 
+import cucumber.api.CucumberOptions;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
@@ -33,36 +34,51 @@ import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom;
+import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static java.util.Calendar.AM;
 import static java.util.Calendar.AM_PM;
+import static junit.framework.TestCase.assertNotNull;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.instanceOf;
 import static org.hamcrest.Matchers.is;
 
+
+@CucumberOptions(features = "features")
 public class FeaCAddStepdef {
     @Rule
     private ActivityTestRule<MainActivity> mainTestRule = new ActivityTestRule<>(MainActivity.class);
+    private Activity mainActivity;
+
 
     @Before("@add-feature")
     public void setup() {
         mainTestRule.launchActivity(new Intent());
+        mainActivity = mainTestRule.getActivity();
     }
 
     @After("@add-feature")
     public void tearDown() {
         mainTestRule.finishActivity();
     }
-    @Given("^I am on add service screen$")
-    public void iAmOnTheAddServiceDashboard(){
+
+    @Given("^I am on home screen$")
+    public void iAmOnTheHomeDashboard(){
+        assertNotNull(mainActivity);
+        onView(withId(R.id.nav_home)).perform(click());
+
+    }
+    @When("^I click on add service$")
+    public void isSelectAddService(){
         onView(withId(R.id.nav_add)).perform(click());
     }
 
-    @When("^I select category$")
+    @And("^I select category$")
     public void isSelectType(){
+        onView(withId(R.id.Spinner)).check(matches(isDisplayed()));
         onView(withId(R.id.Spinner)).perform(click());
         onData(allOf(is(instanceOf(String.class)), is("Plumber"))).perform(click());
     }

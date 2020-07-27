@@ -2,8 +2,9 @@ Feature: Add service to the system
 
   @add-feature
   Scenario Outline: User provide details in form
-    Given I am on add service screen
-    When I select category
+    Given I am on home screen
+    When I click on add service
+    And I select category
     And I enter description <description>
     And I enter starting time
     And I enter closing time

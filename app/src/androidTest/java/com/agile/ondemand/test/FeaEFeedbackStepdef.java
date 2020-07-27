@@ -12,6 +12,7 @@ import com.agile.ondemand.activity.RegisterActivity;
 
 import org.junit.Rule;
 
+import cucumber.api.CucumberOptions;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
@@ -32,13 +33,17 @@ import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.instanceOf;
 import static org.hamcrest.Matchers.is;
 
+
+@CucumberOptions(features = "features")
 public class FeaEFeedbackStepdef {
     @Rule
     private ActivityTestRule<MainActivity> feedbackTestRule = new ActivityTestRule<>(MainActivity.class);
+    private Activity mainActivity;
 
     @Before("@review-feature")
     public void setup() {
         feedbackTestRule.launchActivity(new Intent());
+        mainActivity = feedbackTestRule.getActivity();
     }
 
     @After("@review-feature")
@@ -48,15 +53,16 @@ public class FeaEFeedbackStepdef {
 
     @Given("^I am in hire service screen$")
     public void iAmOnTheHireServiceDashboard(){
+        assertNotNull(mainActivity);
         onView(withId(R.id.nav_home)).perform(click());
     }
 
-    @When("^I select a service card")
+    @When("^I select a service card$")
     public void isSelectCard() {
         onView(withId(R.id.cardPlumber)).perform(click());
     }
 
-    @And("^I click on feedback button")
+    @And("^I click on feedback button$")
     public void isClickHireButton() {
         onView(withId(R.id.feedbackBtn)).perform(click());
     }

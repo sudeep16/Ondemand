@@ -10,6 +10,7 @@ import com.agile.ondemand.activity.LoginActivity;
 
 import org.junit.Rule;
 
+import cucumber.api.CucumberOptions;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Then;
@@ -27,6 +28,8 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static junit.framework.TestCase.assertNotNull;
 
+
+@CucumberOptions(features = "features")
 public class FeaBSigninStepdef {
 
     @Rule

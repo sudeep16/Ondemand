@@ -1,5 +1,6 @@
 package com.agile.ondemand.test;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
@@ -11,6 +12,7 @@ import com.agile.ondemand.activity.MainActivity;
 import org.hamcrest.Matchers;
 import org.junit.Rule;
 
+import cucumber.api.CucumberOptions;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
@@ -28,17 +30,22 @@ import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
+import static junit.framework.TestCase.assertNotNull;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.instanceOf;
 import static org.hamcrest.Matchers.is;
 
+
+@CucumberOptions(features = "features")
 public class FeaDHireStepdef {
     @Rule
     private ActivityTestRule<MainActivity> hireTestRule = new ActivityTestRule<>(MainActivity.class);
+    private Activity mainActivity;
 
     @Before("@hire-feature")
     public void setup() {
         hireTestRule.launchActivity(new Intent());
+        mainActivity = hireTestRule.getActivity();
     }
 
     @After("@hire-feature")
@@ -48,15 +55,16 @@ public class FeaDHireStepdef {
 
     @Given("^I am on hire service screen$")
     public void iAmOnTheHireServiceDashboard() {
+        assertNotNull(mainActivity);
         onView(withId(R.id.nav_home)).perform(click());
     }
 
-    @When("^I select a card")
+    @When("^I select a card$")
     public void isSelectCard() {
         onView(withId(R.id.cardPlumber)).perform(click());
     }
 
-    @And("^I click on hire button")
+    @And("^I click on hire button$")
     public void isClickHireButton() {
         onView(withId(R.id.btnHire)).perform(click());
     }

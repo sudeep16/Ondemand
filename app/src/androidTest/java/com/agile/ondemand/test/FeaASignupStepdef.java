@@ -79,11 +79,13 @@ public class FeaASignupStepdef {
     @cucumber.api.java.en.And("^I input a phone (\\S+)$")
     public void iInputPhone(String phone) {
         onView(withId(R.id.etPhone)).perform(typeText(phone));
+        closeSoftKeyboard();
     }
 
     @cucumber.api.java.en.And("^I input a gender (\\S+)$")
     public void iInputGender(String gender) {
         onView(withId(R.id.rbMale)).perform(click());
+        closeSoftKeyboard();
     }
 
     @cucumber.api.java.en.And("^I input a password (\\S+)$")

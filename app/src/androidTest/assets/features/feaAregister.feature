@@ -15,8 +15,8 @@ Feature: registering into the system
     Then I should receive field required message
 
     Examples:
-      | lastName | address | username | email         | phone  | gender | password | confirmPassword |
-      | test     | ktm     | bddd1234 | bdd@gamil.com | 892387 | Male   | P@ssw0rd | P@ssw0rd        |
+      | lastName | address | username | email         | phone      | gender | password | confirmPassword |
+      | test     | ktm     | bddd1234 | bdd@gamil.com | 9841762354 | Male   | P@ssw0rd | P@ssw0rd        |
 
   @register-feature
   Scenario Outline: register with invalid email
@@ -34,8 +34,8 @@ Feature: registering into the system
     Then I should receive invalid email message
 
     Examples:
-      | firstName | lastName | address | username | email | phone  | gender | password | confirmPassword |
-      | Bddtest   | test     | ktm     | bddd1234 | bdd   | 892387 | Male   | P@ssw0rd | P@ssw0rd        |
+      | firstName | lastName | address | username | email | phone      | gender | password | confirmPassword |
+      | Bddtest   | test     | ktm     | bddd1234 | bdd   | 9841762354 | Male   | P@ssw0rd | P@ssw0rd        |
 
   @register-feature
   Scenario Outline: register with invalid password
@@ -53,8 +53,8 @@ Feature: registering into the system
     Then I should receive invalid password message
 
     Examples:
-      | firstName | lastName | address | username | email         | phone  | gender | password | confirmPassword |
-      | Bddtest   | test     | ktm     | bddd1234 | bdd@gmail.com | 892387 | Male   | abc      | abc             |
+      | firstName | lastName | address | username | email         | phone      | gender | password | confirmPassword |
+      | Bddtest   | test     | ktm     | bddd1234 | bdd@gmail.com | 9841762354 | Male   | abc      | abc             |
 
   @register-feature
   Scenario Outline: register with valid data
@@ -72,5 +72,5 @@ Feature: registering into the system
     Then I should redirect to login
 
     Examples:
-      | firstName | lastName | address | username | email         | phone  | gender | password | confirmPassword |
-      | Bddtest   | test     | ktm     | bddd1234 | bdd@gamil.com | 892387 | Male   | P@ssw0rd | P@ssw0rd        |
+      | firstName | lastName | address | username | email         | phone      | gender | password | confirmPassword |
+      | Bddtest   | test     | ktm     | bddd1234 | bdd@gamil.com | 9841762354 | Male   | P@ssw0rd | P@ssw0rd        |
