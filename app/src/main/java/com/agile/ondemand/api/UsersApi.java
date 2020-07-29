@@ -111,6 +111,12 @@ public interface UsersApi {
                                                 @Path("firstletter") String firstletter);
 
 
+    /**
+     * get user's post
+     */
+    @GET("serviceAds/mypost/services")
+    Call<List<ServiceAds>> getUserPost(@Header("Authorization") String token);
+
 //    @GET("wishlist")
 //    Call<WishlistResponse> getWishList(@Header("Authorization") String token);
 }

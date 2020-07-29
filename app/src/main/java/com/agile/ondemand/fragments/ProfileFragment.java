@@ -35,10 +35,8 @@ public class ProfileFragment extends Fragment {
     private EditText etPFirstName, etPLastName, etPAddresss, etPUsername, etPEmail, etPhone;
     private TextView etPId, tvPendingJob, tvReward, tvPFirstName1;
 
-    private Button btnLogout, btnUpdate, btnPDelete, btnPjob, btnReward;
+    private Button btnLogout, btnUpdate, btnPDelete, btnPjob, btnReward, btnMyPost;
     private ImageView profile_image_gp;
-
-
 
     @Nullable
     @Override
@@ -61,6 +59,7 @@ public class ProfileFragment extends Fragment {
         btnUpdate = view.findViewById(R.id.btnPUpdate);
         btnPDelete = view.findViewById(R.id.btnPDelete);
         btnPjob = view.findViewById(R.id.btnPjob);
+        btnMyPost = view.findViewById(R.id.btnMyPost);
         btnReward = view.findViewById(R.id.btnReward);
 
         profile_image_gp = view.findViewById(R.id.profile_image_gp);
@@ -92,6 +91,13 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new PendingjobFragment()).commit();
+            }
+        });
+
+        btnMyPost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new MyPostFragment()).commit();
             }
         });
 
