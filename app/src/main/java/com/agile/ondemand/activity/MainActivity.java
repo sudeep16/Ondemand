@@ -51,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setBackgroundColor(Color.parseColor("#000000"));
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
         searchView = findViewById(R.id.searchView);

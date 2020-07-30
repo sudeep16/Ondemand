@@ -47,6 +47,7 @@ android:background="@drawable/sky1"
                 android:drawableLeft="@drawable/person_24"
                 android:layout_height="wrap_content"
                 android:inputType="text"
+                android:drawableTint="@color/white"
                 android:textColor="@color/white"
                />
         </com.google.android.material.textfield.TextInputLayout>
@@ -64,6 +65,7 @@ android:background="@drawable/sky1"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
             app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/white"
             >
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etLoginPassword"

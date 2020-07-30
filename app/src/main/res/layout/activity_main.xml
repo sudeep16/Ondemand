@@ -11,6 +11,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
+    
         >
         <Button
             android:id="@+id/btnSearch"
@@ -19,7 +20,8 @@
             android:layout_height="wrap_content"
             android:background="@color/colorAccent"
             android:textSize="10dp"
-            android:text="Search"/>
+            android:text="Search"
+            />
 
     </androidx.appcompat.widget.Toolbar>
 
