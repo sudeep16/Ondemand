@@ -53,7 +53,6 @@ public class MyPostFragment extends Fragment {
                     Toast.makeText(getActivity(), "Code " + response.code(), Toast.LENGTH_SHORT).show();
                     return;
                 }
-
                 List<ServiceAds> serviceAds = response.body();
                 UserPostAdapter userPostAdapter = new UserPostAdapter(getActivity(), serviceAds);
                 myPostRecycler.setAdapter(userPostAdapter);
