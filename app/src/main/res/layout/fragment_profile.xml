@@ -113,6 +113,7 @@
                     android:background="@drawable/roundbtn"
                     android:gravity="center"
                     android:padding="10dp"
+                    android:textColor="@color/white"
                     android:text="Pending Jobs" />
 
 
@@ -159,6 +160,7 @@
                     android:background="@drawable/roundbtn"
                     android:gravity="center"
                     android:padding="10dp"
+                    android:textColor="@color/white"
                     android:text="Reward points" />
 
             </RelativeLayout>
