@@ -20,7 +20,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Name : "
-                android:textColor="#ffffff" />
+                android:textColor="#000000" />
 
             <TextView
                 android:id="@+id/tvFirstName"
@@ -28,14 +28,14 @@
                 android:layout_height="wrap_content"
                 android:paddingRight="4dp"
                 android:text="firstname"
-                android:textColor="#ffffff" />
+                android:textColor="#000000" />
 
             <TextView
                 android:id="@+id/tvLastName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="lastname"
-                android:textColor="#ffffff" />
+                android:textColor="#000000" />
 
         </LinearLayout>
 
@@ -49,7 +49,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Username : "
-                android:textColor="#ffffff" />
+                android:textColor="#000000" />
 
             <TextView
                 android:id="@+id/tvUsername"
@@ -57,20 +57,20 @@
                 android:layout_height="wrap_content"
                 android:paddingRight="15dp"
                 android:text="username"
-                android:textColor="#ffffff" />
+                android:textColor="#000000" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Address : "
-                android:textColor="#ffffff" />
+                android:textColor="#000000" />
 
             <TextView
                 android:id="@+id/tvAddress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="address"
-                android:textColor="#ffffff" />
+                android:textColor="#000000" />
 
         </LinearLayout>
 
@@ -84,27 +84,27 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Email/Phone : "
-                android:textColor="#ffffff" />
+                android:textColor="#000000" />
 
             <TextView
                 android:id="@+id/tvEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Email"
-                android:textColor="#ffffff" />
+                android:textColor="#000000" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="/"
-                android:textColor="#ffffff" />
+                android:textColor="#000000" />
 
             <TextView
                 android:id="@+id/tvNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="number"
-                android:textColor="#ffffff" />
+                android:textColor="#000000" />
 
         </LinearLayout>
 
@@ -113,13 +113,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="View Profile"
-            android:textColor="#ffffff" />
+            android:textColor="#000000" />
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#ffffff" />
+        android:background="#000000" />
 
 
 </LinearLayout>

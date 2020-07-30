@@ -52,7 +52,6 @@ public class UserPostAdapter extends RecyclerView.Adapter<UserPostAdapter.UserPo
         holder.btnmenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 PopupMenu popupMenu = new PopupMenu(context, holder.btnmenu);
                 popupMenu.inflate(R.menu.edit_menu);
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
