@@ -20,7 +20,6 @@
         android:layout_height="wrap_content"
         android:textSize="50sp"
         android:gravity="center"
-        android:textColor="#ffffff"
         android:text="About us"/>
     <TextView
         android:id="@+id/about"
@@ -28,7 +27,6 @@
         android:layout_height="wrap_content"
         android:textSize="15sp"
         android:textAlignment="center"
-        android:textColor="#ffffff"
         android:text="about"
         android:gravity="center_horizontal" />
 </LinearLayout>

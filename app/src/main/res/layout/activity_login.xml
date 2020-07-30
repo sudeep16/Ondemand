@@ -32,12 +32,12 @@ android:background="@drawable/sky1"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
-
             android:gravity="center"
             android:hint="Username"
             android:inputType="text"
-            android:textColor="#000000"
-            android:textSize="20sp">
+            android:textSize="20sp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF">
 
 
 
@@ -46,26 +46,26 @@ android:background="@drawable/sky1"
                 android:layout_width="match_parent"
                 android:drawableLeft="@drawable/person_24"
                 android:layout_height="wrap_content"
-                android:inputType="text"/>
+                android:inputType="text"
+               />
         </com.google.android.material.textfield.TextInputLayout>
 
 
 
         <com.google.android.material.textfield.TextInputLayout
-
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:gravity="center"
             android:hint="Password"
             android:inputType="textPassword"
-            android:textColor="#000000"
             android:textSize="20sp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
             app:passwordToggleEnabled="true"
             >
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etLoginPassword"
-
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"/>

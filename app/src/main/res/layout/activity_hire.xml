@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:text="Choose Payment Method :"
             android:textSize="20sp"
-            android:textColor="@color/white"/>
+            />
 
         <Spinner
             android:id="@+id/Spinner1"
@@ -45,14 +45,14 @@
             android:layout_height="wrap_content"
             android:text="Location :"
             android:textSize="20sp"
-            android:textColor="@color/white"/>
+            />
 
         <EditText
             android:id="@+id/etLocation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="your location"
-            android:textColor="@color/white"/>
+            />
 
     </LinearLayout>
 
@@ -65,7 +65,7 @@
             android:layout_height="wrap_content"
             android:text="Day/Date : "
             android:textSize="20sp"
-            android:textColor="@color/white"/>
+            />
 
         <TextView
             android:id="@+id/tvDatePicker"
@@ -74,7 +74,7 @@
             android:textSize="20sp"
             android:padding="5dp"
             android:drawableLeft="@drawable/date"
-            android:textColor="@color/white"/>
+            />
 
     </LinearLayout>
 
@@ -87,7 +87,7 @@
             android:layout_height="wrap_content"
             android:text="Time : "
             android:textSize="20sp"
-            android:textColor="@color/white"/>
+            />
 
         <TextView
             android:id="@+id/tvHireTime"

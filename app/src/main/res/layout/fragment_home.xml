@@ -25,7 +25,6 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/carousel"
         android:orientation="vertical"
-        android:background="@color/cardview_light_background"
         android:weightSum="10">
 
         <!--        <RelativeLayout-->
@@ -70,7 +69,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                   
                     android:background="@drawable/cardbg"
                     android:orientation="vertical">
 

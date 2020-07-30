@@ -28,8 +28,8 @@
             android:gravity="center"
             android:hint="First Name"
             android:inputType="text"
-            android:textColor="#000000"
-            android:textColorHint="#D9FFFFFF" >
+            android:textColor="@color/white"
+            android:textColorHint="@color/white" >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etFirstName"
@@ -46,13 +46,12 @@
             android:gravity="center"
             android:hint="Last Name"
             android:inputType="text"
-            android:textColor="#000000"
-            android:textColorHint="#D9FFFFFF" >
+            android:textColor="@color/white"
+            android:textColorHint="@color/white" >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etLastName"
                 android:layout_width="match_parent"
-
                 android:layout_height="wrap_content"
                 android:inputType="text"/>
         </com.google.android.material.textfield.TextInputLayout>
@@ -62,14 +61,11 @@
 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-          
-        
             android:gravity="center"
             android:hint="Address"
             android:inputType="text"
-           
-            android:textColor="#000000"
-            android:textColorHint="#D9FFFFFF" >
+         android:textColor="@color/white"
+            android:textColorHint="@color/white" >
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etAddress"
                 android:layout_width="match_parent"
@@ -79,17 +75,13 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
-
-
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-          
             android:gravity="center"
             android:hint="Username"
             android:inputType="text"
-           
-            android:textColor="#000000"
-            android:textColorHint="#D9FFFFFF" >
+            android:textColor="@color/white"
+            android:textColorHint="@color/white" >
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etUsername"
                 android:layout_width="match_parent"
@@ -99,17 +91,13 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
-
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-          
-        
             android:gravity="center"
             android:hint="E-mail"
             android:inputType="textEmailAddress"
-           
-            android:textColor="#000000"
-            android:textColorHint="#D9FFFFFF" >
+            android:textColor="@color/white"
+            android:textColorHint="@color/white" >
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etEmail"
                 android:layout_width="match_parent"
@@ -122,14 +110,11 @@
 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-          
-        
             android:gravity="center"
             android:hint="Phone"
             android:inputType="number"
-           
-            android:textColor="#000000"
-            android:textColorHint="#D9FFFFFF" >
+            android:textColor="@color/white"
+            android:textColorHint="@color/white" >
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etPhone"
                 android:layout_width="match_parent"
@@ -166,12 +151,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
+                    android:textColor="@color/white"
                     android:text="Male" />
 
                 <RadioButton
                     android:id="@+id/rbFemale"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/white"
                     android:text="Female" />
             </RadioGroup>
         </LinearLayout>
@@ -183,10 +170,10 @@
             android:gravity="center"
             android:hint="Password"
             android:inputType="textPassword"
-           
-            android:textColor="#000000"
             app:passwordToggleEnabled="true"
-            android:textColorHint="#D9FFFFFF" >
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+             >
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etPassword"
                 android:layout_width="match_parent"
@@ -203,8 +190,8 @@
             android:hint="Confirm Password"
             android:inputType="textPassword"
            app:passwordToggleEnabled="true"
-            android:textColor="#000000"
-            android:textColorHint="#D9FFFFFF" >
+            android:textColor="@color/white"
+            android:textColorHint="@color/white" >
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etConfirmPassword"
                 android:layout_width="match_parent"
