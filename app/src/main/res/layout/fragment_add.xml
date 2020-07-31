@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F0E1E1"
     android:gravity="center"
     android:padding="20dp"
     tools:context=".fragments.HomeFragment">
-
 
 
     <androidx.cardview.widget.CardView
@@ -15,16 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
         app:cardCornerRadius="15dp"
-        app:cardElevation="20dp"
-     >
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="Post Your Service"
-            android:textSize="36sp"
-            android:textStyle="bold" />
+        app:cardElevation="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -34,11 +25,21 @@
             android:orientation="vertical"
             android:padding="10dp">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="serif-monospace"
+                android:text="Post Your Service"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:layout_marginBottom="2dp"
+                android:textStyle="bold" />
+
             <Spinner
                 android:id="@+id/Spinner"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
-                android:layout_margin="20dp"
                 android:gravity="center"
                 android:text="add fragment" />
 
@@ -58,6 +59,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Availability : "
+                android:textColor="@color/black"
                 android:textSize="20sp" />
 
             <LinearLayout
@@ -73,6 +75,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/Availability"
                     android:text="Time : "
+                    android:textColor="@color/black"
                     android:textSize="20sp" />
 
                 <TextView
@@ -94,8 +97,8 @@
                     android:layout_below="@id/Availability"
                     android:layout_marginLeft="5dp"
                     android:layout_toRightOf="@id/time1"
-
                     android:text="To : "
+                    android:textColor="@color/black"
                     android:textSize="20sp" />
 
                 <TextView
@@ -121,6 +124,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Days : "
+                    android:textColor="@color/black"
                     android:textSize="20sp" />
 
                 <EditText
@@ -161,6 +165,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Price per hour : $"
+                    android:textColor="@color/black"
                     android:textSize="20sp" />
 
                 <EditText
