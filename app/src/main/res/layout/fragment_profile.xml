@@ -102,6 +102,7 @@
                     android:layout_marginBottom="4dp"
                     android:includeFontPadding="false"
                     android:textColor="@color/black"
+                    android:text="0"
                     android:textSize="30sp" />
 
                 <Button
@@ -149,6 +150,7 @@
                     android:layout_marginBottom="4dp"
                     android:includeFontPadding="false"
                     android:textColor="@color/black"
+                    android:text="0"
                     android:textSize="30sp" />
 
                 <Button
