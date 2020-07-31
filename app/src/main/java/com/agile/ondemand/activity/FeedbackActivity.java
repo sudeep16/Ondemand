@@ -52,6 +52,8 @@ public class FeedbackActivity extends AppCompatActivity {
                     etFeedback.setText("");
                     rateBar.setRating(0);
                     Toast.makeText(FeedbackActivity.this, "Thank you for sharing your feedback", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(FeedbackActivity.this, MainActivity.class);
+                    startActivity(intent);
                 }
             }
         });
