@@ -35,7 +35,7 @@ public class ProfileFragment extends Fragment {
     private EditText etPFirstName, etPLastName, etPAddresss, etPUsername, etPEmail, etPhone;
     private TextView etPId, tvPendingJob, tvReward, tvPFirstName1;
 
-    private Button btnLogout, btnUpdate, btnPDelete, btnPjob, btnReward, btnMyPost;
+    private Button btnLogout, btnUpdate, btnPDelete, btnPjob, btnMyPost, btnmyFeedback;
     private ImageView profile_image_gp;
 
     @Nullable
@@ -60,7 +60,7 @@ public class ProfileFragment extends Fragment {
         btnPDelete = view.findViewById(R.id.btnPDelete);
         btnPjob = view.findViewById(R.id.btnPjob);
         btnMyPost = view.findViewById(R.id.btnMyPost);
-        btnReward = view.findViewById(R.id.btnReward);
+        btnmyFeedback = view.findViewById(R.id.btnmyFeedback);
 
         profile_image_gp = view.findViewById(R.id.profile_image_gp);
 
@@ -90,14 +90,21 @@ public class ProfileFragment extends Fragment {
         btnPjob.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new PendingjobFragment()).commit();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new PendingjobFragment()).addToBackStack(null).commit();
             }
         });
 
         btnMyPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new MyPostFragment()).commit();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new MyPostFragment()).addToBackStack(null).commit();
+            }
+        });
+
+        btnmyFeedback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new FeedbackFragment()).addToBackStack(null).commit();
             }
         });
 

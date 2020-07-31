@@ -152,7 +152,7 @@
                     android:textSize="20sp" />
 
                 <Button
-                    android:id="@+id/btnReward"
+                    android:id="@+id/btnmyFeedback"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tvReward"
@@ -161,7 +161,7 @@
                     android:gravity="center"
                     android:padding="10dp"
                     android:textColor="@color/white"
-                    android:text="Reward points" />
+                    android:text="My Feedbacks" />
 
             </RelativeLayout>
         </androidx.cardview.widget.CardView>

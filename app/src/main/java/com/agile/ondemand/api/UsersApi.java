@@ -5,7 +5,6 @@ import com.agile.ondemand.model.ServiceAds;
 import com.agile.ondemand.model.User;
 import com.agile.ondemand.model.UserUpdate;
 import com.agile.ondemand.model.WishList;
-import com.agile.ondemand.serverresponse.GetResponse;
 import com.agile.ondemand.serverresponse.SignUpResponse;
 
 import java.util.List;
@@ -110,10 +109,6 @@ public interface UsersApi {
     @GET("users/profile/{firstletter}")
     Call<List<UserUpdate>> getUserByFirstLetter(@Header("Authorization") String token,
                                                 @Path("firstletter") String firstletter);
-
-    //    get all the default expense categories
-//    @GET("wishlist")
-//    Call<GetResponse> wishlists();
 
 
     /**
