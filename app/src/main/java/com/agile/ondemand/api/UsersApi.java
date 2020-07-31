@@ -5,6 +5,7 @@ import com.agile.ondemand.model.ServiceAds;
 import com.agile.ondemand.model.User;
 import com.agile.ondemand.model.UserUpdate;
 import com.agile.ondemand.model.WishList;
+import com.agile.ondemand.model.feedback;
 import com.agile.ondemand.serverresponse.SignUpResponse;
 
 import java.util.List;
@@ -116,6 +117,12 @@ public interface UsersApi {
      */
     @GET("serviceAds/mypost/services")
     Call<List<ServiceAds>> getUserPost(@Header("Authorization") String token);
+
+    /**
+     * get feedback
+     */
+    @GET("feedbacks/myfeedbacks")
+    Call<List<feedback>> getUserFeedback(@Header("Authorization") String token);
 
 //    @GET("wishlist")
 //    Call<WishlistResponse> getWishList(@Header("Authorization") String token);
