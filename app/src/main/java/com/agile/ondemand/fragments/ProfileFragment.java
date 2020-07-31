@@ -63,6 +63,7 @@ public class ProfileFragment extends Fragment {
         btnmyFeedback = view.findViewById(R.id.btnmyFeedback);
 
         profile_image_gp = view.findViewById(R.id.profile_image_gp);
+        pendingJobCount();
 
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -216,6 +217,24 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
                 Toast.makeText(getContext(), "Error " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void pendingJobCount(){
+        UsersApi usersApi = Url.getInstance().create(UsersApi.class);
+        Call<Integer> pendingJobCountCall = usersApi.getPendingJobCount(Url.token);
+        pendingJobCountCall.enqueue(new Callback<Integer>() {
+            @Override
+            public void onResponse(Call<Integer> call, Response<Integer> response) {
+                int count = response.body();
+                String countString = Integer.toString(count);
+                tvPendingJob.setText(countString);
+            }
+
+            @Override
+            public void onFailure(Call<Integer> call, Throwable t) {
+
             }
         });
     }

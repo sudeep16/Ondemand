@@ -99,10 +99,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
+                    android:layout_marginBottom="4dp"
                     android:includeFontPadding="false"
-                    android:text="$123"
                     android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    android:textSize="30sp" />
 
                 <Button
                     android:id="@+id/btnPjob"
@@ -113,8 +113,8 @@
                     android:background="@drawable/roundbtn"
                     android:gravity="center"
                     android:padding="10dp"
-                    android:textColor="@color/white"
-                    android:text="Pending Jobs" />
+                    android:text="Pending Jobs"
+                    android:textColor="@color/white" />
 
 
             </RelativeLayout>
@@ -146,10 +146,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
+                    android:layout_marginBottom="4dp"
                     android:includeFontPadding="false"
-                    android:text="$123"
                     android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    android:textSize="30sp" />
 
                 <Button
                     android:id="@+id/btnmyFeedback"
@@ -160,8 +160,8 @@
                     android:background="@drawable/roundbtn"
                     android:gravity="center"
                     android:padding="10dp"
-                    android:textColor="@color/white"
-                    android:text="My Feedbacks" />
+                    android:text="My Feedbacks"
+                    android:textColor="@color/white" />
 
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
@@ -191,7 +191,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
-                    android:text="Nischal"
+                    android:text="First name"
                     android:textColor="@color/black" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -207,7 +207,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
-                    android:text="Shakya"
+                    android:text="Last name"
                     android:textColor="@color/black" />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
@@ -229,7 +229,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
-                    android:text="Nischal"
+                    android:text="Username"
                     android:textColor="@color/black" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -245,7 +245,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
-                    android:text="Patan"
+                    android:text="Address"
                     android:textColor="@color/black" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -269,7 +269,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textEmailAddress"
-                    android:text="nischal.shk@gmail.com"
+                    android:text="Email"
                     android:textColor="@color/black" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -285,7 +285,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="number"
-                    android:text="9860172363"
+                    android:text="Phone no"
                     android:textColor="@color/black"
 
                     />
