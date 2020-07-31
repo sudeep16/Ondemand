@@ -127,6 +127,10 @@ public interface UsersApi {
     @GET("feedbacks/myfeedbacks")
     Call<List<feedback>> getUserFeedback(@Header("Authorization") String token);
 
+    @GET("users/profileByUsername/{username}")
+    Call<List<UserUpdate>> ViewUser(@Header("Authorization") String token,
+                                    @Path("username") String username);
+
 //    @GET("wishlist")
 //    Call<WishlistResponse> getWishList(@Header("Authorization") String token);
 }
