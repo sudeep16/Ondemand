@@ -17,7 +17,7 @@
     </string-array>
 
     <string-array name="paymentMethod">
-        <item></item>
+        <item>Choose payment method </item>
         <item>Cash on Delivery</item>
         <item>VISA</item>
     </string-array>

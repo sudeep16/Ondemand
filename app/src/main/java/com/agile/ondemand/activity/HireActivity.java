@@ -8,7 +8,9 @@ import androidx.fragment.app.DialogFragment;
 import android.app.DatePickerDialog;
 import android.app.Notification;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -68,8 +70,10 @@ public class HireActivity extends AppCompatActivity implements DatePickerDialog.
         btnConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Hire();
-                DisplayNotification();
+                if (Validation()){
+                    Hire();
+                }
+
             }
         });
 
@@ -138,6 +142,10 @@ public class HireActivity extends AppCompatActivity implements DatePickerDialog.
                             Toast.LENGTH_SHORT).show();
                     return;
                 }
+                finish();
+                DisplayNotification();
+                Intent intent = new Intent(HireActivity.this, MainActivity.class);
+                startActivity(intent);
             }
 
             @Override
@@ -158,5 +166,17 @@ public class HireActivity extends AppCompatActivity implements DatePickerDialog.
 
         TextView textView = (TextView) findViewById(R.id.tvDatePicker);
         textView.setText(currentDate);
+    }
+
+    boolean Validation(){
+        boolean status = true;
+
+        if (spinner1.getSelectedItem().toString().trim().equals("Choose payment method")){
+            Toast.makeText(this, "chose a payment method", Toast.LENGTH_SHORT).show();
+        }
+       else if (TextUtils.isEmpty(etLocation.getText().toString().trim())){
+            etLocation.setError("Please type your location");
+        }
+       return status;
     }
 }
