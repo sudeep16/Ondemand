@@ -131,6 +131,10 @@ public interface UsersApi {
     Call<UserUpdate> ViewUser(@Header("Authorization") String token,
                               @Path("username") String username);
 
+    @GET("postById/{id}")
+    Call<List<ServiceAds>> getViewProfilePost(@Header("Authorization") String token,
+                                              @Path("id") String id);
+
 //    @GET("wishlist")
 //    Call<WishlistResponse> getWishList(@Header("Authorization") String token);
 }

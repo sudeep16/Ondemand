@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.agile.ondemand.R;
+import com.agile.ondemand.model.ServiceAds;
 import com.agile.ondemand.model.UserUpdate;
 
 import java.util.List;
@@ -17,11 +18,11 @@ import java.util.List;
 public class ViewProfileAdapter extends RecyclerView.Adapter<ViewProfileAdapter.ViewProfileHolder> {
 
     Context context;
-    List<UserUpdate> userUpdateList;
+    List<ServiceAds> serviceAdsList;
 
-    public ViewProfileAdapter(Context context, List<UserUpdate> userUpdateList) {
+    public ViewProfileAdapter(Context context, List<ServiceAds> serviceAdsList) {
         this.context = context;
-        this.userUpdateList = userUpdateList;
+        this.serviceAdsList = serviceAdsList;
     }
 
     @NonNull
@@ -34,34 +35,42 @@ public class ViewProfileAdapter extends RecyclerView.Adapter<ViewProfileAdapter.
     @Override
     public void onBindViewHolder(@NonNull ViewProfileHolder holder, int position) {
 
-        final UserUpdate userUpdate = userUpdateList.get(position);
-        holder.viewFirstName.setText(userUpdate.getFirstName());
-        holder.viewLastName.setText(userUpdate.getLastName());
-        holder.viewUsername.setText(userUpdate.getUsername());
-        holder.viewAddress.setText(userUpdate.getAddress());
-        holder.viewEmail.setText(userUpdate.getEmail());
-        holder.viewContact.setText(userUpdate.getPhone());
+        final ServiceAds serviceAds = serviceAdsList.get(position);
+        holder.postUsername.setText(serviceAds.getAdOwner().getUsername());
+        holder.postAddress.setText(serviceAds.getAdOwner().getAddress());
+        holder.postContact.setText(serviceAds.getAdOwner().getPhone());
+        holder.postDesc.setText(serviceAds.getDescription());
+        holder.postCategory.setText(serviceAds.getCategory());
+        holder.postTime1.setText(serviceAds.getOpeningTime());
+        holder.posTime2.setText(serviceAds.getClosingTime());
+        holder.postDayFrom.setText(serviceAds.getDaysFrom());
+        holder.postDayTo.setText(serviceAds.getDaysTo());
+
 
     }
 
     @Override
     public int getItemCount() {
-        return userUpdateList.size();
+        return serviceAdsList.size();
     }
 
     public class ViewProfileHolder extends RecyclerView.ViewHolder {
 
-        private TextView viewFirstName, viewLastName, viewAddress, viewUsername, viewEmail, viewContact;
+        private TextView postUsername, postAddress, postContact, postCategory, postDesc, postTime1, posTime2, postDayFrom, postDayTo, postPrice;
 
         public ViewProfileHolder(@NonNull View itemView) {
             super(itemView);
 
-            viewFirstName = itemView.findViewById(R.id.viewFirstName);
-            viewLastName = itemView.findViewById(R.id.viewLastName);
-            viewAddress = itemView.findViewById(R.id.viewAddress);
-            viewUsername = itemView.findViewById(R.id.viewUsername);
-            viewEmail = itemView.findViewById(R.id.viewEmail);
-            viewContact = itemView.findViewById(R.id.viewContact);
+            postUsername = itemView.findViewById(R.id.postUsername);
+            postAddress = itemView.findViewById(R.id.postAddress);
+            postContact = itemView.findViewById(R.id.postPhone);
+            postCategory = itemView.findViewById(R.id.postCategory);
+            postDesc = itemView.findViewById(R.id.postDesc);
+            postTime1 = itemView.findViewById(R.id.PostTime1);
+            posTime2 = itemView.findViewById(R.id.PostTime2);
+            postDayFrom = itemView.findViewById(R.id.PostDayFrom);
+            postDayTo = itemView.findViewById(R.id.PostDayTo);
+            postPrice = itemView.findViewById(R.id.PostPrice);
         }
     }
 }
