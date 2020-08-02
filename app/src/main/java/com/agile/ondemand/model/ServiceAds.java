@@ -1,7 +1,7 @@
 package com.agile.ondemand.model;
 
 public class ServiceAds {
-
+    private String _id;
     private String category;
     private String description;
     private String openingTime;
@@ -11,7 +11,8 @@ public class ServiceAds {
     private String price;
     private Owner adOwner;
 
-    public ServiceAds(String category, String description, String openingTime, String closingTime, String daysFrom, String daysTo, String price, Owner adOwner) {
+    public ServiceAds(String _id,String category, String description, String openingTime, String closingTime, String daysFrom, String daysTo, String price, Owner adOwner) {
+        this._id = _id;
         this.category = category;
         this.description = description;
         this.openingTime = openingTime;
@@ -20,6 +21,14 @@ public class ServiceAds {
         this.daysTo = daysTo;
         this.price = price;
         this.adOwner = adOwner;
+    }
+
+    public String getId() {
+        return _id;
+    }
+
+    public void setId(String id) {
+        this._id = id;
     }
 
     public String getCategory() {

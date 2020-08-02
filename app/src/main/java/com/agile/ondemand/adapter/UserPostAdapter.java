@@ -1,5 +1,6 @@
 package com.agile.ondemand.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -14,9 +15,15 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.agile.ondemand.R;
+import com.agile.ondemand.api.UsersApi;
 import com.agile.ondemand.model.ServiceAds;
+import com.agile.ondemand.url.Url;
 
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class UserPostAdapter extends RecyclerView.Adapter<UserPostAdapter.UserPostHolder> {
 
@@ -48,6 +55,8 @@ public class UserPostAdapter extends RecyclerView.Adapter<UserPostAdapter.UserPo
         holder.dayFrom.setText(serviceAds.getDaysFrom());
         holder.dayTo.setText(serviceAds.getDaysTo());
         holder.price.setText(serviceAds.getPrice());
+        holder.postid.setText(serviceAds.getId());
+
 
         holder.btnmenu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,7 +69,30 @@ public class UserPostAdapter extends RecyclerView.Adapter<UserPostAdapter.UserPo
 
                         switch (item.getItemId()) {
                             case R.id.itemDelete:
-                                Toast.makeText(context, "deleted", Toast.LENGTH_SHORT).show();
+
+                                UsersApi usersApi = Url.getInstance().create(UsersApi.class);
+                                Call<Void> deletePost = usersApi.deleteMyPost(Url.token, serviceAds.getId());
+
+                                deletePost.enqueue(new Callback<Void>() {
+                                    @Override
+                                    public void onResponse(Call<Void> call, Response<Void> response) {
+                                        if (!response.isSuccessful()){
+                                            Toast.makeText(context, "code"+ response.code(), Toast.LENGTH_SHORT).show();
+                                        return;
+                                        }
+//                                        ((Activity)context).finish();
+//
+//                                        ((Activity)context).getIntent();
+
+                                        Toast.makeText(context, "deleted", Toast.LENGTH_SHORT).show();
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<Void> call, Throwable t) {
+                                        Toast.makeText(context, "error"+ t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+
                                 break;
 
                             case R.id.itemEdit:
@@ -83,7 +115,7 @@ public class UserPostAdapter extends RecyclerView.Adapter<UserPostAdapter.UserPo
 
     public class UserPostHolder extends RecyclerView.ViewHolder {
 
-        private TextView name, category, address, description, time1, time2, dayFrom, dayTo, price,
+        private TextView name, category, address, description, time1, time2, dayFrom, dayTo, price, postid,
                 btnmenu;
 
         public UserPostHolder(@NonNull View itemView) {
@@ -99,6 +131,7 @@ public class UserPostAdapter extends RecyclerView.Adapter<UserPostAdapter.UserPo
             dayTo = itemView.findViewById(R.id.tvPostDayTo);
             price = itemView.findViewById(R.id.tvPostPrice);
             btnmenu = itemView.findViewById(R.id.tvMenuPost);
+            postid = itemView.findViewById(R.id.postID);
         }
     }
 }

@@ -30,15 +30,13 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Name :"
-                     />
+                    android:text="Name :" />
 
                 <TextView
                     android:id="@+id/tvPostName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="NAME"
-                     />
+                    android:text="NAME" />
 
             </LinearLayout>
 
@@ -49,15 +47,13 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Category :"
-                     />
+                    android:text="Category :" />
 
                 <TextView
                     android:id="@+id/tvPostCategory"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Category"
-                     />
+                    android:text="Category" />
 
             </LinearLayout>
 
@@ -68,15 +64,13 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Address :"
-                     />
+                    android:text="Address :" />
 
                 <TextView
                     android:id="@+id/tvPostAddress"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="address"
-                     />
+                    android:text="address" />
 
             </LinearLayout>
 
@@ -88,15 +82,13 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Description :"
-                     />
+                    android:text="Description :" />
 
                 <TextView
                     android:id="@+id/tvPostDescription"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="description"
-                     />
+                    android:text="description" />
 
             </LinearLayout>
 
@@ -107,28 +99,24 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Availability Time :"
-                     />
+                    android:text="Availability Time :" />
 
                 <TextView
                     android:id="@+id/tvPostTime1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="time from"
-                     />
+                    android:text="time from" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="To"
-                     />
+                    android:text="To" />
 
                 <TextView
                     android:id="@+id/tvPostTime2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="time to"
-                     />
+                    android:text="time to" />
             </LinearLayout>
 
             <LinearLayout
@@ -138,28 +126,24 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Availability Days :"
-                     />
+                    android:text="Availability Days :" />
 
                 <TextView
                     android:id="@+id/tvPostDayFrom"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="day from"
-                     />
+                    android:text="day from" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="To"
-                     />
+                    android:text="To" />
 
                 <TextView
                     android:id="@+id/tvPostDayTo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="day to"
-                     />
+                    android:text="day to" />
             </LinearLayout>
 
             <LinearLayout
@@ -170,17 +154,22 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Price per hour $:"
-                     />
+                    android:text="Price per hour $:" />
 
                 <TextView
                     android:id="@+id/tvPostPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="price"
-                     />
+                    android:text="price" />
 
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/postID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="id"
+                android:visibility="gone" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

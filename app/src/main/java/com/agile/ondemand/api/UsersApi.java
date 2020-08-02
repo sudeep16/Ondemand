@@ -135,6 +135,9 @@ public interface UsersApi {
     Call<List<ServiceAds>> getViewProfilePost(@Header("Authorization") String token,
                                               @Path("id") String id);
 
+    @DELETE("serviceAds/deleteMyPost/{id}")
+    Call<Void> deleteMyPost(@Header("Authorization") String token,
+                            @Path("id") String id);
 //    @GET("wishlist")
 //    Call<WishlistResponse> getWishList(@Header("Authorization") String token);
 }
