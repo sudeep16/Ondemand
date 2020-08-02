@@ -27,7 +27,7 @@ public class ViewProfileFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_viewprofile, container, false);
+        View view = inflater.inflate(R.layout.getprofile_recycler, container, false);
 
         viewProfileRecycler = view.findViewById(R.id.viewprofileRecycler);
 
