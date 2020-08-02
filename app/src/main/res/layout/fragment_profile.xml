@@ -21,7 +21,8 @@
             android:layout_height="120dp"
             android:layout_centerVertical="true"
             tools:ignore="RedundantNamespace"
-            tools:src="@tools:sample/avatars[15]" />
+            android:background="@drawable/ic_ondemand_logo1"
+             />
 
 
         <TextView
