@@ -27,7 +27,7 @@ public class ViewProfileAdapter extends RecyclerView.Adapter<ViewProfileAdapter.
     @NonNull
     @Override
     public ViewProfileHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_viewprofile,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.getpost_recycler,parent,false);
         return new ViewProfileHolder(view);
     }
 
