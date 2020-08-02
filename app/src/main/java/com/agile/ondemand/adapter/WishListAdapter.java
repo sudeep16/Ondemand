@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -19,6 +20,7 @@ import com.agile.ondemand.fragments.ViewProfileFragment;
 import com.agile.ondemand.model.User;
 import com.agile.ondemand.model.WishList;
 
+import java.sql.RowId;
 import java.util.List;
 
 public class WishListAdapter extends RecyclerView.Adapter<WishListAdapter.WishListViewHolder> {
@@ -45,11 +47,13 @@ public class WishListAdapter extends RecyclerView.Adapter<WishListAdapter.WishLi
         holder.btnViewProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment fragment = new ViewProfileFragment();
+                AppCompatActivity appCompatActivity = (AppCompatActivity) v.getContext();
+                ViewProfileFragment viewProfileFragment = new ViewProfileFragment();
                 Bundle bundle = new Bundle();
                 bundle.putString("username",wishList.getUsername());
-                fragment.setArguments(bundle);
-
+                viewProfileFragment.setArguments(bundle);
+                appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, viewProfileFragment)
+                        .addToBackStack(null).commit();
             }
         });
     }
