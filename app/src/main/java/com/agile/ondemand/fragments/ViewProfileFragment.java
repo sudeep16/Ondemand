@@ -30,8 +30,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ViewProfileFragment extends Fragment {
-    private TextView viewFirstName, viewLastName, viewUsername, viewAddress, viewEmail, viewContact;
-    private String id;
+    private TextView viewFirstName, viewLastName, viewUsername, viewAddress, viewEmail, viewContact, viewId;
     private RecyclerView viewprofileRecycler;
 
 
@@ -47,14 +46,12 @@ public class ViewProfileFragment extends Fragment {
         viewContact = view.findViewById(R.id.viewContact);
         viewprofileRecycler = view.findViewById(R.id.viewprofileRecycler);
         viewUserProfile();
-        viewProfilePost();
         return view;
     }
 
     private void viewUserProfile() {
-        UsersApi usersApi = Url.getInstance().create(UsersApi.class);
+        final UsersApi usersApi = Url.getInstance().create(UsersApi.class);
         String username = getArguments().getString("username");
-        System.out.println(username);
         Call<UserUpdate> userUpdateCall = usersApi.ViewUser(Url.token, username);
         userUpdateCall.enqueue(new Callback<UserUpdate>() {
             @Override
@@ -65,7 +62,7 @@ public class ViewProfileFragment extends Fragment {
                 }
                 StrictModeClass.StrictMode();
                 try {
-                    id = response.body().get_id();
+                    String id = response.body().get_id();
                     String firstName = response.body().getFirstName();
                     String lastName = response.body().getLastName();
                     String username = response.body().getUsername();
@@ -78,6 +75,31 @@ public class ViewProfileFragment extends Fragment {
                     viewAddress.setText(address);
                     viewEmail.setText(email);
                     viewContact.setText(contact);
+                    StrictModeClass.StrictMode();
+                    try {
+                        UsersApi usersApi1 = Url.getInstance().create(UsersApi.class);
+                        Call<List<ServiceAds>> viewProfilePost = usersApi1.getViewProfilePost(Url.token, id);
+                        viewProfilePost.enqueue(new Callback<List<ServiceAds>>() {
+                            @Override
+                            public void onResponse(Call<List<ServiceAds>> call, Response<List<ServiceAds>> response) {
+                                if (!response.isSuccessful()) {
+                                    Toast.makeText(getActivity(), "code" + response.code(), Toast.LENGTH_SHORT).show();
+                                    return;
+                                }
+                                List<ServiceAds> serviceAds = response.body();
+                                ViewProfileAdapter viewProfileAdapter = new ViewProfileAdapter(getActivity(), serviceAds);
+                                viewprofileRecycler.setAdapter(viewProfileAdapter);
+                                viewprofileRecycler.setLayoutManager(new LinearLayoutManager(getActivity()));
+                            }
+
+                            @Override
+                            public void onFailure(Call<List<ServiceAds>> call, Throwable t) {
+                                Toast.makeText(getContext(), "Error " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -86,33 +108,7 @@ public class ViewProfileFragment extends Fragment {
             @Override
             public void onFailure(Call<UserUpdate> call, Throwable t) {
                 Toast.makeText(getContext(), "Error " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-                System.out.println("Error "+t.getLocalizedMessage());
-            }
-        });
-    }
-
-    private void viewProfilePost(){
-        StrictModeClass.StrictMode();
-        UsersApi usersApi = Url.getInstance().create(UsersApi.class);
-        Call<List<ServiceAds>> viewprofilePost = usersApi.getViewProfilePost(Url.token, id);
-
-        viewprofilePost.enqueue(new Callback<List<ServiceAds>>() {
-            @Override
-            public void onResponse(Call<List<ServiceAds>> call, Response<List<ServiceAds>> response) {
-                if (!response.isSuccessful()){
-                    Toast.makeText(getActivity(), "code" +response.code(), Toast.LENGTH_SHORT).show();
-                return;
-                }
-
-                List<ServiceAds> serviceAds = response.body();
-                ViewProfileAdapter viewProfileAdapter = new ViewProfileAdapter(getActivity(),serviceAds);
-                viewprofileRecycler.setAdapter(viewProfileAdapter);
-                viewprofileRecycler.setLayoutManager(new LinearLayoutManager(getActivity()));
-            }
-
-            @Override
-            public void onFailure(Call<List<ServiceAds>> call, Throwable t) {
-
+                System.out.println("Error " + t.getLocalizedMessage());
             }
         });
     }

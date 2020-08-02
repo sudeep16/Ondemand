@@ -131,7 +131,7 @@ public interface UsersApi {
     Call<UserUpdate> ViewUser(@Header("Authorization") String token,
                               @Path("username") String username);
 
-    @GET("postById/{id}")
+    @GET("serviceAds/postById/{id}")
     Call<List<ServiceAds>> getViewProfilePost(@Header("Authorization") String token,
                                               @Path("id") String id);
 
