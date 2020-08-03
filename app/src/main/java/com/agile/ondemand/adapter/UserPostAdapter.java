@@ -2,6 +2,7 @@ package com.agile.ondemand.adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -78,9 +79,9 @@ public class UserPostAdapter extends RecyclerView.Adapter<UserPostAdapter.UserPo
                                 deletePost.enqueue(new Callback<Void>() {
                                     @Override
                                     public void onResponse(Call<Void> call, Response<Void> response) {
-                                        if (!response.isSuccessful()){
-                                            Toast.makeText(context, "code"+ response.code(), Toast.LENGTH_SHORT).show();
-                                        return;
+                                        if (!response.isSuccessful()) {
+                                            Toast.makeText(context, "code" + response.code(), Toast.LENGTH_SHORT).show();
+                                            return;
                                         }
 //                                        ((Activity)context).finish();
 //
@@ -91,7 +92,7 @@ public class UserPostAdapter extends RecyclerView.Adapter<UserPostAdapter.UserPo
 
                                     @Override
                                     public void onFailure(Call<Void> call, Throwable t) {
-                                        Toast.makeText(context, "error"+ t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(context, "error" + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                                     }
                                 });
                                 break;
@@ -99,8 +100,11 @@ public class UserPostAdapter extends RecyclerView.Adapter<UserPostAdapter.UserPo
                             case R.id.itemEdit:
                                 AppCompatActivity appCompatActivity = (AppCompatActivity) v.getContext();
                                 PostEditFragment postEditFragment = new PostEditFragment();
-                                appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, postEditFragment).addToBackStack(null).commit();
-
+                                Bundle bundle = new Bundle();
+                                bundle.putString("id", serviceAds.getId());
+                                postEditFragment.setArguments(bundle);
+                                appCompatActivity.getSupportFragmentManager().beginTransaction().replace
+                                        (R.id.fragment_container, postEditFragment).addToBackStack(null).commit();
                                 break;
                         }
                         return false;

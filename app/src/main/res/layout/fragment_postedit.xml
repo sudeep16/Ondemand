@@ -36,12 +36,12 @@
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
-            <Spinner
+            <EditText
                 android:id="@+id/updateSpinner"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
                 android:gravity="center"
-                android:text="add fragment" />
+                android:text="Category" />
 
             <EditText
                 android:id="@+id/etUpdateDescription"

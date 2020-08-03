@@ -2,6 +2,7 @@ package com.agile.ondemand.api;
 
 import com.agile.ondemand.model.PendingJob;
 import com.agile.ondemand.model.ServiceAds;
+import com.agile.ondemand.model.ServiceAdsUpdate;
 import com.agile.ondemand.model.User;
 import com.agile.ondemand.model.UserUpdate;
 import com.agile.ondemand.model.WishList;
@@ -135,9 +136,16 @@ public interface UsersApi {
     Call<List<ServiceAds>> getViewProfilePost(@Header("Authorization") String token,
                                               @Path("id") String id);
 
-    @DELETE("serviceAds/deleteMyPost/{id}")
+    @DELETE("serviceAds/modifyMyPost/{id}")
     Call<Void> deleteMyPost(@Header("Authorization") String token,
                             @Path("id") String id);
-//    @GET("wishlist")
-//    Call<WishlistResponse> getWishList(@Header("Authorization") String token);
+
+    @GET("serviceAds/modifyMyPost/{id}")
+    Call<ServiceAdsUpdate> fetchDataToUpdateFragment(@Header("Authorization") String token,
+                                                     @Path("id") String id);
+
+    @PUT("serviceAds/modifyMyPost/{id}")
+    Call<Void> updateServiceAd(@Header("Authorization") String token,
+                               @Path("id") String id,
+                               @Body ServiceAdsUpdate serviceAdsUpdate);
 }

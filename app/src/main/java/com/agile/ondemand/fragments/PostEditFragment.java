@@ -11,32 +11,42 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.agile.ondemand.R;
+import com.agile.ondemand.api.UsersApi;
+import com.agile.ondemand.model.Owner;
+import com.agile.ondemand.model.ServiceAds;
+import com.agile.ondemand.model.ServiceAdsUpdate;
+import com.agile.ondemand.strictmode.StrictModeClass;
+import com.agile.ondemand.url.Url;
+import com.google.gson.JsonSyntaxException;
 
 import java.util.Calendar;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class PostEditFragment extends Fragment {
 
-    private Spinner updateSpinner;
     private TextView updateTime1, updateTime2;
-    private EditText etUpdateDaysFrom, etUpdateDaysTo, etUpdateDescription, etUpdatePrice;
+    private EditText etUpdateDaysFrom, etUpdateDaysTo, etUpdateDescription, etUpdatePrice, updateSpinner;
     private Button btnUpdate;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_postedit, container, false);
+        //        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.categories, android.R.layout.simple_spinner_item);
+//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        updateSpinner.setAdapter(adapter);
 
         updateSpinner = view.findViewById(R.id.updateSpinner);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.categories, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        updateSpinner.setAdapter(adapter);
-
         updateTime1 = view.findViewById(R.id.updateTime1);
         updateTime2 = view.findViewById(R.id.updateTime2);
         etUpdateDaysFrom = view.findViewById(R.id.etUpdateDaysFrom);
@@ -57,9 +67,86 @@ public class PostEditFragment extends Fragment {
                 loadTime1();
             }
         });
-
-
+        viewSelectedData();
+        btnUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                updateServiceAd();
+            }
+        });
         return view;
+    }
+
+    private void updateServiceAd() {
+        String id = getArguments().getString("id");
+        String category = updateSpinner.getText().toString().trim();
+        String description = etUpdateDescription.getText().toString().trim();
+        String openingTime = updateTime1.getText().toString().trim();
+        String closingTime = updateTime2.getText().toString().trim();
+        String daysFrom = etUpdateDaysFrom.getText().toString().trim();
+        String daysTo = etUpdateDaysTo.getText().toString().trim();
+        String price = etUpdatePrice.getText().toString().trim();
+
+        ServiceAdsUpdate serviceAdsUpdate = new ServiceAdsUpdate(id, category, description,
+                openingTime, closingTime, daysFrom, daysTo, price);
+        UsersApi usersApi = Url.getInstance().create(UsersApi.class);
+
+        Call<Void> voidCall = usersApi.updateServiceAd(Url.token, id, serviceAdsUpdate);
+        voidCall.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (!response.isSuccessful()) {
+                    Toast.makeText(getContext(), "Code " + response.code(), Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                Toast.makeText(getContext(), "Updated", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Toast.makeText(getContext(), "Error " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void viewSelectedData() {
+        UsersApi usersApi = Url.getInstance().create(UsersApi.class);
+        String id = getArguments().getString("id");
+        Call<ServiceAdsUpdate> serviceAdsCall = usersApi.fetchDataToUpdateFragment(Url.token, id);
+        serviceAdsCall.enqueue(new Callback<ServiceAdsUpdate>() {
+            @Override
+            public void onResponse(Call<ServiceAdsUpdate> call, Response<ServiceAdsUpdate> response) {
+                if (!response.isSuccessful()) {
+                    Toast.makeText(getContext(), "Code " + response.code(), Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                StrictModeClass.StrictMode();
+                try {
+                    String category = response.body().getCategory();
+                    String description = response.body().getDescription();
+                    String openingTime = response.body().getOpeningTime();
+                    String closingTime = response.body().getClosingTime();
+                    String daysFrom = response.body().getDaysFrom();
+                    String daysTo = response.body().getDaysTo();
+                    String price = response.body().getPrice();
+                    updateSpinner.setText(category);
+                    updateTime1.setText(openingTime);
+                    updateTime2.setText(closingTime);
+                    etUpdateDescription.setText(description);
+                    etUpdateDaysFrom.setText(daysFrom);
+                    etUpdateDaysTo.setText(daysTo);
+                    etUpdatePrice.setText(price);
+                } catch (IllegalStateException | JsonSyntaxException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ServiceAdsUpdate> call, Throwable t) {
+                Toast.makeText(getContext(), "Error " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                System.out.println("Error " + t.getLocalizedMessage());
+            }
+        });
     }
 
     private void loadTime() {

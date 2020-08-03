@@ -36,7 +36,6 @@ public class MyPostFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_mypost, container, false);
         myPostRecycler = view.findViewById(R.id.myPostRecycler);
-
         MyPost();
         return view;
     }
