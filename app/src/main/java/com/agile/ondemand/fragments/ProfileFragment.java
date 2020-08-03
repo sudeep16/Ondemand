@@ -64,6 +64,7 @@ public class ProfileFragment extends Fragment {
 
         profile_image_gp = view.findViewById(R.id.profile_image_gp);
         pendingJobCount();
+        feedbacksCount();
 
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -221,7 +222,7 @@ public class ProfileFragment extends Fragment {
         });
     }
 
-    private void pendingJobCount(){
+    private void pendingJobCount() {
         UsersApi usersApi = Url.getInstance().create(UsersApi.class);
         Call<Integer> pendingJobCountCall = usersApi.getPendingJobCount(Url.token);
         pendingJobCountCall.enqueue(new Callback<Integer>() {
@@ -230,6 +231,24 @@ public class ProfileFragment extends Fragment {
                 int count = response.body();
                 String countString = Integer.toString(count);
                 tvPendingJob.setText(countString);
+            }
+
+            @Override
+            public void onFailure(Call<Integer> call, Throwable t) {
+
+            }
+        });
+    }
+
+    private void feedbacksCount() {
+        UsersApi usersApi = Url.getInstance().create(UsersApi.class);
+        Call<Integer> feedbacksCountCall = usersApi.getTotalFeedbacksCount(Url.token);
+        feedbacksCountCall.enqueue(new Callback<Integer>() {
+            @Override
+            public void onResponse(Call<Integer> call, Response<Integer> response) {
+                int count = response.body();
+                String countString = Integer.toString(count);
+                tvReward.setText(countString);
             }
 
             @Override

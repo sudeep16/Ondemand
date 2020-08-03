@@ -111,6 +111,9 @@ public interface UsersApi {
     @GET("hiredList/pendingCount")
     Call<Integer> getPendingJobCount(@Header("Authorization") String token);
 
+    @GET("feedbacks/myTotalFeedbacksCount")
+    Call<Integer> getTotalFeedbacksCount(@Header("Authorization") String token);
+
     @GET("users/profile/{firstletter}")
     Call<List<UserUpdate>> getUserByFirstLetter(@Header("Authorization") String token,
                                                 @Path("firstletter") String firstletter);
