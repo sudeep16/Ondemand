@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-android:background="@drawable/sky1"
+    android:background="@drawable/sky1"
     android:orientation="vertical"
     tools:context=".activity.LoginActivity">
 
@@ -35,23 +35,20 @@ android:background="@drawable/sky1"
             android:gravity="center"
             android:hint="Username"
             android:inputType="text"
-            android:textSize="20sp"
             android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF">
-
-
+            android:textColorHint="#FFFFFF"
+            android:textSize="20sp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etLoginUsername"
                 android:layout_width="match_parent"
-                android:drawableLeft="@drawable/person_24"
                 android:layout_height="wrap_content"
-                android:inputType="text"
+                android:drawableLeft="@drawable/person_24"
+                android:drawablePadding="10dp"
                 android:drawableTint="@color/white"
-                android:textColor="@color/white"
-               />
+                android:inputType="text"
+                android:textColor="@color/white" />
         </com.google.android.material.textfield.TextInputLayout>
-
 
 
         <com.google.android.material.textfield.TextInputLayout
@@ -61,26 +58,29 @@ android:background="@drawable/sky1"
             android:gravity="center"
             android:hint="Password"
             android:inputType="textPassword"
-            android:textSize="20sp"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
+            android:textSize="20sp"
             app:passwordToggleEnabled="true"
-            app:passwordToggleTint="@color/white"
-            >
+            app:passwordToggleTint="@color/white">
+
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etLoginPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:inputType="textPassword"/>
+                android:drawableStart="@drawable/ic_baseline_lock_24"
+                android:drawableLeft="@drawable/ic_baseline_lock_24"
+                android:drawablePadding="10dp"
+                android:drawableTint="@color/white"
+                android:inputType="textPassword"
+                android:textColor="@color/white" />
         </com.google.android.material.textfield.TextInputLayout>
-
 
         <CheckBox
             android:id="@+id/checkBox"
-            android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginLeft="5dp"
             android:text="Remember me"
             android:textColor="@color/white" />
@@ -93,10 +93,9 @@ android:background="@drawable/sky1"
             android:background="@drawable/btnround"
             android:fontFamily="sans-serif-light"
             android:text="Login"
-            android:textColor="@color/white"
             android:textAllCaps="false"
-            android:textSize="30dp"
-            />
+            android:textColor="@color/white"
+            android:textSize="30dp" />
 
         <Button
             android:id="@+id/btnRegister"
