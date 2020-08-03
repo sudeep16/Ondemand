@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.agile.ondemand.R;
 import com.agile.ondemand.adapter.PendingJobAdapter;
@@ -30,14 +31,24 @@ import retrofit2.Response;
 public class MyPostFragment extends Fragment {
 
     private RecyclerView myPostRecycler;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_mypost, container, false);
         myPostRecycler = view.findViewById(R.id.myPostRecycler);
+        swipeRefreshLayout = view.findViewById(R.id.swipeRefresh);
 
         MyPost();
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                swipeRefreshLayout.setRefreshing(false);
+                MyPost();
+            }
+        });
         return view;
     }
 
