@@ -12,10 +12,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.agile.ondemand.R;
 import com.agile.ondemand.api.UsersApi;
+import com.agile.ondemand.fragments.PostEditFragment;
 import com.agile.ondemand.model.ServiceAds;
 import com.agile.ondemand.url.Url;
 
@@ -60,7 +62,7 @@ public class UserPostAdapter extends RecyclerView.Adapter<UserPostAdapter.UserPo
 
         holder.btnmenu.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
                 PopupMenu popupMenu = new PopupMenu(context, holder.btnmenu);
                 popupMenu.inflate(R.menu.edit_menu);
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
@@ -92,11 +94,13 @@ public class UserPostAdapter extends RecyclerView.Adapter<UserPostAdapter.UserPo
                                         Toast.makeText(context, "error"+ t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                                     }
                                 });
-
                                 break;
 
                             case R.id.itemEdit:
-                                Toast.makeText(context, "Edited", Toast.LENGTH_SHORT).show();
+                                AppCompatActivity appCompatActivity = (AppCompatActivity) v.getContext();
+                                PostEditFragment postEditFragment = new PostEditFragment();
+                                appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, postEditFragment).addToBackStack(null).commit();
+
                                 break;
                         }
                         return false;
