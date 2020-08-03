@@ -2,21 +2,24 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:id="@+id/Container"
+    android:background="#F0E1E1"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="15dp">
+        >
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="serif-monospace"
+            android:fontFamily="@font/carter_one"
             android:gravity="center"
+            android:textColor="@color/black"
             android:text="User Detail"
-            android:textSize="35dp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <LinearLayout
@@ -27,14 +30,22 @@
             android:orientation="horizontal">
 
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Full Name : "
+                android:textColor="@color/black"
+                android:textSize="20sp"/>
+
+            <TextView
                 android:id="@+id/viewFirstName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginRight="10dp"
                 android:gravity="center"
+                android:textColor="@color/black"
                 android:text="First Name"
-                android:textSize="25sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/viewLastName"
@@ -43,82 +54,136 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:text="Last Name"
-                android:textSize="25sp" />
+                android:textColor="@color/black"
+                android:textSize="20sp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
+            android:gravity="center"
             android:layout_height="wrap_content">
 
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Username : "
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                android:textSize="20sp"/>
+
+            <TextView
                 android:id="@+id/viewUsername"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:text="Username"
-                android:textSize="25sp" />
+                android:textColor="@color/black"
+                android:textSize="20sp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
             android:layout_height="wrap_content">
 
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Address : "
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textSize="20sp"/>
+
+            <TextView
                 android:id="@+id/viewAddress"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:text="Address"
-                android:textSize="25sp" />
+                android:textColor="@color/black"
+                android:textSize="20sp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
             android:layout_height="wrap_content">
 
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email/Phone : "
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                android:textSize="20dp"/>
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_height="wrap_content">
+            <TextView
                 android:id="@+id/viewEmail"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:text="Email"
-                android:textSize="25sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
+                android:textColor="@color/black"
+                android:textSize="20sp" />
             <TextView
-                android:id="@+id/viewContact"
-                android:layout_width="match_parent"
+
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
+                android:text="/"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+            <TextView
+                android:id="@+id/viewContact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="@color/black"
                 android:text="Contact"
-                android:textSize="25sp" />
+                android:textSize="20sp" />
+
         </LinearLayout>
+
     </LinearLayout>
 
     <Button
-        android:layout_width="250dp"
+        android:id="@+id/btnViewPost"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="8dp"
         android:background="@drawable/btnround"
         android:gravity="center"
+        android:textSize="18sp"
+        android:fontFamily="@font/carter_one"
         android:text="View Post" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/viewprofileRecycler"
         android:layout_width="match_parent"
+        android:visibility="gone"
         android:layout_height="wrap_content" />
 
 </LinearLayout>
