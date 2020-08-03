@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -24,6 +25,7 @@ public class PostEditFragment extends Fragment {
     private Spinner updateSpinner;
     private TextView updateTime1, updateTime2;
     private EditText etUpdateDaysFrom, etUpdateDaysTo, etUpdateDescription, etUpdatePrice;
+    private Button btnUpdate;
 
     @Nullable
     @Override
@@ -41,6 +43,7 @@ public class PostEditFragment extends Fragment {
         etUpdateDaysTo = view.findViewById(R.id.etUpdateDaysTo);
         etUpdateDescription = view.findViewById(R.id.etUpdateDescription);
         etUpdatePrice = view.findViewById(R.id.etUpdatePrice);
+        btnUpdate = view.findViewById(R.id.btnUpdate);
 
         updateTime1.setOnClickListener(new View.OnClickListener() {
             @Override
