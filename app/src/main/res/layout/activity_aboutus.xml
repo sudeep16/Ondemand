@@ -5,9 +5,31 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:layout_margin="10dp"
     tools:context=".activity.AboutusActivity">
 
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/AboutusToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#3F51B5"
+        >
+        <Button
+            android:id="@+id/btnBackArrow1"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:background="@drawable/back_arrow"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingLeft="109dp"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:textColor="#ffffff"
+            android:text="About Us"/>
+    </androidx.appcompat.widget.Toolbar>
 
     <View
         android:id="@+id/view2"
@@ -20,6 +42,7 @@
         android:layout_height="wrap_content"
         android:textSize="50sp"
         android:gravity="center"
+        android:textColor="@color/black"
         android:text="About us"/>
     <TextView
         android:id="@+id/about"
@@ -28,5 +51,6 @@
         android:textSize="15sp"
         android:textAlignment="center"
         android:text="about"
+        android:textColor="@color/black"
         android:gravity="center_horizontal" />
 </LinearLayout>
