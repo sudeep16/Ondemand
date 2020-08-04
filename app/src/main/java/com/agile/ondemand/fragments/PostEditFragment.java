@@ -75,6 +75,7 @@ public class PostEditFragment extends Fragment {
             }
         });
         return view;
+        //Push check
     }
 
     private void updateServiceAd() {
