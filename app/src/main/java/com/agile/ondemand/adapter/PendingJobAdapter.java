@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,11 +14,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.agile.ondemand.R;
 import com.agile.ondemand.api.UsersApi;
 import com.agile.ondemand.model.PendingJob;
+import com.agile.ondemand.strictmode.StrictModeClass;
 import com.agile.ondemand.url.Url;
 
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class PendingJobAdapter extends RecyclerView.Adapter<PendingJobAdapter.PendingJobHolder> {
 
@@ -51,6 +55,22 @@ public class PendingJobAdapter extends RecyclerView.Adapter<PendingJobAdapter.Pe
                 UsersApi usersApi = Url.getInstance().create(UsersApi.class);
                 Call<Void> pendingVoidCall  = usersApi.pendingJobApproval(Url.token, pendingJob.getHiredBy().getUsername());
 
+                pendingVoidCall.enqueue(new Callback<Void>() {
+                    @Override
+                    public void onResponse(Call<Void> call, Response<Void> response) {
+                        if (!response.isSuccessful()){
+                            Toast.makeText(context, "code " + response.code(), Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<Void> call, Throwable t) {
+
+                    }
+                });
+
             }
         });
     }
@@ -73,7 +93,7 @@ public class PendingJobAdapter extends RecyclerView.Adapter<PendingJobAdapter.Pe
             time = itemView.findViewById(R.id.tvChosenTime);
             paymentMethod = itemView.findViewById(R.id.tvChosenPayment);
             btnAccept = itemView.findViewById(R.id.btnAccept);
-            btnDecline = itemView.findViewById(R.id.btnDecline);
+//            btnDecline = itemView.findViewById(R.id.btnDecline);
 
         }
     }
