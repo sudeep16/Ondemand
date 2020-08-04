@@ -18,6 +18,8 @@ import retrofit2.Call;
 
 public class NotificationResponseAdapter extends RecyclerView.Adapter<NotificationResponseAdapter.NotificationResponseViewHolder> {
 
+    private boolean accept;
+
     Context context;
     List<Notification> notificationCall;
 
@@ -38,7 +40,12 @@ public class NotificationResponseAdapter extends RecyclerView.Adapter<Notificati
         final Notification notification = notificationCall.get(position);
 
         holder.ServiceProvider.setText(notification.getServiceID().getUsername());
-        holder.message.setText(notification.getCustomerID());
+
+        if (accept) {
+            holder.message.setText("your service has been accepted");
+            return;
+        }
+        holder.message.setText("your service has been declined");
     }
 
     @Override
@@ -46,7 +53,7 @@ public class NotificationResponseAdapter extends RecyclerView.Adapter<Notificati
         return notificationCall.size();
     }
 
-    public class NotificationResponseViewHolder extends RecyclerView.ViewHolder{
+    public class NotificationResponseViewHolder extends RecyclerView.ViewHolder {
 
         private TextView ServiceProvider, message;
 
