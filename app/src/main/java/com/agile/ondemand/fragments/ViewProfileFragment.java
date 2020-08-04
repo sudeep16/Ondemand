@@ -1,14 +1,18 @@
 package com.agile.ondemand.fragments;
 
+import android.os.Build;
 import android.os.Bundle;
+import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -32,6 +36,8 @@ import retrofit2.Response;
 public class ViewProfileFragment extends Fragment {
     private TextView viewFirstName, viewLastName, viewUsername, viewAddress, viewEmail, viewContact, viewId;
     private RecyclerView viewprofileRecycler;
+    private Button btnViewPost;
+    private ViewGroup Container;
 
 
     @Nullable
@@ -45,7 +51,22 @@ public class ViewProfileFragment extends Fragment {
         viewEmail = view.findViewById(R.id.viewEmail);
         viewContact = view.findViewById(R.id.viewContact);
         viewprofileRecycler = view.findViewById(R.id.viewprofileRecycler);
+        btnViewPost = view.findViewById(R.id.btnViewPost);
+        Container = view.findViewById(R.id.Container);
         viewUserProfile();
+
+        btnViewPost.setOnClickListener(new View.OnClickListener() {
+            boolean visible;
+            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+            @Override
+            public void onClick(View v) {
+                TransitionManager.beginDelayedTransition(Container);
+                visible = !visible;
+                viewprofileRecycler.setVisibility(visible ? View.VISIBLE :View.GONE);
+            }
+        });
+
+
         return view;
     }
 

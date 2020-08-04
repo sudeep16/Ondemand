@@ -46,7 +46,7 @@ public class UserPostAdapter extends RecyclerView.Adapter<UserPostAdapter.UserPo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final UserPostHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final UserPostHolder holder, final int position) {
 
         final ServiceAds serviceAds = serviceAdsList.get(position);
         holder.name.setText(serviceAds.getAdOwner().getUsername());
@@ -83,10 +83,8 @@ public class UserPostAdapter extends RecyclerView.Adapter<UserPostAdapter.UserPo
                                             Toast.makeText(context, "code" + response.code(), Toast.LENGTH_SHORT).show();
                                             return;
                                         }
-//                                        ((Activity)context).finish();
-//
-//                                        ((Activity)context).getIntent();
-
+                                        serviceAdsList.remove(position);
+                                        notifyDataSetChanged();
                                         Toast.makeText(context, "deleted", Toast.LENGTH_SHORT).show();
                                     }
 
