@@ -35,16 +35,17 @@ import retrofit2.Response;
 public class PostEditFragment extends Fragment {
 
     private TextView updateTime1, updateTime2;
-    private EditText etUpdateDaysFrom, etUpdateDaysTo, etUpdateDescription, etUpdatePrice, updateSpinner;
+    private Spinner updateSpinner;
+    private EditText etUpdateDaysFrom, etUpdateDaysTo, etUpdateDescription, etUpdatePrice;
     private Button btnUpdate;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_postedit, container, false);
-        //        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.categories, android.R.layout.simple_spinner_item);
-//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        updateSpinner.setAdapter(adapter);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.categories, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        updateSpinner.setAdapter(adapter);
 
         updateSpinner = view.findViewById(R.id.updateSpinner);
         updateTime1 = view.findViewById(R.id.updateTime1);
@@ -80,7 +81,7 @@ public class PostEditFragment extends Fragment {
 
     private void updateServiceAd() {
         String id = getArguments().getString("id");
-        String category = updateSpinner.getText().toString().trim();
+        String category = updateSpinner.getSelectedItem().toString();
         String description = etUpdateDescription.getText().toString().trim();
         String openingTime = updateTime1.getText().toString().trim();
         String closingTime = updateTime2.getText().toString().trim();
@@ -112,7 +113,7 @@ public class PostEditFragment extends Fragment {
 
     private void viewSelectedData() {
         UsersApi usersApi = Url.getInstance().create(UsersApi.class);
-        String id = getArguments().getString("id");
+        final String id = getArguments().getString("id");
         Call<ServiceAdsUpdate> serviceAdsCall = usersApi.fetchDataToUpdateFragment(Url.token, id);
         serviceAdsCall.enqueue(new Callback<ServiceAdsUpdate>() {
             @Override
@@ -123,14 +124,36 @@ public class PostEditFragment extends Fragment {
                 }
                 StrictModeClass.StrictMode();
                 try {
-                    String category = response.body().getCategory();
+//                    String category = response.body().getCategory();
                     String description = response.body().getDescription();
                     String openingTime = response.body().getOpeningTime();
                     String closingTime = response.body().getClosingTime();
                     String daysFrom = response.body().getDaysFrom();
                     String daysTo = response.body().getDaysTo();
                     String price = response.body().getPrice();
-                    updateSpinner.setText(category);
+//                    int spinnerValue = 0;
+//                    if (category.equals("Plumber")) {
+//                        spinnerValue = 1;
+//                    } else if (category.equals("Electrician")) {
+//                        spinnerValue = 2;
+//                    } else if (category.equals("Laundry")) {
+//                        spinnerValue = 3;
+//                    } else if (category.equals("Painter")) {
+//                        spinnerValue = 4;
+//                    } else if (category.equals("Gardener")) {
+//                        spinnerValue = 5;
+//                    } else if (category.equals("Baby Sitter")) {
+//                        spinnerValue = 6;
+//                    } else if (category.equals("Handy Man")) {
+//                        spinnerValue = 7;
+//                    } else if (category.equals("Care Taker")) {
+//                        spinnerValue = 8;
+//                    } else if (category.equals("Catering")) {
+//                        spinnerValue = 9;
+//                    } else if (category.equals("House Keeping")) {
+//                        spinnerValue = 10;
+//                    }
+//                    updateSpinner.setSelection(spinnerValue);
                     updateTime1.setText(openingTime);
                     updateTime2.setText(closingTime);
                     etUpdateDescription.setText(description);
