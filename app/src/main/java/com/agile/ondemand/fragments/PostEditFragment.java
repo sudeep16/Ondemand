@@ -34,19 +34,16 @@ import retrofit2.Response;
 
 public class PostEditFragment extends Fragment {
 
-    private TextView updateTime1, updateTime2;
-    private Spinner updateSpinner;
+    private TextView updateTime1, updateTime2, updateSpinner;
     private EditText etUpdateDaysFrom, etUpdateDaysTo, etUpdateDescription, etUpdatePrice;
     private Button btnUpdate;
+    private String[] categoryValue = new String[]{"Plumber", "Electrician", "Laundry", "Painter",
+            "Gardener", "Baby Sitter", "Handy Man", "Care Taker", "Catering", "House Keeping"};
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_postedit, container, false);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.categories, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        updateSpinner.setAdapter(adapter);
-
         updateSpinner = view.findViewById(R.id.updateSpinner);
         updateTime1 = view.findViewById(R.id.updateTime1);
         updateTime2 = view.findViewById(R.id.updateTime2);
@@ -81,7 +78,7 @@ public class PostEditFragment extends Fragment {
 
     private void updateServiceAd() {
         String id = getArguments().getString("id");
-        String category = updateSpinner.getSelectedItem().toString();
+        String category = updateSpinner.getText().toString().trim();
         String description = etUpdateDescription.getText().toString().trim();
         String openingTime = updateTime1.getText().toString().trim();
         String closingTime = updateTime2.getText().toString().trim();
@@ -124,36 +121,14 @@ public class PostEditFragment extends Fragment {
                 }
                 StrictModeClass.StrictMode();
                 try {
-//                    String category = response.body().getCategory();
+                    String category = response.body().getCategory();
                     String description = response.body().getDescription();
                     String openingTime = response.body().getOpeningTime();
                     String closingTime = response.body().getClosingTime();
                     String daysFrom = response.body().getDaysFrom();
                     String daysTo = response.body().getDaysTo();
                     String price = response.body().getPrice();
-//                    int spinnerValue = 0;
-//                    if (category.equals("Plumber")) {
-//                        spinnerValue = 1;
-//                    } else if (category.equals("Electrician")) {
-//                        spinnerValue = 2;
-//                    } else if (category.equals("Laundry")) {
-//                        spinnerValue = 3;
-//                    } else if (category.equals("Painter")) {
-//                        spinnerValue = 4;
-//                    } else if (category.equals("Gardener")) {
-//                        spinnerValue = 5;
-//                    } else if (category.equals("Baby Sitter")) {
-//                        spinnerValue = 6;
-//                    } else if (category.equals("Handy Man")) {
-//                        spinnerValue = 7;
-//                    } else if (category.equals("Care Taker")) {
-//                        spinnerValue = 8;
-//                    } else if (category.equals("Catering")) {
-//                        spinnerValue = 9;
-//                    } else if (category.equals("House Keeping")) {
-//                        spinnerValue = 10;
-//                    }
-//                    updateSpinner.setSelection(spinnerValue);
+                    updateSpinner.setText(category);
                     updateTime1.setText(openingTime);
                     updateTime2.setText(closingTime);
                     etUpdateDescription.setText(description);
