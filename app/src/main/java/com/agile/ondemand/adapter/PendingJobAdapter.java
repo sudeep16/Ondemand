@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -51,6 +52,7 @@ public class PendingJobAdapter extends RecyclerView.Adapter<PendingJobAdapter.Pe
     public class PendingJobHolder extends RecyclerView.ViewHolder {
 
         private TextView Customer, location, day, time, paymentMethod;
+        private Button btnAccept, btnDecline;
 
         public PendingJobHolder(@NonNull View itemView) {
             super(itemView);
@@ -59,6 +61,9 @@ public class PendingJobAdapter extends RecyclerView.Adapter<PendingJobAdapter.Pe
             day = itemView.findViewById(R.id.tvChosenDate);
             time = itemView.findViewById(R.id.tvChosenTime);
             paymentMethod = itemView.findViewById(R.id.tvChosenPayment);
+
+            btnAccept = itemView.findViewById(R.id.btnAccept);
+            btnDecline = itemView.findViewById(R.id.btnDecline);
 
         }
     }
