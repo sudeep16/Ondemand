@@ -177,6 +177,7 @@ public class ProfileFragment extends Fragment {
         String pEmail = etPEmail.getText().toString().trim();
         String pPhone = etPhone.getText().toString().trim();
         String pId = etPId.getText().toString().trim();
+        //Push check
 
         UserUpdate userUpdate = new UserUpdate(pId, pFirstName, pLastName, pAddress, pUsername, pEmail, pPhone);
         UsersApi usersApi = Url.getInstance().create(UsersApi.class);
