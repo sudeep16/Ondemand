@@ -1,6 +1,7 @@
 package com.agile.ondemand.adapter;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,9 +9,11 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.agile.ondemand.R;
+import com.agile.ondemand.fragments.ViewProfileFragment;
 import com.agile.ondemand.model.UserUpdate;
 import com.agile.ondemand.model.WishList;
 
@@ -42,6 +45,19 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UserSearchHo
         holder.tvAddress.setText(userUpdate.getAddress());
         holder.tvEmail.setText(userUpdate.getEmail());
         holder.tvNumber.setText(userUpdate.getPhone());
+
+        holder.btnViewProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AppCompatActivity appCompatActivity = (AppCompatActivity) v.getContext();
+                ViewProfileFragment viewProfileFragment = new ViewProfileFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString("username", userUpdate.getUsername());
+                viewProfileFragment.setArguments(bundle);
+                appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        viewProfileFragment).addToBackStack(null).commit();
+            }
+        });
     }
 
     @Override

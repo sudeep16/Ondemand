@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
                 bundle.putString("Firstletter", firstLetter);
                 searchFragment.setArguments(bundle);
                 fragmentTransaction.replace(R.id.fragment_container, searchFragment);
-                fragmentTransaction.commit();
+                fragmentTransaction.addToBackStack(null).commit();
 //                loadUserByFirstName();
             }
         });
@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
                     selectedFragment = new WishListFragment();
                     break;
             }
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).addToBackStack(null).commit();
             return true;
         }
     };
