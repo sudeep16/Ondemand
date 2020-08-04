@@ -11,9 +11,13 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.agile.ondemand.R;
+import com.agile.ondemand.api.UsersApi;
 import com.agile.ondemand.model.PendingJob;
+import com.agile.ondemand.url.Url;
 
 import java.util.List;
+
+import retrofit2.Call;
 
 public class PendingJobAdapter extends RecyclerView.Adapter<PendingJobAdapter.PendingJobHolder> {
 
@@ -41,7 +45,14 @@ public class PendingJobAdapter extends RecyclerView.Adapter<PendingJobAdapter.Pe
         holder.day.setText(pendingJob.getDay());
         holder.time.setText(pendingJob.getTime());
         holder.paymentMethod.setText(pendingJob.getPaymentMethod());
+        holder.btnAccept.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UsersApi usersApi = Url.getInstance().create(UsersApi.class);
+                Call<Void> pendingVoidCall  = usersApi.pendingJobApproval(Url.token, pendingJob.getHiredBy().getUsername());
 
+            }
+        });
     }
 
     @Override
@@ -61,7 +72,6 @@ public class PendingJobAdapter extends RecyclerView.Adapter<PendingJobAdapter.Pe
             day = itemView.findViewById(R.id.tvChosenDate);
             time = itemView.findViewById(R.id.tvChosenTime);
             paymentMethod = itemView.findViewById(R.id.tvChosenPayment);
-
             btnAccept = itemView.findViewById(R.id.btnAccept);
             btnDecline = itemView.findViewById(R.id.btnDecline);
 

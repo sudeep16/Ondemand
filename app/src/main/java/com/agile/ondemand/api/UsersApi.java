@@ -102,6 +102,10 @@ public interface UsersApi {
     Call<Void> wishList(@Header("Authorization") String token,
                         @Path("username") String username);
 
+    @POST("pendingList/{username}")
+    Call<Void> pendingJobApproval(@Header("Authorization") String token,
+                                  @Path("username") String username);
+
     @GET("wishlist")
     Call<List<WishList>> getWishList(@Header("Authorization") String token);
 

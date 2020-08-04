@@ -59,7 +59,6 @@ public class PendingjobFragment extends Fragment {
                 }
 
                 List<PendingJob> pendingJobs =  response.body();
-
                 PendingJobAdapter pendingJobAdapter = new PendingJobAdapter(getActivity(), pendingJobs);
                 pendingjob.setAdapter(pendingJobAdapter);
                 pendingjob.setLayoutManager(new LinearLayoutManager(getActivity()));
