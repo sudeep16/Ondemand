@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -53,24 +54,47 @@ public class PendingJobAdapter extends RecyclerView.Adapter<PendingJobAdapter.Pe
             @Override
             public void onClick(View v) {
                 UsersApi usersApi = Url.getInstance().create(UsersApi.class);
-                Call<Void> pendingVoidCall  = usersApi.pendingJobApproval(Url.token, pendingJob.getHiredBy().getUsername());
+                Call<Void> pendingVoidCall = usersApi.pendingJobApproval(Url.token, pendingJob.getHiredBy().getUsername(), true);
 
                 pendingVoidCall.enqueue(new Callback<Void>() {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
-                        if (!response.isSuccessful()){
-                            Toast.makeText(context, "code " + response.code(), Toast.LENGTH_SHORT).show();
+                        if (!response.isSuccessful()) {
+                            Toast.makeText(context, "Code " + response.code(), Toast.LENGTH_SHORT).show();
                             return;
                         }
-
+                        Toast.makeText(context, "Accepted", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
                     public void onFailure(Call<Void> call, Throwable t) {
-
+                        Toast.makeText(context, "Error " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
 
+            }
+        });
+        holder.btnDecline.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UsersApi usersApi = Url.getInstance().create(UsersApi.class);
+                Call<Void> pendingVoidCall = usersApi.pendingJobApproval(Url.token, pendingJob.getHiredBy().getUsername(), false);
+
+                pendingVoidCall.enqueue(new Callback<Void>() {
+                    @Override
+                    public void onResponse(Call<Void> call, Response<Void> response) {
+                        if (!response.isSuccessful()) {
+                            Toast.makeText(context, "Code " + response.code(), Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        Toast.makeText(context, "Declined", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onFailure(Call<Void> call, Throwable t) {
+                        Toast.makeText(context, "Error " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
     }
@@ -93,8 +117,7 @@ public class PendingJobAdapter extends RecyclerView.Adapter<PendingJobAdapter.Pe
             time = itemView.findViewById(R.id.tvChosenTime);
             paymentMethod = itemView.findViewById(R.id.tvChosenPayment);
             btnAccept = itemView.findViewById(R.id.btnAccept);
-//            btnDecline = itemView.findViewById(R.id.btnDecline);
-
+            btnDecline = itemView.findViewById(R.id.btnDecline);
         }
     }
 }

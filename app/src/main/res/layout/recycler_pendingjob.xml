@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="15dp"
+        app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="15dp"
-        app:cardElevation="20dp"
-        app:cardBackgroundColor="@color/white">
+        app:cardElevation="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -111,31 +111,33 @@
                     android:text="payment" />
             </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="right">
-
-            <ImageView
-                android:id="@+id/btnAccept"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:clickable="true"
-                android:padding="5dp"
-                app:srcCompat="@drawable/ic_baseline_check_24"
-                tools:ignore="VectorDrawableCompat" />
+                android:gravity="right"
+                android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/btnDecline"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:padding="5dp"
-                app:srcCompat="@drawable/ic_baseline_clear_24"
-                tools:ignore="VectorDrawableCompat" />
+                <Button
+                    android:id="@+id/btnAccept"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:padding="5dp"
+                    android:text="Accept"
+                    app:srcCompat="@drawable/ic_baseline_check_24"
+                    tools:ignore="VectorDrawableCompat" />
 
-        </LinearLayout>
+                <Button
+                    android:id="@+id/btnDecline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:padding="5dp"
+                    android:text="Decline"
+                    app:srcCompat="@drawable/ic_baseline_clear_24"
+                    tools:ignore="VectorDrawableCompat" />
+
+            </LinearLayout>
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
@@ -143,7 +145,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#ffffff"/>
+        android:background="#ffffff" />
 
 
 </LinearLayout>
