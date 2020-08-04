@@ -19,6 +19,7 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
@@ -161,4 +162,8 @@ public interface UsersApi {
 
     @GET("pendingList")
     Call<List<Notification>> getNotification(@Header("Authorization") String token);
+
+    @DELETE("hiredList/deletehiredList/{id}")
+    Call<Void> deleteHiredList(@Header("Authorization") String token,
+                               @Path("id") String id);
 }

@@ -42,7 +42,7 @@ public class PendingJobAdapter extends RecyclerView.Adapter<PendingJobAdapter.Pe
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PendingJobHolder holder, int position) {
+    public void onBindViewHolder(@NonNull PendingJobHolder holder, final int position) {
 
         final PendingJob pendingJob = pendingJobList.get(position);
         holder.Customer.setText(pendingJob.getHiredBy().getUsername());
@@ -77,7 +77,7 @@ public class PendingJobAdapter extends RecyclerView.Adapter<PendingJobAdapter.Pe
         holder.btnDecline.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UsersApi usersApi = Url.getInstance().create(UsersApi.class);
+                final UsersApi usersApi = Url.getInstance().create(UsersApi.class);
                 Call<Void> pendingVoidCall = usersApi.pendingJobApproval(Url.token, pendingJob.getHiredBy().getUsername(), false);
 
                 pendingVoidCall.enqueue(new Callback<Void>() {
@@ -87,7 +87,36 @@ public class PendingJobAdapter extends RecyclerView.Adapter<PendingJobAdapter.Pe
                             Toast.makeText(context, "Code " + response.code(), Toast.LENGTH_SHORT).show();
                             return;
                         }
-                        Toast.makeText(context, "Declined", Toast.LENGTH_SHORT).show();
+                        StrictModeClass.StrictMode();
+                        try {
+
+                            UsersApi  usersApi1 = Url.getInstance().create(UsersApi.class);
+                            Call<Void> deletehiredlist = usersApi1.deleteHiredList(Url.token, pendingJob.get_id());
+
+                            deletehiredlist.enqueue(new Callback<Void>() {
+                                @Override
+                                public void onResponse(Call<Void> call, Response<Void> response) {
+                                    if (!response.isSuccessful()){
+                                        Toast.makeText(context, "Code "+response.code(), Toast.LENGTH_SHORT).show();
+                                        return;
+                                    }
+                                    pendingJobList.remove(position);
+                                    notifyDataSetChanged();
+                                    Toast.makeText(context, "Declined and removed", Toast.LENGTH_SHORT).show();
+                                }
+
+                                @Override
+                                public void onFailure(Call<Void> call, Throwable t) {
+
+                                }
+                            });
+
+                        } catch (Exception e) {
+
+                        }
+
+
+
                     }
 
                     @Override
