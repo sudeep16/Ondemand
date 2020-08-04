@@ -36,8 +36,9 @@ public class NotificationResponseAdapter extends RecyclerView.Adapter<Notificati
     @Override
     public void onBindViewHolder(@NonNull NotificationResponseViewHolder holder, int position) {
         final Notification notification = notificationCall.get(position);
-        holder.ServiceProvider.setText(notification.getUsername().getUsername());
 
+        holder.ServiceProvider.setText(notification.getServiceID().getUsername());
+        holder.message.setText(notification.getCustomerID());
     }
 
     @Override
@@ -47,11 +48,11 @@ public class NotificationResponseAdapter extends RecyclerView.Adapter<Notificati
 
     public class NotificationResponseViewHolder extends RecyclerView.ViewHolder{
 
-        TextView ServiceProvider;
+        private TextView ServiceProvider, message;
 
         public NotificationResponseViewHolder(@NonNull View itemView) {
             super(itemView);
-
+            message = itemView.findViewById(R.id.message);
             ServiceProvider = itemView.findViewById(R.id.serviceProvider);
         }
     }

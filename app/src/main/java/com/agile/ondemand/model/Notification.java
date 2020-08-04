@@ -4,22 +4,12 @@ public class Notification {
 
     private boolean accept;
     private String customerID;
-    private String serviceID;
-    private Owner username;
+    private Owner serviceID;
 
-    public Notification(boolean accept, String customerID, String serviceID,Owner username) {
+    public Notification(boolean accept, String customerID, Owner serviceID) {
         this.accept = accept;
         this.customerID = customerID;
         this.serviceID = serviceID;
-        this.username = username;
-    }
-
-    public Owner getUsername() {
-        return username;
-    }
-
-    public void setUsername(Owner username) {
-        this.username = username;
     }
 
     public boolean isAccept() {
@@ -38,11 +28,11 @@ public class Notification {
         this.customerID = customerID;
     }
 
-    public String getServiceID() {
+    public Owner getServiceID() {
         return serviceID;
     }
 
-    public void setServiceID(String serviceID) {
+    public void setServiceID(Owner serviceID) {
         this.serviceID = serviceID;
     }
 }
