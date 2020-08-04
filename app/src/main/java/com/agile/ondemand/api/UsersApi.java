@@ -1,5 +1,6 @@
 package com.agile.ondemand.api;
 
+import com.agile.ondemand.model.Notification;
 import com.agile.ondemand.model.PendingJob;
 import com.agile.ondemand.model.ServiceAds;
 import com.agile.ondemand.model.ServiceAdsUpdate;
@@ -157,4 +158,7 @@ public interface UsersApi {
     Call<Void> updateServiceAd(@Header("Authorization") String token,
                                @Path("id") String id,
                                @Body ServiceAdsUpdate serviceAdsUpdate);
+
+    @GET("pendingList")
+    Call<List<Notification>> getNotification(@Header("Authorization") String token);
 }
