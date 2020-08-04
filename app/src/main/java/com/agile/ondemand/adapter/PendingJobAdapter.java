@@ -112,7 +112,7 @@ public class PendingJobAdapter extends RecyclerView.Adapter<PendingJobAdapter.Pe
                             });
 
                         } catch (Exception e) {
-
+                            e.printStackTrace();
                         }
 
 
