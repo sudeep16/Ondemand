@@ -2,9 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#F0E1E1"
     android:padding="1dp">
 
     <androidx.cardview.widget.CardView
+        android:layout_margin="6dp"
+        app:cardCornerRadius="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -28,11 +32,15 @@
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:textSize="16dp"
+                    android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Name :" />
+                    android:text="Username : " />
 
                 <TextView
+                    android:textSize="16dp"
+                    android:textColor="@color/black"
                     android:id="@+id/tvPostName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -45,11 +53,15 @@
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:textSize="16dp"
+                    android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Category :" />
+                    android:text="Category : " />
 
                 <TextView
+                    android:textSize="16dp"
+                    android:textColor="@color/black"
                     android:id="@+id/tvPostCategory"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -62,11 +74,15 @@
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:textSize="16dp"
+                    android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Address :" />
+                    android:text="Address : " />
 
                 <TextView
+                    android:textSize="16dp"
+                    android:textColor="@color/black"
                     android:id="@+id/tvPostAddress"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -80,15 +96,24 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:textSize="16dp"
+                    android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Description :" />
 
                 <TextView
+                    android:textSize="16dp"
+                    android:textColor="@color/black"
                     android:id="@+id/tvPostDescription"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="description" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:background="@color/black"
+                    android:layout_height="1dp"/>
 
             </LinearLayout>
 
@@ -97,22 +122,30 @@
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:textSize="16dp"
+                    android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Availability Time :" />
+                    android:text="Availability Time : " />
 
                 <TextView
+                    android:textSize="16dp"
+                    android:textColor="@color/black"
                     android:id="@+id/tvPostTime1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="time from" />
 
                 <TextView
+                    android:textSize="16dp"
+                    android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="To" />
+                    android:text=" To: " />
 
                 <TextView
+                    android:textSize="16dp"
+                    android:textColor="@color/black"
                     android:id="@+id/tvPostTime2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -124,22 +157,30 @@
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:textSize="16dp"
+                    android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Availability Days :" />
+                    android:text="Availability Days : " />
 
                 <TextView
+                    android:textSize="16dp"
+                    android:textColor="@color/black"
                     android:id="@+id/tvPostDayFrom"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="day from" />
 
                 <TextView
+                    android:textSize="16dp"
+                    android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="To" />
+                    android:text=" To: " />
 
                 <TextView
+                    android:textSize="16dp"
+                    android:textColor="@color/black"
                     android:id="@+id/tvPostDayTo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -152,11 +193,15 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:textSize="16dp"
+                    android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Price per hour $:" />
+                    android:text="Price per hour $: " />
 
                 <TextView
+                    android:textSize="16dp"
+                    android:textColor="@color/black"
                     android:id="@+id/tvPostPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
