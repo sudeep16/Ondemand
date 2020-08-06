@@ -4,40 +4,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.MainActivity"
-    >
+    tools:context=".activity.MainActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        >
+        android:layout_height="?attr/actionBarSize">
+
         <Button
             android:id="@+id/btnSearch"
-            android:layout_marginLeft="280dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="280dp"
             android:background="@color/colorAccent"
-            android:textSize="10dp"
             android:text="Search"
-            />
+            android:textSize="10dp" />
 
     </androidx.appcompat.widget.Toolbar>
 
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchView"
-        app:queryHint="Search Here"
-        app:searchIcon="@drawable/search_24"
         android:layout_width="280dp"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        app:queryHint="Search Here"
+        app:searchIcon="@drawable/search_24" />
 
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/bottom_navigation"
-        android:layout_marginTop="?attr/actionBarSize" />
+        android:layout_marginTop="?attr/actionBarSize"
+        android:background="#F0E1E1" />
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -46,8 +45,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="?android:attr/windowBackground"
-        app:itemRippleColor="@color/colorAccent"
         app:itemIconTint="@color/black"
+        app:itemRippleColor="@color/colorAccent"
         app:menu="@menu/bottom_navigation" />
 
 </RelativeLayout>
