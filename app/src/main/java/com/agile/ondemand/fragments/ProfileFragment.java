@@ -17,6 +17,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.agile.ondemand.R;
 import com.agile.ondemand.activity.LoginActivity;
@@ -38,6 +39,8 @@ public class ProfileFragment extends Fragment {
     private Button btnLogout, btnUpdate, btnPDelete, btnPjob, btnMyPost, btnmyFeedback;
     private ImageView profile_image_gp;
 
+    private SwipeRefreshLayout refreshLayout;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -51,6 +54,8 @@ public class ProfileFragment extends Fragment {
         etPEmail = view.findViewById(R.id.etPEmail);
         etPhone = view.findViewById(R.id.etPPhone);
         etPId = view.findViewById(R.id.etPId);
+
+        refreshLayout = view.findViewById(R.id.Refresh);
 
         tvPendingJob = view.findViewById(R.id.tvPendingJob);
         tvReward = view.findViewById(R.id.tvReward);
@@ -74,6 +79,15 @@ public class ProfileFragment extends Fragment {
         });
 
         loadUser();
+
+        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                refreshLayout.setRefreshing(false);
+                loadUser();
+            }
+        });
+
 
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
