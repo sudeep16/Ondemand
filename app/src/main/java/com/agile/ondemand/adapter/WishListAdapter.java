@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,12 +17,18 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.agile.ondemand.R;
+import com.agile.ondemand.api.UsersApi;
 import com.agile.ondemand.fragments.ViewProfileFragment;
 import com.agile.ondemand.model.User;
 import com.agile.ondemand.model.WishList;
+import com.agile.ondemand.url.Url;
 
 import java.sql.RowId;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class WishListAdapter extends RecyclerView.Adapter<WishListAdapter.WishListViewHolder> {
 
@@ -41,9 +48,10 @@ public class WishListAdapter extends RecyclerView.Adapter<WishListAdapter.WishLi
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final WishListViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final WishListViewHolder holder, final int position) {
         final WishList wishList = wishLists.get(position);
         holder.Username.setText(wishList.getUsername());
+        holder.wishListId.setText(wishList.get_id());
         holder.btnViewProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,6 +64,32 @@ public class WishListAdapter extends RecyclerView.Adapter<WishListAdapter.WishLi
                         .addToBackStack(null).commit();
             }
         });
+        
+        holder.btnRemove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UsersApi usersApi = Url.getInstance().create(UsersApi.class);
+                Call<Void> deleteWishList = usersApi.deleteWishList(Url.token, wishList.get_id());
+                
+                deleteWishList.enqueue(new Callback<Void>() {
+                    @Override
+                    public void onResponse(Call<Void> call, Response<Void> response) {
+                        if (!response.isSuccessful()){
+                            Toast.makeText(context, "Code "+response.body(), Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        wishLists.remove(position);
+                        notifyDataSetChanged();
+                        Toast.makeText(context, "Removed from wishList", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onFailure(Call<Void> call, Throwable t) {
+                        Toast.makeText(context, "error "+t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
     }
 
     @Override
@@ -65,16 +99,17 @@ public class WishListAdapter extends RecyclerView.Adapter<WishListAdapter.WishLi
 
     public class WishListViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView Username;
+        private TextView Username, wishListId;
         private Button btnViewProfile;
-//        private Button btnRemove;
+        private Button btnRemove;
 
         public WishListViewHolder(@NonNull View itemView) {
             super(itemView);
 
             Username = itemView.findViewById(R.id.tvFUsername);
             btnViewProfile= itemView.findViewById(R.id.btnViewProfile);
-//            btnRemove = itemView.findViewById(R.id.btnRemove);
+            wishListId= itemView.findViewById(R.id.wishListId);
+            btnRemove = itemView.findViewById(R.id.btnRemove);
 
         }
     }

@@ -166,4 +166,8 @@ public interface UsersApi {
     @DELETE("hiredList/deletehiredList/{id}")
     Call<Void> deleteHiredList(@Header("Authorization") String token,
                                @Path("id") String id);
+
+    @DELETE("wishlist/deletewishlist/{id}")
+    Call<Void> deleteWishList(@Header("Authorization") String token,
+                              @Path("id") String id);
 }
