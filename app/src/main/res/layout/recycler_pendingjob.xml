@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
+    android:background="#F0E1E1"
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
@@ -19,6 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:id="@+id/transitionContainer1"
             android:orientation="vertical"
             android:padding="10dp">
 
@@ -36,7 +37,8 @@
                     android:id="@+id/tvCustomerUsername"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="customer Username" />
+                    android:text="customer Username"
+                    android:textColor="@color/black" />
             </LinearLayout>
 
             <LinearLayout
@@ -53,7 +55,8 @@
                     android:id="@+id/tvCustomerLocation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="location" />
+                    android:text="location"
+                    android:textColor="@color/black" />
 
             </LinearLayout>
 
@@ -71,7 +74,8 @@
                     android:id="@+id/tvChosenTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="time" />
+                    android:text="time"
+                    android:textColor="@color/black" />
 
             </LinearLayout>
 
@@ -89,7 +93,8 @@
                     android:id="@+id/tvChosenDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="date" />
+                    android:text="date"
+                    android:textColor="@color/black" />
 
             </LinearLayout>
 
@@ -102,13 +107,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:drawableLeft="@drawable/ic_baseline_monetization_on_24"
-                    android:text="Payment Method:" />
+                    android:text="Payment Method:"
+                    android:textColor="@color/black" />
 
                 <TextView
                     android:id="@+id/tvChosenPayment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="payment" />
+                    android:text="payment"
+                    android:textColor="@color/black" />
             </LinearLayout>
 
             <LinearLayout
@@ -121,20 +128,27 @@
                     android:id="@+id/btnAccept"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="#55E805"
                     android:clickable="true"
                     android:padding="5dp"
                     android:text="Accept"
-                    app:srcCompat="@drawable/ic_baseline_check_24"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
                     tools:ignore="VectorDrawableCompat" />
 
                 <Button
                     android:id="@+id/btnDecline"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="#FF0000"
                     android:clickable="true"
                     android:padding="5dp"
                     android:text="Decline"
-                    app:srcCompat="@drawable/ic_baseline_clear_24"
+                    android:visibility="visible"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
                     tools:ignore="VectorDrawableCompat" />
 
             </LinearLayout>

@@ -1,6 +1,8 @@
 package com.agile.ondemand.adapter;
 
 import android.content.Context;
+import android.os.Build;
+import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.agile.ondemand.R;
@@ -42,7 +45,7 @@ public class PendingJobAdapter extends RecyclerView.Adapter<PendingJobAdapter.Pe
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PendingJobHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final PendingJobHolder holder, final int position) {
 
         final PendingJob pendingJob = pendingJobList.get(position);
         holder.Customer.setText(pendingJob.getHiredBy().getUsername());
@@ -51,18 +54,26 @@ public class PendingJobAdapter extends RecyclerView.Adapter<PendingJobAdapter.Pe
         holder.time.setText(pendingJob.getTime());
         holder.paymentMethod.setText(pendingJob.getPaymentMethod());
         holder.btnAccept.setOnClickListener(new View.OnClickListener() {
+
+            boolean visible = false;
+
             @Override
             public void onClick(View v) {
                 UsersApi usersApi = Url.getInstance().create(UsersApi.class);
                 Call<Void> pendingVoidCall = usersApi.pendingJobApproval(Url.token, pendingJob.getHiredBy().getUsername(), true);
 
                 pendingVoidCall.enqueue(new Callback<Void>() {
+                    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
                         if (!response.isSuccessful()) {
                             Toast.makeText(context, "Code " + response.code(), Toast.LENGTH_SHORT).show();
                             return;
                         }
+                        TransitionManager.beginDelayedTransition(holder.transitionContainer1);
+                        holder.btnDecline.setVisibility(visible ? View.VISIBLE : View.GONE);
+                        holder.btnAccept.setEnabled(false);
+                        holder.btnAccept.setText("Accepted");
                         Toast.makeText(context, "Accepted", Toast.LENGTH_SHORT).show();
                     }
 
@@ -90,14 +101,14 @@ public class PendingJobAdapter extends RecyclerView.Adapter<PendingJobAdapter.Pe
                         StrictModeClass.StrictMode();
                         try {
 
-                            UsersApi  usersApi1 = Url.getInstance().create(UsersApi.class);
+                            UsersApi usersApi1 = Url.getInstance().create(UsersApi.class);
                             Call<Void> deletehiredlist = usersApi1.deleteHiredList(Url.token, pendingJob.get_id());
 
                             deletehiredlist.enqueue(new Callback<Void>() {
                                 @Override
                                 public void onResponse(Call<Void> call, Response<Void> response) {
-                                    if (!response.isSuccessful()){
-                                        Toast.makeText(context, "Code "+response.code(), Toast.LENGTH_SHORT).show();
+                                    if (!response.isSuccessful()) {
+                                        Toast.makeText(context, "Code " + response.code(), Toast.LENGTH_SHORT).show();
                                         return;
                                     }
                                     pendingJobList.remove(position);
@@ -114,7 +125,6 @@ public class PendingJobAdapter extends RecyclerView.Adapter<PendingJobAdapter.Pe
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-
 
 
                     }
@@ -137,6 +147,7 @@ public class PendingJobAdapter extends RecyclerView.Adapter<PendingJobAdapter.Pe
 
         private TextView Customer, location, day, time, paymentMethod;
         private Button btnAccept, btnDecline;
+        private ViewGroup transitionContainer1;
 
         public PendingJobHolder(@NonNull View itemView) {
             super(itemView);
@@ -147,6 +158,9 @@ public class PendingJobAdapter extends RecyclerView.Adapter<PendingJobAdapter.Pe
             paymentMethod = itemView.findViewById(R.id.tvChosenPayment);
             btnAccept = itemView.findViewById(R.id.btnAccept);
             btnDecline = itemView.findViewById(R.id.btnDecline);
+
+            transitionContainer1 = itemView.findViewById(R.id.transitionContainer1);
+
         }
     }
 }
