@@ -42,10 +42,10 @@ public class NotificationResponseAdapter extends RecyclerView.Adapter<Notificati
         holder.ServiceProvider.setText(notification.getServiceID().getUsername());
 
         if (notification.isAccept()) {
-            holder.message.setText("your service has been accepted");
+            holder.message.setText("Your service has been accepted");
             return;
         }
-        holder.message.setText("your service has been declined");
+        holder.message.setText("Your service has been declined");
     }
 
     @Override
