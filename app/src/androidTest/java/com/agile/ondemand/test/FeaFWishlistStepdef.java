@@ -63,9 +63,21 @@ public class FeaFWishlistStepdef {
     public void isAmOnWishListScreen() {
         onView(withId(R.id.nav_wishList)).perform(click());
     }
-    @Then("^I can view my wishlist$")
-    public void iViewWishList(){
 
+    @And("^I click on view profile$")
+    public void isAmOnViewProfileScreen() {
+        onView(withId(R.id.btnViewProfile)).perform(click());
     }
+
+    @And("^I go to view post$")
+    public void isAmOnViewPostScreen() {
+        onView(withId(R.id.btnViewPost)).perform(click());
+    }
+
+    @Then("^I can view my post$")
+    public void iViewWishList(){
+    }
+
+
 
 }

@@ -6,5 +6,8 @@ Feature: wishlist service in the system
     When I now select a service card
     And I click on add to wishlist button
     And I go to wishlist screen
-    Then I can view my wishlist
+    And I click on view profile
+    And I go to view post
+    Then I can view my post
+
 

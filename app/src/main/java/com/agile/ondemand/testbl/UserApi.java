@@ -52,72 +52,72 @@ public interface UserApi {
             @Field("daysFrom") String daysFrom,
             @Field("daysTo") String daysTo,
             @Field("price") String price);
-
-    @FormUrlEncoded
-    @POST("/serviceAds")
-    Call<CatResponse> addService(
-            @Field("category") String category,
-            @Field("description") String description,
-            @Field("openingTime") String openingTime,
-            @Field("closingTime") String closingTime,
-            @Field("daysFrom") String daysFrom,
-            @Field("daysTo") String daysTo,
-            @Field("price") String price);
-
-
-
-
-
-
-    @POST("/serviceAds")
-    Call<CatResponse> postService(@Body postServiceModel postServiceModel1);
-
-
-
-
-    /**
-     * Category
-     */
-//    @GET("serviceAds/Plumber")
-//    Call<List<ServiceAds>> getCategory(@Header("Authorization") String token);
-    @GET("serviceAds/{category}")
-    Call<List<ServiceAds>> getServiceAdsByCategory(@Header("Authorization") String token,
-                                                   @Path("category") String category);
-
-    @FormUrlEncoded
-    @POST("feedbacks/{username}")
-    Call<Void> addFeedback(@Header("Authorization") String token,
-                           @Field("rating") String rating,
-                           @Field("comment") String comment,
-                           @Path("username") String username);
-
-    /**
-     * Hire Post
-     */
-    @FormUrlEncoded
-    @POST("hiredList/{username}")
-    Call<Void> Hire(@Header("Authorization") String token,
-                    @Field("paymentMethod") String paymentMethod,
-                    @Field("day") String day,
-                    @Field("time") String time,
-                    @Field("location") String location,
-                    @Path("username") String username);
-
-    //hire
-    @POST("hiredList/{username}")
-    Call<HireResponse> HirePerson(@Body PendingJob pendingJob,
-                                  @Path("username") String username);
-
-
-    /**
-     * get user
-     */
-    @GET("users/profile")
-    Call<UserUpdate> getUserDetail(@Header("Authorization") String token);
-
-    /**
-     * update user
-     */
+//
+//    @FormUrlEncoded
+//    @POST("/serviceAds")
+//    Call<CatResponse> addService(
+//            @Field("category") String category,
+//            @Field("description") String description,
+//            @Field("openingTime") String openingTime,
+//            @Field("closingTime") String closingTime,
+//            @Field("daysFrom") String daysFrom,
+//            @Field("daysTo") String daysTo,
+//            @Field("price") String price);
+//
+//
+//
+//
+//
+//
+//    @POST("/serviceAds")
+//    Call<CatResponse> postService(@Body postServiceModel postServiceModel1);
+//
+//
+//
+//
+//    /**
+//     * Category
+//     */
+////    @GET("serviceAds/Plumber")
+////    Call<List<ServiceAds>> getCategory(@Header("Authorization") String token);
+//    @GET("serviceAds/{category}")
+//    Call<List<ServiceAds>> getServiceAdsByCategory(@Header("Authorization") String token,
+//                                                   @Path("category") String category);
+//
+//    @FormUrlEncoded
+//    @POST("feedbacks/{username}")
+//    Call<Void> addFeedback(@Header("Authorization") String token,
+//                           @Field("rating") String rating,
+//                           @Field("comment") String comment,
+//                           @Path("username") String username);
+//
+//    /**
+//     * Hire Post
+//     */
+//    @FormUrlEncoded
+//    @POST("hiredList/{username}")
+//    Call<Void> Hire(@Header("Authorization") String token,
+//                    @Field("paymentMethod") String paymentMethod,
+//                    @Field("day") String day,
+//                    @Field("time") String time,
+//                    @Field("location") String location,
+//                    @Path("username") String username);
+//
+//    //hire
+//    @POST("hiredList/{username}")
+//    Call<HireResponse> HirePerson(@Body PendingJob pendingJob,
+//                                  @Path("username") String username);
+//
+//
+//    /**
+//     * get user
+//     */
+//    @GET("users/profile")
+//    Call<UserUpdate> getUserDetail(@Header("Authorization") String token);
+//
+//    /**
+//     * update user
+  //   */
     @PUT("users/profile/{id}")
     Call<Void> updateUserData(@Header("Authorization") String token,
                               @Path("id") String id,

@@ -78,7 +78,7 @@
                 <Button
                     android:id="@+id/btnViewProfile"
                     android:layout_width="180dp"
-                    android:layout_height="40dp"
+                    android:layout_height="match_parent"
                     android:background="@drawable/btnround"
                     android:drawableLeft="@drawable/pp2"
                     android:paddingLeft="12dp"
