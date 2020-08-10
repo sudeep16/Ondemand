@@ -57,11 +57,13 @@ public class PendingJobAdapter extends RecyclerView.Adapter<PendingJobAdapter.Pe
 
             boolean visible = false;
 
+            //Accept or decline
             @Override
             public void onClick(View v) {
                 UsersApi usersApi = Url.getInstance().create(UsersApi.class);
                 Call<Void> pendingVoidCall = usersApi.pendingJobApproval(Url.token, pendingJob.getHiredBy().getUsername(), true);
 
+                //Accept job request from customer
                 pendingVoidCall.enqueue(new Callback<Void>() {
                     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
                     @Override
@@ -85,6 +87,7 @@ public class PendingJobAdapter extends RecyclerView.Adapter<PendingJobAdapter.Pe
 
             }
         });
+        //Decline job request from customer
         holder.btnDecline.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -100,7 +103,7 @@ public class PendingJobAdapter extends RecyclerView.Adapter<PendingJobAdapter.Pe
                         }
                         StrictModeClass.StrictMode();
                         try {
-
+                            //Delete after declining job offer
                             UsersApi usersApi1 = Url.getInstance().create(UsersApi.class);
                             Call<Void> deletehiredlist = usersApi1.deleteHiredList(Url.token, pendingJob.get_id());
 

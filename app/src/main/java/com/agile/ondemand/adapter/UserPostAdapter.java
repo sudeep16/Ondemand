@@ -71,8 +71,8 @@ public class UserPostAdapter extends RecyclerView.Adapter<UserPostAdapter.UserPo
                     public boolean onMenuItemClick(MenuItem item) {
 
                         switch (item.getItemId()) {
+                            //Delete serviceAds
                             case R.id.itemDelete:
-
                                 UsersApi usersApi = Url.getInstance().create(UsersApi.class);
                                 Call<Void> deletePost = usersApi.deleteMyPost(Url.token, serviceAds.getId());
 
@@ -94,7 +94,7 @@ public class UserPostAdapter extends RecyclerView.Adapter<UserPostAdapter.UserPo
                                     }
                                 });
                                 break;
-
+                             //Edit serviceAds
                             case R.id.itemEdit:
                                 AppCompatActivity appCompatActivity = (AppCompatActivity) v.getContext();
                                 PostEditFragment postEditFragment = new PostEditFragment();

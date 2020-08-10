@@ -55,6 +55,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        //Shows services ads according to categories
         cvPlumber.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

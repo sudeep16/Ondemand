@@ -66,6 +66,7 @@ public class LoginActivity extends AppCompatActivity {
         checkbox = findViewById(R.id.checkBox);
     }
 
+    //Login user by username and password
     private void login() {
         String username = etUsername.getText().toString().trim();
         String password = etPassword.getText().toString().trim();
@@ -92,6 +93,7 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+    //Save username and password in shared preference
     private void SaveIntoSharedPreference() {
         SharedPreferences sharedPreferences = getSharedPreferences("User", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();

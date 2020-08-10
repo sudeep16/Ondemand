@@ -41,6 +41,7 @@ public class FeedbackFragment extends Fragment {
         return view;
     }
 
+    //GET current user feedback from customer
     private void Feedbacks(){
         StrictModeClass.StrictMode();
         UsersApi usersApi = Url.getInstance().create(UsersApi.class);

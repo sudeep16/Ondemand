@@ -123,6 +123,7 @@ public class AddFragment extends Fragment {
         timePickerDialog.show();
     }
 
+    //Add serviceAds
     private void serviceAds() {
         CategoryBLL categoryBLL = new CategoryBLL();
         StrictModeClass.StrictMode();

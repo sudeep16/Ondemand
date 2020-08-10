@@ -43,6 +43,7 @@ public class PendingjobFragment extends Fragment {
 
     }
 
+    //GET current user's hired list
     private void hireList() {
 
         StrictModeClass.StrictMode();

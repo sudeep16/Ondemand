@@ -36,6 +36,7 @@ public class RegisterActivity extends AppCompatActivity {
         actionButtons();
     }
 
+    //Sign up user
     private void signUp() {
         firstName = etFirstName.getText().toString().trim();
         lastName = etLastName.getText().toString().trim();

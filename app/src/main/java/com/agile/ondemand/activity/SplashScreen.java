@@ -40,6 +40,7 @@ public class SplashScreen extends AppCompatActivity {
         }, 2000);
     }
 
+    //Check user if user is already logged in or not
     private Boolean checkUser() {
         SharedPreferences sharedPreferences = this.getSharedPreferences("User", MODE_PRIVATE);
         username = sharedPreferences.getString("username", null);
@@ -53,6 +54,7 @@ public class SplashScreen extends AppCompatActivity {
         }
     }
 
+    //Check user in database
     private void login() {
         String usernameLogin = username;
         String passwordLogin = password;

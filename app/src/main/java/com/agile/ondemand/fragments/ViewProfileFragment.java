@@ -70,6 +70,8 @@ public class ViewProfileFragment extends Fragment {
         return view;
     }
 
+
+    //GET current user's details
     private void viewUserProfile() {
         final UsersApi usersApi = Url.getInstance().create(UsersApi.class);
         String username = getArguments().getString("username");

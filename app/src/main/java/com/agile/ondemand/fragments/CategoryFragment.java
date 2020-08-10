@@ -40,6 +40,7 @@ public class CategoryFragment extends Fragment {
         Bundle bundle = getArguments();
         category = bundle.getString("category");
 
+        //GET service ads posted by current user
         UsersApi usersApi = Url.getInstance().create(UsersApi.class);
         Call<List<ServiceAds>> listCall = usersApi.getServiceAdsByCategory(Url.token,category);
 //        Call<ServiceAds> serviceAdsCall = usersApi.getCategory(Url.token);

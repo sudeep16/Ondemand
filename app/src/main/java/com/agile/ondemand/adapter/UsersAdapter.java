@@ -46,6 +46,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UserSearchHo
         holder.tvEmail.setText(userUpdate.getEmail());
         holder.tvNumber.setText(userUpdate.getPhone());
 
+        //GET current user's details
         holder.btnViewProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -52,6 +52,7 @@ public class MyPostFragment extends Fragment {
         return view;
     }
 
+    //GET current user's service ads
     private void MyPost() {
         StrictModeClass.StrictMode();
         UsersApi usersApi = Url.getInstance().create(UsersApi.class);

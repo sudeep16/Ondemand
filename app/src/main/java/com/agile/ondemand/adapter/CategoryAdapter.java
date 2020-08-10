@@ -77,6 +77,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
             }
         });
 
+
+        //Add to wishlist of logged in user
         holder.btnWishList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

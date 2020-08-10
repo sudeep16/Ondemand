@@ -69,6 +69,7 @@ public class FeedbackActivity extends AppCompatActivity {
         });
     }
 
+    //Add feedback and reviews
     private void feedback() {
         FeedbackBLL feedbackBLL = new FeedbackBLL();
         StrictModeClass.StrictMode();

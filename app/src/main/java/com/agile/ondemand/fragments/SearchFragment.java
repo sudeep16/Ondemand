@@ -39,7 +39,7 @@ public class SearchFragment extends Fragment {
         return view;
     }
 
-
+    //Search by user's first name
     private void loadUserByFirstName() {
         UsersApi usersApi = Url.getInstance().create(UsersApi.class);
 //        Bundle bundle = new Bundle();

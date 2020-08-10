@@ -55,8 +55,6 @@ public class HireActivity extends AppCompatActivity implements DatePickerDialog.
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner1.setAdapter(arrayAdapter);
 
-
-
         notificationManagerCompat = NotificationManagerCompat.from(this);
         CreateChannel channel = new CreateChannel(this);
         channel.createChannel();
@@ -122,6 +120,7 @@ public class HireActivity extends AppCompatActivity implements DatePickerDialog.
 
     }
 
+    //Hire service by providing some data which includes payment method, date, time and location
     private void Hire() {
         String paymentM = spinner1.getSelectedItem().toString().trim();
         String datepicker = tvDatePicker.getText().toString().trim();
