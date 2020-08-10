@@ -138,7 +138,7 @@ public class ProfileFragment extends Fragment {
     }
 
     /**
-     * get user
+     * get user's detail
      */
     private void loadUser() {
         UsersApi usersApi = Url.getInstance().create(UsersApi.class);

@@ -85,6 +85,7 @@ public class HireActivity extends AppCompatActivity implements DatePickerDialog.
 
     }
 
+    /**timer picker dialogue*/
     private void loadTime() {
         final Calendar c = Calendar.getInstance();
         final int hour = c.get(Calendar.HOUR);

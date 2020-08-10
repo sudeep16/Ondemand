@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
+/**Button nav Selected Item Listener*/
     private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -107,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    /**three dot menu*/
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -114,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    /**three dot menu click listener*/
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {

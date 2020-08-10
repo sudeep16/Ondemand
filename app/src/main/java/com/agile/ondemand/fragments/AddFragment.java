@@ -80,6 +80,7 @@ public class AddFragment extends Fragment {
         return root;
     }
 
+    /**timer picker dialogue*/
     private void loadTime() {
         final Calendar c = Calendar.getInstance();
         final int hour = c.get(Calendar.HOUR);

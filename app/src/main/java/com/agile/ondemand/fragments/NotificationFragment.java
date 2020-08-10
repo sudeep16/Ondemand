@@ -39,7 +39,7 @@ public class NotificationFragment extends Fragment {
         return view;
 
     }
-
+/**user's notification*/
     private void getNotify() {
         StrictModeClass.StrictMode();
         UsersApi usersApi = Url.getInstance().create(UsersApi.class);

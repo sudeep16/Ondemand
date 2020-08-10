@@ -75,7 +75,7 @@ public class PostEditFragment extends Fragment {
         return view;
         //Push check
     }
-
+/**user's service ads edit*/
     private void updateServiceAd() {
         String id = getArguments().getString("id");
         String category = updateSpinner.getText().toString().trim();
@@ -107,7 +107,7 @@ public class PostEditFragment extends Fragment {
             }
         });
     }
-
+/**passing data to posteditfragment*/
     private void viewSelectedData() {
         UsersApi usersApi = Url.getInstance().create(UsersApi.class);
         final String id = getArguments().getString("id");
@@ -148,6 +148,7 @@ public class PostEditFragment extends Fragment {
         });
     }
 
+    /**time picker dialogue*/
     private void loadTime() {
         final Calendar c = Calendar.getInstance();
         final int hour = c.get(Calendar.HOUR);
