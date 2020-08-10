@@ -17,32 +17,32 @@ import retrofit2.Response;
 public class CategoryBLL {
     private boolean isSuccess = true;
 
-    public boolean addCategory(String token, String category, String description, String openingTime,
-                               String closingTime, String daysFrom, String daysTo, String price) {
-        UsersApi usersApi = Url.getInstance().create(UsersApi.class);
-        Call<ServiceAds> voidCall = usersApi.serviceAds(token,
-                category, description, openingTime, closingTime, daysFrom, daysTo, price);
-
-        voidCall.enqueue(new Callback<ServiceAds>() {
-            @Override
-            public void onResponse(Call<ServiceAds> call, Response<ServiceAds> response) {
-                if (response.isSuccessful()) {
-                    isSuccess = true;
-                    System.out.println(response.code());
-                    ServiceAds serviceAds=response.body();
-                 //   Log.v("RESPONSE_BODY", response.body());
-
-                } else {
-                    isSuccess = false;
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ServiceAds> call, Throwable t) {
-            }
-        });
-        return isSuccess;
-    }
+//    public boolean addCategory(String token, String category, String description, String openingTime,
+//                               String closingTime, String daysFrom, String daysTo, String price) {
+//        UsersApi usersApi = Url.getInstance().create(UsersApi.class);
+//        Call<ServiceAds> voidCall = usersApi.serviceAds(token,
+//                category, description, openingTime, closingTime, daysFrom, daysTo, price);
+//
+//        voidCall.enqueue(new Callback<ServiceAds>() {
+//            @Override
+//            public void onResponse(Call<ServiceAds> call, Response<ServiceAds> response) {
+//                if (response.isSuccessful()) {
+//                    isSuccess = true;
+//                    System.out.println(response.code());
+//                    ServiceAds serviceAds=response.body();
+//                 //   Log.v("RESPONSE_BODY", response.body());
+//
+//                } else {
+//                    isSuccess = false;
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<ServiceAds> call, Throwable t) {
+//            }
+//        });
+//        return isSuccess;
+//    }
 
     String token;
 

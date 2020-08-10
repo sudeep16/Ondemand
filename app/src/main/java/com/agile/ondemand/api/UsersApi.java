@@ -1,5 +1,6 @@
 package com.agile.ondemand.api;
 
+import com.agile.ondemand.testbl.CatResponse;
 import com.agile.ondemand.model.Notification;
 import com.agile.ondemand.model.PendingJob;
 import com.agile.ondemand.model.ServiceAds;
@@ -8,6 +9,8 @@ import com.agile.ondemand.model.User;
 import com.agile.ondemand.model.UserUpdate;
 import com.agile.ondemand.model.WishList;
 import com.agile.ondemand.model.feedback;
+import com.agile.ondemand.testbl.postServiceModel;
+import com.agile.ondemand.testbl.HireResponse;
 import com.agile.ondemand.serverresponse.SignUpResponse;
 
 import java.util.List;
@@ -19,7 +22,6 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
-import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
@@ -54,6 +56,19 @@ public interface UsersApi {
             @Field("daysTo") String daysTo,
             @Field("price") String price);
 
+    @FormUrlEncoded
+    @POST("/serviceAds")
+    Call<CatResponse> addService(
+            @Header("Authorization") String token,
+            @Field("category") String category,
+            @Field("description") String description,
+            @Field("openingTime") String openingTime,
+            @Field("closingTime") String closingTime,
+            @Field("daysFrom") String daysFrom,
+            @Field("daysTo") String daysTo,
+            @Field("price") String price);
+
+
     /**
      * Category
      */
@@ -81,6 +96,12 @@ public interface UsersApi {
                     @Field("time") String time,
                     @Field("location") String location,
                     @Path("username") String username);
+
+    //hire
+//    @POST("hiredList/{username}")
+//    Call<HireResponse> HirePerson(@Body PendingJob pendingJob,
+//                                  @Path("username") String username);
+
 
     /**
      * get user

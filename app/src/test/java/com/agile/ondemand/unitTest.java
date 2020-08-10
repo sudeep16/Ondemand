@@ -26,8 +26,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 public class unitTest {
@@ -96,9 +94,6 @@ public void testLogin_correct(){
         assertEquals(false,result);
     }
 
-
-
-
    //Service Ads/Jobs
     @Test
     public void testAddCat_correct(){
@@ -108,17 +103,13 @@ public void testLogin_correct(){
     }
 
 
-
-
-
-
-    @Test
-    public void testCategory_correct(){
-        CategoryBLL categoryBLL=new CategoryBLL();
-        boolean result=categoryBLL.addCategory("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjBkMDEzOTY0YjlmMDBkMTMxZjllNzgiLCJpYXQiOjE1OTQ2ODc4OTR9.gG_sGP9OAKIVhSJ9vVGb6rbG1rNgwZ00iDyxEGHb-CQ","plumber","mangal","12","5","Sunday","Friday","200");
-        assertEquals(true,result);
-       // assertTrue(it.status == SUCCESS_CODE)
-    }
+//    @Test
+//    public void testCategory_correct(){
+//        CategoryBLL categoryBLL=new CategoryBLL();
+//        boolean result=categoryBLL.addCategory("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjBkMDEzOTY0YjlmMDBkMTMxZjllNzgiLCJpYXQiOjE1OTQ2ODc4OTR9.gG_sGP9OAKIVhSJ9vVGb6rbG1rNgwZ00iDyxEGHb-CQ","plumber","mangal","12","5","Sunday","Friday","200");
+//        assertEquals(true,result);
+//       // assertTrue(it.status == SUCCESS_CODE)
+//    }
 
     @Test
     public void getServiceListByCat(){
@@ -142,7 +133,6 @@ public void testLogin_correct(){
         assertEquals(true,result);
     }
 
-
 //Hire Service Man
 
     @Test
@@ -153,14 +143,14 @@ public void testHirePost_correct(){
         assertEquals(true,result);
     }
 
-    @Test
-public void testHirePerson_correct(){
-        HireBl hireBLL =new HireBl();
-        Owner owner=new Owner("5f2add5c64309b3a8c9f3098","Tester2","Tester2","9999999999");
-        PendingJob pendingJob=new PendingJob("5f2ade0264309b3a8c9f309c","Cash on Delivery","Thursday, August 6, 2020","10:12 AM","Test",owner);
-        boolean result= hireBLL.addOrder(pendingJob,"Tester2");
-        assertEquals(true,result);
-    }
+//    @Test
+//public void testHirePerson_correct(){
+//        HireBl hireBLL =new HireBl();
+//        Owner owner=new Owner("5f2add5c64309b3a8c9f3098","Tester2","Tester2","9999999999");
+//        PendingJob pendingJob=new PendingJob("5f2ade0264309b3a8c9f309c","Cash on Delivery","Thursday, August 6, 2020","10:12 AM","Test",owner);
+//        boolean result= hireBLL.addOrder(pendingJob,"Tester2");
+//        assertEquals(true,result);
+//    }
     @Test
 
     public void testHirePost_if_token_not_found(){
@@ -184,7 +174,6 @@ public void testHirePerson_correct(){
         assertEquals(true,result);
     }
 
-
     //Feedback for the service provider.
     @Test
     public void testFeedback_correct(){
@@ -200,16 +189,13 @@ public void testHirePerson_correct(){
         assertEquals(true,result);
     }
 
-
     //Profile Page Functions
-
     @Test
     public void testProfile_load(){
         FeedbackBLL feedbackBLL=new FeedbackBLL();
         boolean result=feedbackBLL.giveFeedback("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjBhZTY4NjUwNWI3MzE3NTI0M2EzNmEiLCJpYXQiOjE1OTQ3MDgzMzV9.YEmWJprqNNBqBSqTT3XCsGtJD_owljFjP58CazAz-w8","3","testing Feedback","shknischal");
         assertEquals(true,result);
     }
-
 
     @Test
     public void deletePost(){
@@ -254,9 +240,6 @@ public void testHirePerson_correct(){
         boolean result=categoryBLL.updateServiceAd("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjJhZGM3OTY0MzA5YjNhOGM5ZjMwOTUiLCJpYXQiOjE1OTY2NTY2MTV9.GG5JXb6VaCVWiPLJPP7j4nwoTyby095KlRjurWodo1g","5f2add0364309b3a8c9f3097",serviceAdsUpdate);
         assertEquals(true,result);
     }
-
-
-
 
     // Pending Jobs Loaded in the Profile page.
     @Test

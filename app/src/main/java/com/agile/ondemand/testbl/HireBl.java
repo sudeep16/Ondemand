@@ -13,27 +13,27 @@ import retrofit2.Response;
 
 public class HireBl {
     boolean isSuccess=false;
-    public HireBl(){}
-
-    public boolean addOrder(PendingJob pendingJob,String username){
-        UsersApi foodAPI= Url.getInstance().create(UsersApi.class);
-        Call<HireResponse> cartModelCall=foodAPI.HirePerson(pendingJob,username);
-
-        try {
-            Response<HireResponse> cartresponse = cartModelCall.execute();
-            if (cartresponse.isSuccessful()) {
-                isSuccess=true;
-            }
-            else{
-                isSuccess=false;
-            }
-        }
-        catch (IOException e){
-            e.printStackTrace();
-        }
-        return isSuccess;
-    }
-
+//    public HireBl(){}
+//
+//    public boolean addOrder(PendingJob pendingJob,String username){
+//        UsersApi foodAPI= Url.getInstance().create(UsersApi.class);
+//        Call<HireResponse> cartModelCall=foodAPI.HirePerson(pendingJob,username);
+//
+//        try {
+//            Response<HireResponse> cartresponse = cartModelCall.execute();
+//            if (cartresponse.isSuccessful()) {
+//                isSuccess=true;
+//            }
+//            else{
+//                isSuccess=false;
+//            }
+//        }
+//        catch (IOException e){
+//            e.printStackTrace();
+//        }
+//        return isSuccess;
+//    }
+//
 
 
     public boolean approvePendingJob(String token, String id,boolean accept) {
