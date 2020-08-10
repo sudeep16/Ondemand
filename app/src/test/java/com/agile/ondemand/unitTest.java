@@ -3,13 +3,13 @@ package com.agile.ondemand;
 import com.agile.ondemand.api.UsersApi;
 import com.agile.ondemand.testbl.AddtoWishlist;
 import com.agile.ondemand.testbl.CatBl;
-import com.agile.ondemand.bll.CategoryBLL;
+import com.agile.ondemand.testbl.CategoryBLL;
 import com.agile.ondemand.testbl.DeletePostBl;
 import com.agile.ondemand.bll.FeedbackBLL;
 import com.agile.ondemand.bll.HireBLL;
 import com.agile.ondemand.testbl.HireBl;
 import com.agile.ondemand.bll.LoginBLL;
-import com.agile.ondemand.bll.ProfileBLL;
+import com.agile.ondemand.testbl.ProfileBLL;
 import com.agile.ondemand.bll.SignUpBLL;
 import com.agile.ondemand.model.Owner;
 import com.agile.ondemand.model.PendingJob;
@@ -19,12 +19,13 @@ import com.agile.ondemand.url.Url;
 
 import org.junit.Test;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class unitTest {
@@ -32,7 +33,7 @@ public class unitTest {
 @Test
 public void testLogin_correct(){
     LoginBLL loginBLL=new LoginBLL();
-    boolean result=loginBLL.checkUser("Tester1","Tester12@");
+    boolean result=loginBLL.checkUser("Tester2","Tester12@");
     assertEquals(true,result);
 }
 
@@ -65,31 +66,19 @@ public void testLogin_correct(){
     }
 
 
-
-    @Test
-    public void testAddCat_correct(){
-        CatBl catBl=new CatBl();
-        boolean result=catBl.addCategory("Plumber","shakya","10:00 am","5:00 pm","Sunday","Monday","1500");
-        assertTrue(result);
-    }
-
-
-
-
     @Test
     public void testSignup_if_username_exists(){
         SignUpBLL signUpBLL=new SignUpBLL();
         boolean result=signUpBLL.signupUser("nischal","shakya","mangal","nischalsed","nischal@gmail.com","9860172363","Male","nischal12@");
         assertEquals(false,result);
     }
+
     @Test
     public void testSignup_if_fields_missing(){
         SignUpBLL signUpBLL=new SignUpBLL();
         boolean result=signUpBLL.signupUser("nischal","shakya","mangal","","nischal@gmail.com","9860172363","Male","nischal12@");
         assertEquals(false,result);
     }
-
-
 
     @Test
     public void testSignup_if_password_weak(){
@@ -104,24 +93,47 @@ public void testLogin_correct(){
         boolean result=signUpBLL.signupUser("nischal","shakya","mangal","nischalsed","nischal@gmail","9860172363","Male","nischal12@");
         assertEquals(false,result);
     }
-////
 
+   //Service Ads/Jobs
     @Test
-    public void testCategory_correct(){
-        CategoryBLL categoryBLL=new CategoryBLL();
-        boolean result=categoryBLL.addCategory("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjBkMDEzOTY0YjlmMDBkMTMxZjllNzgiLCJpYXQiOjE1OTQ2ODc4OTR9.gG_sGP9OAKIVhSJ9vVGb6rbG1rNgwZ00iDyxEGHb-CQ","plumber","mangal","12","5","Sunday","Friday","200");
-        assertEquals(true,result);
-       // assertTrue(it.status == SUCCESS_CODE)
+    public void testAddCat_correct(){
+        CatBl catBl=new CatBl();
+        boolean result=catBl.addCategory("","Plumber","shakya","10:00 am","5:00 pm","Sunday","Monday","1500");
+        assertTrue(result);
     }
+
+
 //    @Test
-//    public void testCategory_incorrect_token(){
+//    public void testCategory_correct(){
 //        CategoryBLL categoryBLL=new CategoryBLL();
-//        boolean result=categoryBLL.addCategory("eyJhbGciOiJI","plumber","mangal","12","5","Sunday","Friday","200");
-//        assertEquals(false,result);
+//        boolean result=categoryBLL.addCategory("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjBkMDEzOTY0YjlmMDBkMTMxZjllNzgiLCJpYXQiOjE1OTQ2ODc4OTR9.gG_sGP9OAKIVhSJ9vVGb6rbG1rNgwZ00iDyxEGHb-CQ","plumber","mangal","12","5","Sunday","Friday","200");
+//        assertEquals(true,result);
+//       // assertTrue(it.status == SUCCESS_CODE)
 //    }
 
-//    int statusCode = response.code();
-//    User user = response.body();
+    @Test
+    public void getServiceListByCat(){
+        CategoryBLL categoryBLL=new CategoryBLL();
+        boolean result=categoryBLL.getServiceList("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjJhZGM3OTY0MzA5YjNhOGM5ZjMwOTUiLCJpYXQiOjE1OTY2NTY2MTV9.GG5JXb6VaCVWiPLJPP7j4nwoTyby095KlRjurWodo1g","Plumber");
+        assertEquals(true,result);
+    }
+
+    @Test
+    public void updateServiceAd(){
+        CategoryBLL categoryBLL =new CategoryBLL();
+        ServiceAdsUpdate serviceAdsUpdate=new ServiceAdsUpdate("","","","","","","","");
+        boolean result=categoryBLL.updateServiceAd("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjJhZGM3OTY0MzA5YjNhOGM5ZjMwOTUiLCJpYXQiOjE1OTY2NTY2MTV9.GG5JXb6VaCVWiPLJPP7j4nwoTyby095KlRjurWodo1g","5f2add0364309b3a8c9f3097",serviceAdsUpdate);
+        assertEquals(true,result);
+    }
+
+    @Test
+    public void deletePostTest(){
+        DeletePostBl deletePostBl=new DeletePostBl();
+        boolean result=deletePostBl.deletePost("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjJhZGM3OTY0MzA5YjNhOGM5ZjMwOTUiLCJpYXQiOjE1OTY2NTY2MTV9.GG5JXb6VaCVWiPLJPP7j4nwoTyby095KlRjurWodo1g","5f2add0364309b3a8c9f3097");
+        assertEquals(true,result);
+    }
+
+//Hire Service Man
 
     @Test
 public void testHirePost_correct(){
@@ -131,14 +143,14 @@ public void testHirePost_correct(){
         assertEquals(true,result);
     }
 
-    @Test
-public void testHirePerson_correct(){
-        HireBl hireBLL =new HireBl();
-        Owner owner=new Owner("5f2add5c64309b3a8c9f3098","Tester2","Tester2","9999999999");
-        PendingJob pendingJob=new PendingJob("5f2ade0264309b3a8c9f309c","Cash on Delivery","Thursday, August 6, 2020","10:12 AM","Test",owner);
-        boolean result= hireBLL.addOrder(pendingJob,"Tester2");
-        assertEquals(true,result);
-    }
+//    @Test
+//public void testHirePerson_correct(){
+//        HireBl hireBLL =new HireBl();
+//        Owner owner=new Owner("5f2add5c64309b3a8c9f3098","Tester2","Tester2","9999999999");
+//        PendingJob pendingJob=new PendingJob("5f2ade0264309b3a8c9f309c","Cash on Delivery","Thursday, August 6, 2020","10:12 AM","Test",owner);
+//        boolean result= hireBLL.addOrder(pendingJob,"Tester2");
+//        assertEquals(true,result);
+//    }
     @Test
 
     public void testHirePost_if_token_not_found(){
@@ -148,8 +160,21 @@ public void testHirePerson_correct(){
         assertEquals(false,result);
     }
 
+    @Test
+    public void testHireList_load(){
+        FeedbackBLL feedbackBLL=new FeedbackBLL();
+        boolean result=feedbackBLL.giveFeedback("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjBhZTY4NjUwNWI3MzE3NTI0M2EzNmEiLCJpYXQiOjE1OTQ3MDgzMzV9.YEmWJprqNNBqBSqTT3XCsGtJD_owljFjP58CazAz-w8","3","testing Feedback","shknischal");
+        assertEquals(true,result);
+    }
 
+    @Test
+    public void deleteHiredList(){
+        HireBl hireBl=new HireBl();
+        boolean result=hireBl.deleteHireList("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjJhZGM3OTY0MzA5YjNhOGM5ZjMwOTUiLCJpYXQiOjE1OTY2NTY2MTV9.GG5JXb6VaCVWiPLJPP7j4nwoTyby095KlRjurWodo1g","5f2add0364309b3a8c9f3097");
+        assertEquals(true,result);
+    }
 
+    //Feedback for the service provider.
     @Test
     public void testFeedback_correct(){
         FeedbackBLL feedbackBLL=new FeedbackBLL();
@@ -157,23 +182,66 @@ public void testHirePerson_correct(){
         assertEquals(true,result);
     }
 
+    @Test
+    public void getFeedbackList(){
+        CategoryBLL categoryBLL=new CategoryBLL();
+        boolean result=categoryBLL.getFeedback("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjJhZGM3OTY0MzA5YjNhOGM5ZjMwOTUiLCJpYXQiOjE1OTY2NTY2MTV9.GG5JXb6VaCVWiPLJPP7j4nwoTyby095KlRjurWodo1g");
+        assertEquals(true,result);
+    }
 
-
-
+    //Profile Page Functions
     @Test
     public void testProfile_load(){
         FeedbackBLL feedbackBLL=new FeedbackBLL();
         boolean result=feedbackBLL.giveFeedback("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjBhZTY4NjUwNWI3MzE3NTI0M2EzNmEiLCJpYXQiOjE1OTQ3MDgzMzV9.YEmWJprqNNBqBSqTT3XCsGtJD_owljFjP58CazAz-w8","3","testing Feedback","shknischal");
         assertEquals(true,result);
     }
-//
-//    @Test
-//    public void testProfile_load(){
-//        ProfileBLL profileBLL=new ProfileBLL();
-//        boolean result=profileBLL.updateUserData("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjBhZTY4NjUwNWI3MzE3NTI0M2EzNmEiLCJpYXQiOjE1OTQ3MDgzMzV9.YEmWJprqNNBqBSqTT3XCsGtJD_owljFjP58CazAz-w8","5f0ae686505b73175243a36a","");
-//        assertEquals(true,result);
-//    }
 
+    @Test
+    public void deletePost(){
+        ProfileBLL profileBLL=new ProfileBLL();
+        boolean result=profileBLL.deletePost("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjJhZGM3OTY0MzA5YjNhOGM5ZjMwOTUiLCJpYXQiOjE1OTY2NTY2MTV9.GG5JXb6VaCVWiPLJPP7j4nwoTyby095KlRjurWodo1g","5f2add0364309b3a8c9f3097");
+        assertEquals(true,result);
+    }
+
+    @Test
+    public void getMyPost(){
+        ProfileBLL profileBLL=new ProfileBLL();
+        boolean result=profileBLL.getMyPost("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjJhZGM3OTY0MzA5YjNhOGM5ZjMwOTUiLCJpYXQiOjE1OTY2NTY2MTV9.GG5JXb6VaCVWiPLJPP7j4nwoTyby095KlRjurWodo1g");
+        assertEquals(true,result);
+    }
+
+    @Test
+    public void loadUser(){
+        CategoryBLL categoryBLL =new CategoryBLL();
+        ServiceAdsUpdate serviceAdsUpdate=new ServiceAdsUpdate("","","","","","","","");
+        boolean result=categoryBLL.updateServiceAd("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjJhZGM3OTY0MzA5YjNhOGM5ZjMwOTUiLCJpYXQiOjE1OTY2NTY2MTV9.GG5JXb6VaCVWiPLJPP7j4nwoTyby095KlRjurWodo1g","5f2add0364309b3a8c9f3097",serviceAdsUpdate);
+        assertEquals(true,result);
+    }
+
+    @Test
+    public void userUpdate(){
+        CategoryBLL categoryBLL =new CategoryBLL();
+        ServiceAdsUpdate serviceAdsUpdate=new ServiceAdsUpdate("","","","","","","","");
+        boolean result=categoryBLL.updateServiceAd("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjJhZGM3OTY0MzA5YjNhOGM5ZjMwOTUiLCJpYXQiOjE1OTY2NTY2MTV9.GG5JXb6VaCVWiPLJPP7j4nwoTyby095KlRjurWodo1g","5f2add0364309b3a8c9f3097",serviceAdsUpdate);
+        assertEquals(true,result);
+    }
+    @Test
+    public void userDelete(){
+        CategoryBLL categoryBLL =new CategoryBLL();
+        ServiceAdsUpdate serviceAdsUpdate=new ServiceAdsUpdate("","","","","","","","");
+        boolean result=categoryBLL.updateServiceAd("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjJhZGM3OTY0MzA5YjNhOGM5ZjMwOTUiLCJpYXQiOjE1OTY2NTY2MTV9.GG5JXb6VaCVWiPLJPP7j4nwoTyby095KlRjurWodo1g","5f2add0364309b3a8c9f3097",serviceAdsUpdate);
+        assertEquals(true,result);
+    }
+    @Test
+    public void viewUserProfile(){
+        CategoryBLL categoryBLL =new CategoryBLL();
+        ServiceAdsUpdate serviceAdsUpdate=new ServiceAdsUpdate("","","","","","","","");
+        boolean result=categoryBLL.updateServiceAd("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjJhZGM3OTY0MzA5YjNhOGM5ZjMwOTUiLCJpYXQiOjE1OTY2NTY2MTV9.GG5JXb6VaCVWiPLJPP7j4nwoTyby095KlRjurWodo1g","5f2add0364309b3a8c9f3097",serviceAdsUpdate);
+        assertEquals(true,result);
+    }
+
+    // Pending Jobs Loaded in the Profile page.
     @Test
     public void testPendingJob_load(){
         FeedbackBLL feedbackBLL=new FeedbackBLL();
@@ -182,12 +250,21 @@ public void testHirePerson_correct(){
     }
 
     @Test
-    public void testHireList_load(){
-        FeedbackBLL feedbackBLL=new FeedbackBLL();
-        boolean result=feedbackBLL.giveFeedback("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjBhZTY4NjUwNWI3MzE3NTI0M2EzNmEiLCJpYXQiOjE1OTQ3MDgzMzV9.YEmWJprqNNBqBSqTT3XCsGtJD_owljFjP58CazAz-w8","3","testing Feedback","shknischal");
+    public void approvePendingJob(){
+        HireBl hireBl=new HireBl();
+        boolean result=hireBl.approvePendingJob("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjJhZGM3OTY0MzA5YjNhOGM5ZjMwOTUiLCJpYXQiOjE1OTY2NTY2MTV9.GG5JXb6VaCVWiPLJPP7j4nwoTyby095KlRjurWodo1g","5f2add0364309b3a8c9f3097",true);
         assertEquals(true,result);
     }
 
+    @Test
+    public void getPendingJobs(){
+        HireBl hireBl=new HireBl();
+        boolean result=hireBl.getPendingJobs("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjJhZGM3OTY0MzA5YjNhOGM5ZjMwOTUiLCJpYXQiOjE1OTY2NTY2MTV9.GG5JXb6VaCVWiPLJPP7j4nwoTyby095KlRjurWodo1g");
+        assertEquals(true,result);
+    }
+
+
+//Wishlists.
     boolean isSuccess=true;
 
     @Test
@@ -213,10 +290,14 @@ public void testHirePerson_correct(){
 
     }
 
+
+
+
     @Test
-    public void deletePostTest(){
-        DeletePostBl deletePostBl=new DeletePostBl();
-        boolean result=deletePostBl.deletePost("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjJhZGM3OTY0MzA5YjNhOGM5ZjMwOTUiLCJpYXQiOjE1OTY2NTY2MTV9.GG5JXb6VaCVWiPLJPP7j4nwoTyby095KlRjurWodo1g","5f2add0364309b3a8c9f3097");
+    public void getWishList(){
+        CategoryBLL categoryBLL =new CategoryBLL();
+        ServiceAdsUpdate serviceAdsUpdate=new ServiceAdsUpdate("","","","","","","","");
+        boolean result=categoryBLL.updateServiceAd("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjJhZGM3OTY0MzA5YjNhOGM5ZjMwOTUiLCJpYXQiOjE1OTY2NTY2MTV9.GG5JXb6VaCVWiPLJPP7j4nwoTyby095KlRjurWodo1g","5f2add0364309b3a8c9f3097",serviceAdsUpdate);
         assertEquals(true,result);
     }
 
@@ -226,48 +307,9 @@ public void testHirePerson_correct(){
         boolean result=addtoWishlist.addToWishlist("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjJhZGM3OTY0MzA5YjNhOGM5ZjMwOTUiLCJpYXQiOjE1OTY2NTY2MTV9.GG5JXb6VaCVWiPLJPP7j4nwoTyby095KlRjurWodo1g","5f2add0364309b3a8c9f3097");
         assertEquals(true,result);
     }
- @Test
-    public void approvePendingJob(){
-        HireBl hireBl=new HireBl();
-        boolean result=hireBl.approvePendingJob("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjJhZGM3OTY0MzA5YjNhOGM5ZjMwOTUiLCJpYXQiOjE1OTY2NTY2MTV9.GG5JXb6VaCVWiPLJPP7j4nwoTyby095KlRjurWodo1g","5f2add0364309b3a8c9f3097",true);
-        assertEquals(true,result);
-    }
- @Test
-    public void deleteHiredList(){
-        HireBl hireBl=new HireBl();
-        boolean result=hireBl.deleteHireList("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjJhZGM3OTY0MzA5YjNhOGM5ZjMwOTUiLCJpYXQiOjE1OTY2NTY2MTV9.GG5JXb6VaCVWiPLJPP7j4nwoTyby095KlRjurWodo1g","5f2add0364309b3a8c9f3097");
-        assertEquals(true,result);
-    }
-@Test
-    public void deletePost(){
-        ProfileBLL profileBLL=new ProfileBLL();
-        boolean result=profileBLL.deletePost("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjJhZGM3OTY0MzA5YjNhOGM5ZjMwOTUiLCJpYXQiOjE1OTY2NTY2MTV9.GG5JXb6VaCVWiPLJPP7j4nwoTyby095KlRjurWodo1g","5f2add0364309b3a8c9f3097");
-        assertEquals(true,result);
-    }
-
-@Test
-    public void getServiceListByCat(){
-        CategoryBLL categoryBLL=new CategoryBLL();
-        boolean result=categoryBLL.getServiceList("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjJhZGM3OTY0MzA5YjNhOGM5ZjMwOTUiLCJpYXQiOjE1OTY2NTY2MTV9.GG5JXb6VaCVWiPLJPP7j4nwoTyby095KlRjurWodo1g","Plumber");
-        assertEquals(true,result);
-    }
 
 
-    @Test
-    public void getFeedbackList(){
-        CategoryBLL categoryBLL=new CategoryBLL();
-        boolean result=categoryBLL.getFeedback("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjJhZGM3OTY0MzA5YjNhOGM5ZjMwOTUiLCJpYXQiOjE1OTY2NTY2MTV9.GG5JXb6VaCVWiPLJPP7j4nwoTyby095KlRjurWodo1g");
-        assertEquals(true,result);
-    }
-
-    @Test
-    public void getMyPost(){
-        ProfileBLL profileBLL=new ProfileBLL();
-        boolean result=profileBLL.getMyPost("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjJhZGM3OTY0MzA5YjNhOGM5ZjMwOTUiLCJpYXQiOjE1OTY2NTY2MTV9.GG5JXb6VaCVWiPLJPP7j4nwoTyby095KlRjurWodo1g");
-        assertEquals(true,result);
-    }
-
-
+//Notifications
     @Test
     public void getNotification(){
         ProfileBLL profileBLL=new ProfileBLL();
@@ -277,55 +319,9 @@ public void testHirePerson_correct(){
 
 
 
-    @Test
-    public void getPendingJobs(){
-        HireBl hireBl=new HireBl();
-        boolean result=hireBl.getPendingJobs("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjJhZGM3OTY0MzA5YjNhOGM5ZjMwOTUiLCJpYXQiOjE1OTY2NTY2MTV9.GG5JXb6VaCVWiPLJPP7j4nwoTyby095KlRjurWodo1g");
-        assertEquals(true,result);
-    }
 
 
-    @Test
-    public void updateServiceAd(){
-        CategoryBLL categoryBLL =new CategoryBLL();
-        ServiceAdsUpdate serviceAdsUpdate=new ServiceAdsUpdate("","","","","","","","");
-        boolean result=categoryBLL.updateServiceAd("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjJhZGM3OTY0MzA5YjNhOGM5ZjMwOTUiLCJpYXQiOjE1OTY2NTY2MTV9.GG5JXb6VaCVWiPLJPP7j4nwoTyby095KlRjurWodo1g","5f2add0364309b3a8c9f3097",serviceAdsUpdate);
-        assertEquals(true,result);
-    }
-
-
-    @Test
-    public void viewSelectedData(){
-        CategoryBLL categoryBLL =new CategoryBLL();
-        ServiceAdsUpdate serviceAdsUpdate=new ServiceAdsUpdate("","","","","","","","");
-        boolean result=categoryBLL.updateServiceAd("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjJhZGM3OTY0MzA5YjNhOGM5ZjMwOTUiLCJpYXQiOjE1OTY2NTY2MTV9.GG5JXb6VaCVWiPLJPP7j4nwoTyby095KlRjurWodo1g","5f2add0364309b3a8c9f3097",serviceAdsUpdate);
-        assertEquals(true,result);
-    }
-
-
-   @Test
-    public void loadUser(){
-        CategoryBLL categoryBLL =new CategoryBLL();
-        ServiceAdsUpdate serviceAdsUpdate=new ServiceAdsUpdate("","","","","","","","");
-        boolean result=categoryBLL.updateServiceAd("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjJhZGM3OTY0MzA5YjNhOGM5ZjMwOTUiLCJpYXQiOjE1OTY2NTY2MTV9.GG5JXb6VaCVWiPLJPP7j4nwoTyby095KlRjurWodo1g","5f2add0364309b3a8c9f3097",serviceAdsUpdate);
-        assertEquals(true,result);
-    }
-
-   @Test
-    public void userUpdate(){
-        CategoryBLL categoryBLL =new CategoryBLL();
-        ServiceAdsUpdate serviceAdsUpdate=new ServiceAdsUpdate("","","","","","","","");
-        boolean result=categoryBLL.updateServiceAd("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjJhZGM3OTY0MzA5YjNhOGM5ZjMwOTUiLCJpYXQiOjE1OTY2NTY2MTV9.GG5JXb6VaCVWiPLJPP7j4nwoTyby095KlRjurWodo1g","5f2add0364309b3a8c9f3097",serviceAdsUpdate);
-        assertEquals(true,result);
-    }
-   @Test
-    public void userDelete(){
-        CategoryBLL categoryBLL =new CategoryBLL();
-        ServiceAdsUpdate serviceAdsUpdate=new ServiceAdsUpdate("","","","","","","","");
-        boolean result=categoryBLL.updateServiceAd("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjJhZGM3OTY0MzA5YjNhOGM5ZjMwOTUiLCJpYXQiOjE1OTY2NTY2MTV9.GG5JXb6VaCVWiPLJPP7j4nwoTyby095KlRjurWodo1g","5f2add0364309b3a8c9f3097",serviceAdsUpdate);
-        assertEquals(true,result);
-    }
-
+//Count Functions present in the profile page
 
   @Test
     public void pendingJobCount(){
@@ -344,6 +340,8 @@ public void testHirePerson_correct(){
         assertEquals(true,result);
     }
 
+
+    //Search Function
       @Test
     public void loadUserByFirstName(){
         CategoryBLL categoryBLL =new CategoryBLL();
@@ -353,9 +351,8 @@ public void testHirePerson_correct(){
     }
 
 
-
-   @Test
-    public void viewUserProfile(){
+    @Test
+    public void viewSelectedData(){
         CategoryBLL categoryBLL =new CategoryBLL();
         ServiceAdsUpdate serviceAdsUpdate=new ServiceAdsUpdate("","","","","","","","");
         boolean result=categoryBLL.updateServiceAd("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjJhZGM3OTY0MzA5YjNhOGM5ZjMwOTUiLCJpYXQiOjE1OTY2NTY2MTV9.GG5JXb6VaCVWiPLJPP7j4nwoTyby095KlRjurWodo1g","5f2add0364309b3a8c9f3097",serviceAdsUpdate);
@@ -363,12 +360,8 @@ public void testHirePerson_correct(){
     }
 
 
-   @Test
-    public void getWishList(){
-        CategoryBLL categoryBLL =new CategoryBLL();
-        ServiceAdsUpdate serviceAdsUpdate=new ServiceAdsUpdate("","","","","","","","");
-        boolean result=categoryBLL.updateServiceAd("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjJhZGM3OTY0MzA5YjNhOGM5ZjMwOTUiLCJpYXQiOjE1OTY2NTY2MTV9.GG5JXb6VaCVWiPLJPP7j4nwoTyby095KlRjurWodo1g","5f2add0364309b3a8c9f3097",serviceAdsUpdate);
-        assertEquals(true,result);
-    }
+
+
+
 
 }

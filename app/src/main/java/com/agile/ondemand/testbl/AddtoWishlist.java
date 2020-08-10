@@ -1,25 +1,19 @@
-package com.agile.ondemand.bll;
+package com.agile.ondemand.testbl;
 
 import com.agile.ondemand.api.UsersApi;
-import com.agile.ondemand.model.Notification;
-import com.agile.ondemand.model.ServiceAds;
-import com.agile.ondemand.model.User;
-import com.agile.ondemand.model.UserUpdate;
-import com.agile.ondemand.model.feedback;
 import com.agile.ondemand.url.Url;
-
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ProfileBLL {
+public class AddtoWishlist {
+
     private boolean isSuccess = true;
 
-    public boolean updateUserData(String token, String id,UserUpdate userUpdate ) {
+    public boolean addToWishlist(String token, String id) {
         UsersApi usersApi = Url.getInstance().create(UsersApi.class);
-        Call<Void> voidCall = usersApi.updateUserData(token,id,userUpdate);
+        Call<Void> voidCall = usersApi.wishList(Url.token,id);
 
         voidCall.enqueue(new Callback<Void>() {
             @Override
