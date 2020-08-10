@@ -2,6 +2,7 @@ package com.agile.ondemand.fragments;
 
 import android.app.TimePickerDialog;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -71,7 +72,9 @@ public class AddFragment extends Fragment {
         btnPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                serviceAds();
+                if (Validation()){
+                    serviceAds();
+                }
             }
         });
         return root;
@@ -141,5 +144,28 @@ public class AddFragment extends Fragment {
         } else {
             Toast.makeText(getContext(), "Failed", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private boolean Validation(){
+        boolean status =  true;
+
+        if (spinner.getSelectedItem().toString().trim().equals("select category")){
+            Toast.makeText(getActivity(), "Chose a category", Toast.LENGTH_SHORT).show();
+        }
+        else if (TextUtils.isEmpty(etDescription.getText().toString().trim())){
+            etDescription.setError("Type a description");
+        }else if (TextUtils.isEmpty(tvOpeningTime.getText().toString())){
+            Toast.makeText(getActivity(), "Select a time", Toast.LENGTH_SHORT).show();
+        }else if (TextUtils.isEmpty(tvClosingTime.getText().toString())){
+            Toast.makeText(getActivity(), "Select a time", Toast.LENGTH_SHORT).show();
+        }else if (TextUtils.isEmpty(etdayFrom.getText().toString())){
+            etdayFrom.setError("Type available days from");
+        }else if (TextUtils.isEmpty(etdayTo.getText().toString())){
+            etdayTo.setError("Type available days from");
+        }else if (TextUtils.isEmpty(etPrice.getText().toString())){
+            etPrice.setError("Input an amount");
+        }
+        return status;
+
     }
 }
