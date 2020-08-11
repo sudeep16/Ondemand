@@ -1,6 +1,7 @@
 package com.agile.ondemand.adapter;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -58,36 +60,54 @@ public class WishListAdapter extends RecyclerView.Adapter<WishListAdapter.WishLi
                 AppCompatActivity appCompatActivity = (AppCompatActivity) v.getContext();
                 ViewProfileFragment viewProfileFragment = new ViewProfileFragment();
                 Bundle bundle = new Bundle();
-                bundle.putString("username",wishList.getUsername());
+                bundle.putString("username", wishList.getUsername());
                 viewProfileFragment.setArguments(bundle);
                 appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, viewProfileFragment)
                         .addToBackStack(null).commit();
             }
         });
-        
+
         holder.btnRemove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UsersApi usersApi = Url.getInstance().create(UsersApi.class);
-                Call<Void> deleteWishList = usersApi.deleteWishList(Url.token, wishList.get_id());
-                
-                deleteWishList.enqueue(new Callback<Void>() {
-                    @Override
-                    public void onResponse(Call<Void> call, Response<Void> response) {
-                        if (!response.isSuccessful()){
-                            Toast.makeText(context, "Code "+response.body(), Toast.LENGTH_SHORT).show();
-                            return;
-                        }
-                        wishLists.remove(position);
-                        notifyDataSetChanged();
-                        Toast.makeText(context, "Removed from wishList", Toast.LENGTH_SHORT).show();
-                    }
 
-                    @Override
-                    public void onFailure(Call<Void> call, Throwable t) {
-                        Toast.makeText(context, "error "+t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setMessage("Remove from the list ?")
+                        .setCancelable(false)
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                UsersApi usersApi = Url.getInstance().create(UsersApi.class);
+                                Call<Void> deleteWishList = usersApi.deleteWishList(Url.token, wishList.get_id());
+
+                                deleteWishList.enqueue(new Callback<Void>() {
+                                    @Override
+                                    public void onResponse(Call<Void> call, Response<Void> response) {
+                                        if (!response.isSuccessful()) {
+                                            Toast.makeText(context, "Code " + response.body(), Toast.LENGTH_SHORT).show();
+                                            return;
+                                        }
+                                        wishLists.remove(position);
+                                        notifyDataSetChanged();
+                                        Toast.makeText(context, "Removed from wishList", Toast.LENGTH_SHORT).show();
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<Void> call, Throwable t) {
+                                        Toast.makeText(context, "error " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        });
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+
             }
         });
     }
@@ -107,8 +127,8 @@ public class WishListAdapter extends RecyclerView.Adapter<WishListAdapter.WishLi
             super(itemView);
 
             Username = itemView.findViewById(R.id.tvFUsername);
-            btnViewProfile= itemView.findViewById(R.id.btnViewProfile);
-            wishListId= itemView.findViewById(R.id.wishListId);
+            btnViewProfile = itemView.findViewById(R.id.btnViewProfile);
+            wishListId = itemView.findViewById(R.id.wishListId);
             btnRemove = itemView.findViewById(R.id.btnRemove);
 
         }
