@@ -2,6 +2,7 @@ package com.agile.ondemand.adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -73,28 +75,47 @@ public class UserPostAdapter extends RecyclerView.Adapter<UserPostAdapter.UserPo
                         switch (item.getItemId()) {
                             //Delete serviceAds
                             case R.id.itemDelete:
-                                UsersApi usersApi = Url.getInstance().create(UsersApi.class);
-                                Call<Void> deletePost = usersApi.deleteMyPost(Url.token, serviceAds.getId());
+                                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                                builder.setMessage("Are you sure ?")
+                                        .setCancelable(false)
+                                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
 
-                                deletePost.enqueue(new Callback<Void>() {
-                                    @Override
-                                    public void onResponse(Call<Void> call, Response<Void> response) {
-                                        if (!response.isSuccessful()) {
-                                            Toast.makeText(context, "code" + response.code(), Toast.LENGTH_SHORT).show();
-                                            return;
-                                        }
-                                        serviceAdsList.remove(position);
-                                        notifyDataSetChanged();
-                                        Toast.makeText(context, "deleted", Toast.LENGTH_SHORT).show();
-                                    }
+                                                UsersApi usersApi = Url.getInstance().create(UsersApi.class);
+                                                Call<Void> deletePost = usersApi.deleteMyPost(Url.token, serviceAds.getId());
 
-                                    @Override
-                                    public void onFailure(Call<Void> call, Throwable t) {
-                                        Toast.makeText(context, "error" + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-                                    }
-                                });
+                                                deletePost.enqueue(new Callback<Void>() {
+                                                    @Override
+                                                    public void onResponse(Call<Void> call, Response<Void> response) {
+                                                        if (!response.isSuccessful()) {
+                                                            Toast.makeText(context, "code" + response.code(), Toast.LENGTH_SHORT).show();
+                                                            return;
+                                                        }
+                                                        serviceAdsList.remove(position);
+                                                        notifyDataSetChanged();
+                                                        Toast.makeText(context, "Your post has been deleted", Toast.LENGTH_SHORT).show();
+                                                    }
+
+                                                    @Override
+                                                    public void onFailure(Call<Void> call, Throwable t) {
+                                                        Toast.makeText(context, "error" + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                                                    }
+                                                });
+
+                                            }
+                                        })
+                                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                dialog.cancel();
+                                            }
+                                        });
+                                AlertDialog alertDialog = builder.create();
+                                alertDialog.show();
                                 break;
-                             //Edit serviceAds
+
+                            //Edit serviceAds
                             case R.id.itemEdit:
                                 AppCompatActivity appCompatActivity = (AppCompatActivity) v.getContext();
                                 PostEditFragment postEditFragment = new PostEditFragment();
