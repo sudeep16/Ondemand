@@ -1,5 +1,10 @@
 package com.agile.ondemand.testbl;
 
+import android.content.Intent;
+import android.widget.Toast;
+
+import com.agile.ondemand.activity.HireActivity;
+import com.agile.ondemand.activity.MainActivity;
 import com.agile.ondemand.api.UsersApi;
 import com.agile.ondemand.model.PendingJob;
 import com.agile.ondemand.url.Url;
@@ -36,9 +41,35 @@ public class HireBl {
 //
 
 
+    //hire activity
+    public boolean Hire(String token,String paymentM,String datepicker,String timeM,String locations,String username) {
+
+        UsersApi usersApi = Url.getInstance().create(UsersApi.class);
+        Call<Void> hirePost = usersApi.Hire(token, paymentM, datepicker, timeM, locations, username);
+
+        hirePost.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (!response.isSuccessful()) {
+                    isSuccess = true;
+                } else {
+                    isSuccess = false;
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+            }
+        });
+        return isSuccess;
+
+    }
+
+
+
     public boolean approvePendingJob(String token, String id,boolean accept) {
         UsersApi usersApi = Url.getInstance().create(UsersApi.class);
-        Call<Void> voidCall = usersApi.pendingJobApproval(Url.token,id,accept);
+        Call<Void> voidCall = usersApi.pendingJobApproval(token,id,accept);
 
         voidCall.enqueue(new Callback<Void>() {
             @Override
