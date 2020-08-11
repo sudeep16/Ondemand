@@ -40,7 +40,6 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-
     private SearchView searchView;
     private Button btnSearch;
     private RecyclerView searchRecycler;
@@ -79,7 +78,9 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-/**Button nav Selected Item Listener*/
+    /**
+     * Button nav Selected Item Listener
+     */
     private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -107,7 +108,9 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    /**three dot menu*/
+    /**
+     * three dot menu
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -115,7 +118,9 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    /**three dot menu click listener*/
+    /**
+     * three dot menu click listener
+     */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
@@ -130,4 +135,5 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 }
